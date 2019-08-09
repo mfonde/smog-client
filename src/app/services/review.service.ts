@@ -23,4 +23,11 @@ export class ReviewService {
     })
   }
 
+  getReviewsByImdbID(imdbID) {
+    const url = `http://localhost:3000/review/imdbid/${imdbID}`;
+    return this.http.get<any>(url,
+      {headers: this.headers
+    })
+  }
+
 }
