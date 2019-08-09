@@ -1,0 +1,17 @@
+
+
+<div class="body">
+  <div class="logo">
+    <img src="../../../assets/logo1.jpeg" alt="logo" width="500px" height="250px">
+  </div>
+  <div class="searchMeDad">
+    <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="searchForm">
+      <mat-form-field>
+        <input matInput formControlName="searchTitle" placeholder="Search Title">
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Search</button>
+    </form>
+  </div>
+</div>
+<h2>Newest Reviews</h2>
+<app-reviews></app-reviews>
