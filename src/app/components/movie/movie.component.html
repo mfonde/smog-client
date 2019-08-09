@@ -12,3 +12,8 @@
 <h3>{{movie.runtime}}</h3>
 <h3>{{movie.actors}}</h3>
 <button mat-raised-button routerLink='/home' color="danger">Back to Home</button>
+<app-reviews 
+*ngIf="movie.imdbID" 
+[displayedMovie]="movie"
+>
+</app-reviews>
