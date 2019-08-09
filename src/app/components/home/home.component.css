@@ -1,0 +1,29 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  .logo{
+  display: flex;
+  justify-content: center;
+  }
+
+  .searchMeDad{
+    position: relative;
+    width: 50%;
+    left: 65%;
+    transform: translate(-50%);
+  /* display: flex;
+  justify-content: center;
+  align-content: center; */
+  /* margin-left:40%;
+  margin-right:35%;
+  margin-top:30px; */
+  }
+
+  
