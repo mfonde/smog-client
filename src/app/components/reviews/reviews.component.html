@@ -1,5 +1,5 @@
-<!-- <ul class="reviews"> -->
-    <div class="reviewPanel" *ngFor="let review of reviews">
+<ul class="reviews">
+    <li *ngFor="let review of reviews">
         <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
@@ -19,6 +19,5 @@
                 </div>
                 <p>{{review.reviewText}}</p>
         </mat-expansion-panel>
-      <br/>
-    </div>
-<!-- </ul> -->
+    </li>
+</ul>
