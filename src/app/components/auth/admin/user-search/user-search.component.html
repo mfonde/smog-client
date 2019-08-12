@@ -1,0 +1,10 @@
+<div class="body">
+    <div class="searchMeDad">
+      <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="userSearchForm">
+        <mat-form-field>
+          <input matInput formControlName="searchName" placeholder="username">
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
