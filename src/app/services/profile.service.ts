@@ -12,6 +12,12 @@ export class ProfileService {
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
   })
+
+// getUser(){
+//   const url = `http://localhost:3000/user/username/${}`
+//   return this.http.get<any>(url,
+//     {headers: this.headers})
+// }
   
 // getYourReviews() {
 //   const url = `http://localhost:3000/review/username/${currentUser.username}`
