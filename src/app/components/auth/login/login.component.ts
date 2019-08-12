@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 import { AuthService } from '../../../services/auth.service';
 
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private form: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService
@@ -27,9 +27,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     console.log('Big Brain Time');
 
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
+    this.loginForm = this.form.group({
+      username: new FormControl,
+      password: new FormControl
     });
 
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';

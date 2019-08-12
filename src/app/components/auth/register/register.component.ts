@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { UserService } from '../../../services/user.service';
-
+import { User } from '../../../models/user';
 
 @Component({
   selector: 'app-register',
@@ -13,6 +13,7 @@ import { UserService } from '../../../services/user.service';
 export class RegisterComponent implements OnInit {
 
   public registerForm: FormGroup;
+  public currentUser;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -22,34 +23,32 @@ export class RegisterComponent implements OnInit {
     private userService: UserService
   ) {
     if (this.authService.currentUserValue) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/login']);
     }
   }
 
   ngOnInit() {
+    this.createForm();
+  }
 
-    console.log(this.authService.currentUserValue);
-
+  createForm() {
     this.registerForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      username: new FormControl,
+      email: new FormControl,
+      password: new FormControl,
+      profilePic: new FormControl(0),
+      admin: new FormControl(false)
     });
   }
 
   onSubmit() {
-    console.log(this.registerForm.value);
+    this.currentUser = new User(this.registerForm.value);
+    console.log(this.currentUser)
     if (this.registerForm.invalid) {
       console.log('Failed')
       return;
     }
-
-    this.userService.register(this.registerForm.value).subscribe(data => {
-      console.log(data);
-      this.router.navigate(['/login']);
-    })
-
+    this.userService.register(this.currentUser);
+    this.router.navigate(['/login'])
   }
-
-
 }
