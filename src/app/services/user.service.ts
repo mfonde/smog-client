@@ -10,6 +10,8 @@ const smog = 'http://localhost:3000'
 export class UserService {
 
   public currentUser;
+  public registeredUser;
+
 
   constructor(private http: HttpClient) { }
 
@@ -18,9 +20,14 @@ export class UserService {
   })
 
   register(user: User) {
-    // this.currentUser = new User(user)
-    // console.log(this.currentUser)
-    return this.http.post(`${smog}/user/create/`, user, { headers: this.headers })
+    this.currentUser = new User(user)
+    console.log(this.currentUser)
+    console.log(user)
+    return this.http.post(`${smog}/user/create/`, this.currentUser, { headers: this.headers }).subscribe(data => {
+      this.registeredUser = data;
+      console.log(this.registeredUser)
+    })
+    //! Need to have a subscribe if ever sending information.
 
   }
 

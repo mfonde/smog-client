@@ -42,13 +42,13 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.currentUser = new User(this.registerForm.value);
-    console.log(this.currentUser)
+    // this.currentUser = new User(this.registerForm.value);
+    // console.log(this.currentUser)
     if (this.registerForm.invalid) {
       console.log('Failed')
       return;
     }
-    this.userService.register(this.currentUser);
-    // this.router.navigate(['/login'])
+    this.userService.register(this.registerForm.value);
+    this.router.navigate(['/login'])
   }
 }

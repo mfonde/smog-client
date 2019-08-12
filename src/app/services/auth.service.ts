@@ -26,8 +26,8 @@ export class AuthService {
     'Content-Type': 'application/json',
   })
 
-  login(username: string, password: string) {
-    return this.http.post<any>(`${smog}/user/login`, { username, password }, { headers: this.headers }).subscribe(user => {
+  login(babybaby) {
+    return this.http.post<any>(`${smog}/user/login/`, babybaby, { headers: this.headers }).subscribe(user => {
       if (user) {
         localStorage.setItem('currentUser', JSON.stringify(user));
         console.log('Current User');

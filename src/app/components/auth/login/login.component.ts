@@ -43,7 +43,9 @@ export class LoginComponent implements OnInit {
     let uName = this.loginForm.value.username;
     let uPass = this.loginForm.value.password;
 
-    this.authService.login(uName, uPass);
+    let babybaby = this.loginForm.value
+
+    this.authService.login(babybaby);
     console.log(localStorage.getItem('currentUser'));
     this.router.navigate([this.returnUrl]);
     // pipe is used in here to map over user in the service, but in the ts file it refers to first() in the pipe as it is map(user)
