@@ -1,1 +1,21 @@
-<p>register works!</p>
+<h1>Register.</h1>
+<h4>Create a new account.</h4>
+<hr>
+<div class="registerForm">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <label for="username">Username</label>
+            <input matInput formControlName="username" class="form-control" />
+        </mat-form-field>
+
+        <mat-form-field>
+            <label for="email">Email</label>
+            <input matInput formControlName="email" class="form-control" />
+        </mat-form-field>
+        <mat-form-field>
+            <label for="password">Password</label>
+            <input matInput formControlName="password" type="password" class="form-control" />
+        </mat-form-field>
+        <button mat-raised-button class="nav-btn btn-block" color="primary" type="submit">Register</button>
+    </form>
+</div>
