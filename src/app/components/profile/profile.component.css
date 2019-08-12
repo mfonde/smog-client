@@ -1,0 +1,15 @@
+.user{
+    display: flex;
+    flex-direction: row;
+    border: 3px black solid;
+    text-align: center;
+    margin-left:40%;
+    margin-right:43%;
+    /* padding-left:50px; */
+}
+
+.profPic{
+    width: 2px;
+    height: 2px;
+    margin-right:110px;
+}
