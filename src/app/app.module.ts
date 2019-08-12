@@ -14,7 +14,8 @@ import { AuthService } from './services/auth.service';
 import {
   MatButtonModule,
   MatInputModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatSelectModule
 
 } from '@angular/material';
 //? COMPONENTS OF THE ANGULAR APP 
@@ -49,7 +50,8 @@ import { CreateReviewComponent } from './components/reviews/create-review/create
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSelectModule
 
   ],
   //TODO: PROVIDERS HOLD THE SERVICES USED BY THE APP, AND ANY ERROR INTERCEPTORS REQUIRED 
