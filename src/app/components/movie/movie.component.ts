@@ -1,12 +1,18 @@
 import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
 import { DatabaseService } from 'src/app/services/database.service';
 import { FavoriteService } from '../../services/favorite.service';
+import { ReviewService } from '../../services/review.service';
 import { Favorite } from '../../models/favorite-model';
+import { NewReview } from '../../models/post-review-model'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
 export interface DialogData {
-  movie: object;
+  movie: {
+    title:string,
+    poster: string,
+    imdbID: string
+  };
 }
 
 
@@ -29,7 +35,7 @@ export class MovieComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(NewReviewDialog, {
-      width: '800px',
+      width: '600px',
       data: { movie: this.movie }
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -85,11 +91,35 @@ addToFavorites() {
 })
 export class NewReviewDialog {
 
-  constructor(public dialogRef: MatDialogRef<NewReviewDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+  public reviewData: FormGroup;
+
+  constructor(public dialogRef: MatDialogRef<NewReviewDialog>, private form: FormBuilder, private reviewService: ReviewService,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {this.reviewForm()}
 
     onNoClick(): void {
       this.dialogRef.close();
     }
 
+    reviewForm() {
+      this.reviewData = this.form.group({
+        reviewValue: new FormControl,
+        reviewText: new FormControl
+      })
+    }
+
+    saveReview() {
+      const movieTitle = this.data.movie.title;
+      const poster = this.data.movie.poster;
+      const imdbId = this.data.movie.imdbID;
+      const reviewRating = this.reviewData.value.reviewValue;
+      const reviewText = this.reviewData.value.reviewText;
+
+      const newReview = new NewReview(movieTitle, poster, imdbId, reviewRating, reviewText);
+      this.reviewService.postReview(newReview);
+      console.log(newReview)
+    }
+  // ngOnInit() {
+  //   this.saveReview()
+  // }
+  
 }
