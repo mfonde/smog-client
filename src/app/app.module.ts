@@ -18,7 +18,8 @@ import {
   MatExpansionModule,
   MatSelectModule,
   MatFormFieldModule,
-  MatTableModule
+  MatTableModule,
+  MatCardModule
 
 } from '@angular/material';
 
@@ -83,7 +84,8 @@ import { AuthHeaderComponent } from './components/header/auth-header/auth-header
     MatDialogModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule
 
   ],
   //TODO: PROVIDERS HOLD THE SERVICES USED BY THE APP, AND ANY ERROR INTERCEPTORS REQUIRED 

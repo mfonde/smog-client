@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Review } from '../../models/review-model'
-import { ReviewService } from '../../services/review.service'
-
+import { Review } from '../../models/review-model';
+import { ReviewService } from '../../services/review.service';
 import { MovieData } from '../../models/MovieData';
 
 @Component({
