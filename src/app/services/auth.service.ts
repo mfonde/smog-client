@@ -30,9 +30,11 @@ export class AuthService {
     return this.http.post<any>(`${smog}/user/login/`, babybaby, { headers: this.headers }).subscribe(user => {
       if (user) {
         localStorage.setItem('currentUser', JSON.stringify(user));
+        localStorage.setItem('sessionToken', JSON.stringify(user.sessionToken));
         console.log('Current User');
         console.log(this.currentUser);
         this.currentUserSubject.next(user);
+        location.reload();
       } else {
         console.log('failed login attempt');
       }
@@ -44,6 +46,7 @@ export class AuthService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('sessionToken');
     // sets the current type of data of currentUser to null
     this.currentUserSubject.next(null);
   }

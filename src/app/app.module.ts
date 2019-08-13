@@ -27,6 +27,11 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CreateReviewComponent } from './components/reviews/create-review/create-review.component';
+import { AdminComponent } from './components/auth/admin/admin.component';
+import { UserSearchComponent } from './components/auth/admin/user-search/user-search.component';
+import { ReviewSearchComponent } from './components/auth/admin/review-search/review-search.component';
+import { HeaderComponent } from './components/header/header.component';
+import { AuthHeaderComponent } from './components/header/auth-header/auth-header.component';
 @NgModule({
   //TODO: DECLARES ALL OF THE COMPONENTS ADDED INTO THE APP MODULE 
   declarations: [
@@ -37,7 +42,12 @@ import { CreateReviewComponent } from './components/reviews/create-review/create
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    CreateReviewComponent
+    CreateReviewComponent,
+    AdminComponent,
+    UserSearchComponent,
+    ReviewSearchComponent,
+    HeaderComponent,
+    AuthHeaderComponent
   ],
   //TODO: HOLDS ALL OF THE IMPORTS ADDED TO THE ANGULAR APP FOR OTHER FILES TO USE 
   imports: [
