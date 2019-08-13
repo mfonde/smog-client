@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import { NewReviewDialog } from '../app/components/movie/movie.component'
 //? SERVICES 
 import { DatabaseService } from './services/database.service';
 import { UserService } from './services/user.service';
@@ -14,9 +15,17 @@ import { AuthService } from './services/auth.service';
 import {
   MatButtonModule,
   MatInputModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatSelectModule,
+  MatFormFieldModule
 
 } from '@angular/material';
+
+import {
+  MatDialogModule
+} from '@angular/material/dialog';
+
+
 //? COMPONENTS OF THE ANGULAR APP 
 import { AppComponent } from './app.component';
 import { HomeComponent } from '../app/components/home/home.component';
@@ -36,7 +45,12 @@ import { CreateReviewComponent } from './components/reviews/create-review/create
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    CreateReviewComponent
+    CreateReviewComponent,
+    NewReviewDialog
+  ],
+
+  entryComponents:[
+    NewReviewDialog
   ],
   //TODO: HOLDS ALL OF THE IMPORTS ADDED TO THE ANGULAR APP FOR OTHER FILES TO USE 
   imports: [
@@ -49,11 +63,14 @@ import { CreateReviewComponent } from './components/reviews/create-review/create
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatFormFieldModule
 
   ],
   //TODO: PROVIDERS HOLD THE SERVICES USED BY THE APP, AND ANY ERROR INTERCEPTORS REQUIRED 
-  providers: [DatabaseService, UserService, AuthService, HttpClient],
+  providers: [DatabaseService, UserService, AuthService, HttpClient ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

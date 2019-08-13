@@ -11,10 +11,12 @@
     <h3>{{movie.released}}</h3>
     <h3>{{movie.runtime}}</h3>
     <h3>{{movie.actors}}</h3>
-    <button mat-raised-button routerLink='/home' color="danger">Back to Home</button>
+    <br/>
+    <button mat-raised-button (click)="openDialog()">New Review</button>
 </div>
     <app-reviews 
     *ngIf="movie.imdbID" 
     [displayedMovie]="movie"
     >
 </app-reviews>
+<button mat-raised-button routerLink='/home' color="danger">Back to Home</button>
