@@ -6,4 +6,28 @@
         Username
     </h2>
 </div>
-
+<div class="yourReviews">
+<ul class="reviews">
+    <li *ngFor="let review of bigReviews" class="panel">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{review.movieTitle}}
+              </mat-panel-title>
+              <mat-panel-description>
+                By:{{review.username}} Rating: {{review.reviewRating}} out of 5
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+                <div class="poster">
+                    <img src="{{review.poster}}" alt="poster image" width="60" height="80">
+                </div>
+                <div class="info">
+                    {{review.movieTitle}}
+                    {{review.reviewRating}} out of 5
+                    By: {{review.username}}
+                </div>
+                <p>{{review.reviewText}}</p>
+        </mat-expansion-panel>
+    </li>
+</ul>
+</div>
