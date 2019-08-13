@@ -22,9 +22,9 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService,
     private userService: UserService
   ) {
-    if (this.authService.currentUserValue) {
-      this.router.navigate(['/login']);
-    }
+    // if (this.authService.currentUserValue) {
+    //   this.router.navigate(['/login']);
+    // }
   }
 
   ngOnInit() {
