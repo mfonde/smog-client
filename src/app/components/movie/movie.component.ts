@@ -1,9 +1,14 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-
+import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
 import { DatabaseService } from 'src/app/services/database.service';
 import { FavoriteService } from '../../services/favorite.service';
 import { Favorite } from '../../models/favorite-model';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+
+export interface DialogData {
+  movie: object;
+}
+
 
 
 @Component({
@@ -18,10 +23,19 @@ export class MovieComponent implements OnInit {
   public movie;
   public selectRanking: FormGroup;
 
-  constructor(private databaseService: DatabaseService, private favoriteService: FavoriteService, private form: FormBuilder) {         this.getMovie();
-    this.createForm();
-  }
+  constructor(private databaseService: DatabaseService, private favoriteService: FavoriteService, private form: FormBuilder, public dialog: MatDialog) {this.getMovie();
+    this.createForm();}
 
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(NewReviewDialog, {
+      width: '800px',
+      data: { movie: this.movie }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
   createForm() {
     this.selectRanking = this.form.group({
       ranking: new FormControl
@@ -63,5 +77,19 @@ addToFavorites() {
 
   }
 
+}
+
+@Component({
+  selector: 'new-review-dialog',
+  templateUrl: 'new-review-dialog.html',
+})
+export class NewReviewDialog {
+
+  constructor(public dialogRef: MatDialogRef<NewReviewDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+    onNoClick(): void {
+      this.dialogRef.close();
+    }
 
 }

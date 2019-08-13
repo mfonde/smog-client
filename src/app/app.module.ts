@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import { NewReviewDialog } from '../app/components/movie/movie.component'
 //? SERVICES 
 import { DatabaseService } from './services/database.service';
 import { UserService } from './services/user.service';
@@ -15,9 +16,16 @@ import {
   MatButtonModule,
   MatInputModule,
   MatExpansionModule,
-  MatSelectModule
+  MatSelectModule,
+  MatFormFieldModule
 
 } from '@angular/material';
+
+import {
+  MatDialogModule
+} from '@angular/material/dialog';
+
+
 //? COMPONENTS OF THE ANGULAR APP 
 import { AppComponent } from './app.component';
 import { HomeComponent } from '../app/components/home/home.component';
@@ -43,6 +51,16 @@ import { AuthHeaderComponent } from './components/header/auth-header/auth-header
     RegisterComponent,
     ProfileComponent,
     CreateReviewComponent,
+    NewReviewDialog,
+    AdminComponent,
+    UserSearchComponent,
+    ReviewSearchComponent,
+    HeaderComponent,
+    AuthHeaderComponent
+  ],
+
+  entryComponents:[
+    NewReviewDialog,
     AdminComponent,
     UserSearchComponent,
     ReviewSearchComponent,
@@ -61,11 +79,13 @@ import { AuthHeaderComponent } from './components/header/auth-header/auth-header
     HttpClientModule,
     RouterModule,
     MatExpansionModule,
-    MatSelectModule
+    MatDialogModule,
+    MatSelectModule,
+    MatFormFieldModule
 
   ],
   //TODO: PROVIDERS HOLD THE SERVICES USED BY THE APP, AND ANY ERROR INTERCEPTORS REQUIRED 
-  providers: [DatabaseService, UserService, AuthService, HttpClient],
+  providers: [DatabaseService, UserService, AuthService, HttpClient ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
