@@ -16,5 +16,21 @@
 
 .yourReviews{
     margin-top:30px;
-    margin-right:60%;
+    position: absolute;
+}
+
+.example-card {
+    max-width: 250px;
+    margin-right: 20px;
+  }
+  
+  .example-header-image {
+    background-size: cover;
+  }
+
+.favorites{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right:20px;
+    margin-top:30px;
 }

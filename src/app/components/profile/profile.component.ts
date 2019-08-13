@@ -18,18 +18,21 @@ export class ProfileComponent implements OnInit {
   // public smallUserBaby = this.profileService.smallUser
 
   bigReviews = [];
+  bigFavorites = [];
+  bigName = bigUser;
   @Input() displayedMovie: MovieData;
 
   constructor(private profileService: ProfileService) { }
 
 
   ngOnInit() {
-    // const bigUserBaby = this.profileService.bigUser
-    // this.bigReviews.push(this.profileService.getYourReview());
-    // console.log(this.bigReviews)
     this.profileService.getYourReview(bigUser).subscribe(data =>{
-        this.bigReviews = data, console.log(data)
+        this.bigReviews = data, console.log(data);
       });
+    
+    this.profileService.getYourFavorites(bigUser).subscribe(data =>{
+      this.bigFavorites = data, console.log(data);
+    })
   }
 
 }
