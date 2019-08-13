@@ -18,6 +18,7 @@ import {
   MatExpansionModule,
   MatSelectModule,
   MatFormFieldModule,
+  MatTableModule,
   MatCardModule
 
 } from '@angular/material';
@@ -83,6 +84,7 @@ import { AuthHeaderComponent } from './components/header/auth-header/auth-header
     MatDialogModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatTableModule,
     MatCardModule
 
   ],
