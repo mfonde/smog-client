@@ -1,0 +1,23 @@
+<img src="{{data.movie.poster}}" alt="poster image" width="120" height="160">
+<div class="titleArea">
+    <h1>{{data.movie.title}}</h1>
+</div>
+<div class="dataArea">
+    <form (ngSubmit)="onSubmit()" [formGroup]="reviewData">
+            <mat-label>Review Score:</mat-label>
+            <mat-select formControlName="reviewValue" value="">
+                <mat-option value="1">1 Star</mat-option>
+                <mat-option value="2">2 Stars</mat-option>
+                <mat-option value="3">3 Stars</mat-option>
+                <mat-option value="4">4 Stars</mat-option>
+                <mat-option value="5">5 Stars</mat-option>
+            </mat-select>
+            <mat-form-field>
+                    <textarea formControlName="reviewText" matInput placeholder="Movie Thoughts"></textarea>
+            </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+        <button mat-stroked-button color="warn" (click)="onNoClick()">Exit</button>
+        <button mat-raised-button color="primary" type="submit">Submit Review</button>      
+</div>

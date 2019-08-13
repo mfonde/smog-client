@@ -11,6 +11,8 @@
 <h3>{{movie.released}}</h3>
 <h3>{{movie.runtime}}</h3>
 <h3>{{movie.actors}}</h3>
+<br/>
+<button mat-raised-button (click)="openDialog()">New Review</button>
 <button mat-raised-button routerLink='/home' color="danger">Back to Home</button>
 <button mat-raised-button (click)="onFavoriteSelected()" color="danger">Add To Favorites</button>
 <div *ngIf="favoriteSelected">
@@ -38,3 +40,4 @@
 [displayedMovie]="movie"
 >
 </app-reviews>
+<button mat-raised-button routerLink='/home' color="danger">Back to Home</button>
