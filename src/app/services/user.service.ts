@@ -11,12 +11,20 @@ export class UserService {
 
   public currentUser;
   public registeredUser;
+  public searchedUser;
 
+  bigCurrentUser = JSON.parse(localStorage.getItem('currentUser'));
+  public userId = this.bigCurrentUser.user.id;
 
   constructor(private http: HttpClient) { }
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
+  })
+  token = JSON.parse(localStorage.getItem('sessionToken'));
+  authHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': this.token
   })
 
   register(user: User) {
@@ -31,11 +39,33 @@ export class UserService {
 
   }
 
+  get(searchName) {
+    console.log(searchName);
+    const url = `${smog}/user/username/${searchName}`
+    return this.http.get<any>(url, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': this.token
+    }
+    })
+    // .subscribe(data => {
+    //   this.searchedUser = data;
+    //   console.log(data);
+    // })
+    
+  }
+
   delete() {
     // deletes user by the user id sent with the request
   }
 
-  update() {
+  update(userUpdate) {
+    const id = this.userId;
+    console.log(id);
+    const url = `${smog}/user/update/${id}`
+    return this.http.put(url, userUpdate, {
+      headers: this.authHeaders
+    })
     // updates a user from the id sent with the request, or if the user is one of the admins they have access the all user crud
   }
 
