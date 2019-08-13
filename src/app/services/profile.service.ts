@@ -35,6 +35,12 @@ export class ProfileService {
         //    this.reviews = data, console.log(data)
         //})
   }
+
+  getYourFavorites(middleUser){
+    const url = `http://localhost:3000/favorite/username/${middleUser}`
+    return this.http.get<any>(url,
+      {headers: this.headers})
+  }
   
   
  
