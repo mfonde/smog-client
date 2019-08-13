@@ -3,7 +3,7 @@
     <h1>{{data.movie.title}}</h1>
 </div>
 <div class="dataArea">
-    <form (ngSubmit)="onSubmit()" [formGroup]="reviewData">
+    <form (ngSubmit)="saveReview()" [formGroup]="reviewData">
             <mat-label>Review Score:</mat-label>
             <mat-select formControlName="reviewValue" value="">
                 <mat-option value="1">1 Star</mat-option>
@@ -19,5 +19,5 @@
 </div>
 <div mat-dialog-actions>
         <button mat-stroked-button color="warn" (click)="onNoClick()">Exit</button>
-        <button mat-raised-button color="primary" type="submit">Submit Review</button>      
+        <button mat-raised-button color="primary" (click)="saveReview()">Submit Review</button>      
 </div>
