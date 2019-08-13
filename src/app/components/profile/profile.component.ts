@@ -5,7 +5,7 @@ import { MovieData } from '../../models/MovieData'
 
 
 const smallUser = JSON.parse(localStorage.getItem('currentUser'))
-const bigUser = smallUser.user.username
+
 
 @Component({
   selector: 'app-profile',
@@ -17,20 +17,22 @@ export class ProfileComponent implements OnInit {
 
   // public smallUserBaby = this.profileService.smallUser
 
+  public bigUser = smallUser.user.username;
+
   bigReviews = [];
   bigFavorites = [];
-  bigName = bigUser;
+  bigName = this.bigUser;
   @Input() displayedMovie: MovieData;
 
   constructor(private profileService: ProfileService) { }
 
 
   ngOnInit() {
-    this.profileService.getYourReview(bigUser).subscribe(data =>{
+    this.profileService.getYourReview(this.bigUser).subscribe(data =>{
         this.bigReviews = data, console.log(data);
       });
     
-    this.profileService.getYourFavorites(bigUser).subscribe(data =>{
+    this.profileService.getYourFavorites(this.bigUser).subscribe(data =>{
       this.bigFavorites = data, console.log(data);
     })
   }
