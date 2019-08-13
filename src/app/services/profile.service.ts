@@ -13,11 +13,13 @@ export class ProfileService {
     'Content-Type': 'application/json',
   })
 
-// getUser(){
-//   const url = `http://localhost:3000/user/username/${}`
+getUser(){
+const token = localStorage.getItem('currentUser.sessionToken')
+console.log(token)
+// const url = `http://localhost:3000/review/username/`
 //   return this.http.get<any>(url,
 //     {headers: this.headers})
-// }
+}
   
 // getYourReviews() {
 //   const url = `http://localhost:3000/review/username/${currentUser.username}`
