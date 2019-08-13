@@ -1,1 +1,23 @@
-<p>login works!</p>
+<h1>Login</h1>
+<h4 display-4>Fill out the form below to login to your account</h4>
+<hr>
+
+<div>
+    <div>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+                <label for="username">Username</label>
+                <input matInput formControlName="username" class="form-control" />
+            </mat-form-field>
+            <mat-form-field>
+                <label for="password">Password</label>
+                <input matInput formControlName="password" type="password" class="form-control" />
+            </mat-form-field>
+            <div>
+                <button mat-raised-button class="nav-btn" color="primary" type="submit">Login</button>
+                <br>
+                <a routerLink="/register">Register as a new user</a>
+            </div>
+        </form>
+    </div>
+</div>

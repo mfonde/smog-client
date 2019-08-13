@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'smog-moviereviewcloud-client';
+  sessionToken = localStorage.getItem('sessionToken');
+  currentUser = localStorage.getItem('currentUser');
 }
