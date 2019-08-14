@@ -89,13 +89,14 @@ export class UserSearchComponent implements OnInit {
     const searchName = this.userSearchForm.value.searchName;
     console.log(searchName);
 
-    this.userService.get(searchName).subscribe(data => {
-      this.user = data[0];
-      this.id = data[0].id;
-      console.log(this.user);
-      console.log(this.id);
-    }
-    );
+    this.userService.get(searchName)
+    //   .subscribe(data => {
+    //   this.user = data[0];
+    //   this.id = data[0].id;
+    //   console.log(this.user);
+    //   console.log(this.id);
+    // }
+    // );
     this.reviewService.getReviewsByUsername(searchName).subscribe(data => {
       console.log(data);
     })
