@@ -18,9 +18,10 @@ export class ProfileComponent implements OnInit {
   // public smallUserBaby = this.profileService.smallUser
 
   public bigUser = smallUser.user.username;
+  public admin = smallUser.user.admin;
 
   bigReviews = [];
-  bigFavorites = {};
+  bigFavorites = [];
   smallFavorites='';
   bigName = this.bigUser;
   @Input() displayedMovie: MovieData;
