@@ -29,6 +29,8 @@ export class UserSearchComponent implements OnInit {
   public user = [];
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
   public userId = this.currentUser.user.id;
+  public id;
+
 
   constructor(
     private form: FormBuilder,
@@ -46,17 +48,18 @@ export class UserSearchComponent implements OnInit {
   }
 
   saveEditUser() {
-    // const username = this.usernameInputRef.nativeElement.value;
-    // const email = this.emailInputRef.nativeElement.value;
-    // const password = this.passwordInputRef.nativeElement.value;
-    // // const id = this.idInputRef.nativeElement.value;
-    // const id = this.userId;
-    // const profilePic = this.profilePicInputRef.nativeElement.value;
-    // const admin = this.adminInputRef.nativeElement.value;
+    const username = this.usernameInputRef.nativeElement.value;
+    const email = this.emailInputRef.nativeElement.value;
+    const password = this.passwordInputRef.nativeElement.value;
+    // const id = this.idInputRef.nativeElement.value;
+    const id = this.id;
+    const profilePic = this.profilePicInputRef.nativeElement.value;
+    const admin = this.adminInputRef.nativeElement.value;
 
-    // const userUpdate = new UserData(username, email, password, profilePic, admin);
-    // console.log(id);
-    this.userService.update(this.userUpdateForm.value).subscribe(user => console.log(user));
+    const userUpdate = new UserData(username, email, password, profilePic, id, admin);
+    console.log(id);
+    console.log(userUpdate);
+    this.userService.update(userUpdate);
   }
 
   ngOnInit() {
@@ -83,16 +86,17 @@ export class UserSearchComponent implements OnInit {
   }
 
   onSubmit() {
-    const search = this.userSearchForm.value.searchName;
-    console.log(search);
+    const searchName = this.userSearchForm.value.searchName;
+    console.log(searchName);
 
-    this.userService.get(search)
-    //   .subscribe(data => {
-    //   this.user = data[0];
-    //   console.log(this.user)
-    // }
-    // );
-    this.reviewService.getReviewsByUsername(search).subscribe(data => {
+    this.userService.get(searchName).subscribe(data => {
+      this.user = data[0];
+      this.id = data[0].id;
+      console.log(this.user);
+      console.log(this.id);
+    }
+    );
+    this.reviewService.getReviewsByUsername(searchName).subscribe(data => {
       console.log(data);
     })
   }

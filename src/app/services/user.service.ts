@@ -15,11 +15,7 @@ export class UserService {
   public searchedUser;
   public searchedUserID;
 
-  // public userId = bigCurrentUser.user.id;
-
-  constructor(private http: HttpClient) {
-    console.log(bigCurrentUser)
-  }
+  constructor(private http: HttpClient) { }
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -67,12 +63,15 @@ export class UserService {
   }
 
   update(userUpdate) {
-    const id = bigCurrentUser.user.id;
-    console.log(id);
-    const url = `${smog}/user/update/${id}`
-    localStorage.removeItem('currentUser');
-    return this.http.put(url, userUpdate, {
+    // const id = this.userId;
+    // console.log(id);
+    const url = `${smog}/user/update/${userUpdate.id}`
+    console.log(url);
+    console.log(userUpdate);
+    return this.http.put<any>(url, userUpdate, {
       headers: this.authHeaders
+    }).subscribe(data => {
+      console.log(data)
     })
     // updates a user from the id sent with the request, or if the user is one of the admins they have access the all user crud
   }
