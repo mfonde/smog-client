@@ -5,7 +5,7 @@ import { MovieData } from '../../models/MovieData'
 
 
 const smallUser = JSON.parse(localStorage.getItem('currentUser'))
-
+// const smallId = JSON.parse(localStorage.getItem('currentFav'))
 
 @Component({
   selector: 'app-profile',
@@ -14,17 +14,26 @@ const smallUser = JSON.parse(localStorage.getItem('currentUser'))
 })
 
 export class ProfileComponent implements OnInit {
-
+  
   // public smallUserBaby = this.profileService.smallUser
 
   public bigUser = smallUser.user.username;
 
   bigReviews = [];
-  bigFavorites = [];
+  bigFavorites = {};
+  smallFavorites='';
   bigName = this.bigUser;
   @Input() displayedMovie: MovieData;
 
+
   constructor(private profileService: ProfileService) { }
+
+  delete(id) :void {
+  this.profileService.destroyYourFavorites(id).subscribe();
+  location.reload();
+}
+
+
 
 
   ngOnInit() {
@@ -33,8 +42,12 @@ export class ProfileComponent implements OnInit {
       });
     
     this.profileService.getYourFavorites(this.bigUser).subscribe(data =>{
-      this.bigFavorites = data, console.log(data);
+      this.bigFavorites = data, console.log(data), localStorage.setItem('currentFav', JSON.stringify(this.bigFavorites));;
     })
+    console.log(this.profileService.smallId)
+    
+    
+    }
+     
   }
 
-}
