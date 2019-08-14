@@ -3,5 +3,6 @@ export class UserData {
      public email: string,
      public password: string,
      public profilePic: number,
+     public id: number,
      public admin: boolean){}
 }
