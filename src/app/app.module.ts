@@ -26,6 +26,9 @@ import {
   MatDialogModule
 } from '@angular/material/dialog';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
+
 
 //? COMPONENTS OF THE ANGULAR APP 
 import { AppComponent } from './app.component';
@@ -83,11 +86,12 @@ import { AuthHeaderComponent } from './components/header/auth-header/auth-header
     MatDialogModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatCardModule
+    MatCardModule,
+    NgbModule
 
   ],
   //TODO: PROVIDERS HOLD THE SERVICES USED BY THE APP, AND ANY ERROR INTERCEPTORS REQUIRED 
-  providers: [DatabaseService, UserService, AuthService, HttpClient ],
+  providers: [DatabaseService, UserService, AuthService, HttpClient, NgbRatingConfig ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

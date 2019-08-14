@@ -1,0 +1,13 @@
+.titleArea{
+    display: flex;
+}
+
+.star {
+    font-size: 2em;
+    color: grey;
+    text-shadow: black 1.5px 1px;
+}
+
+.filled {
+    color: yellow ;
+}

@@ -36,7 +36,7 @@ export class ReviewService {
     })
   }
 
-  postReview(review: NewReview){
+  postReview(review){
     const url = 'http://localhost:3000/review/';
     console.log(review)
     this.http.post(url, review, {

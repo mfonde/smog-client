@@ -1,23 +1,28 @@
-<ul class="reviews">
-    <li *ngFor="let review of reviews">
+   <div class="reviews" *ngFor="let review of reviews">
         <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
-                {{review.movieTitle}}
+                <h4>{{review.movieTitle}}</h4>
               </mat-panel-title>
               <mat-panel-description>
-                By:{{review.username}} Rating: {{review.reviewRating}} out of 5
+                <div class="test">
+                 <ngb-rating [rate]="review.reviewRating">
+                      <ng-template let-fill="fill" let-index="index">
+                          <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                        </ng-template>
+                  </ngb-rating> 
+                </div>
               </mat-panel-description>
             </mat-expansion-panel-header>
-                <div class="poster">
-                    <img src="{{review.poster}}" alt="poster image" width="60" height="80">
-                </div>
-                <div class="info">
-                    {{review.movieTitle}}
-                    {{review.reviewRating}} out of 5
-                    By: {{review.username}}
-                </div>
-                <p>{{review.reviewText}}</p>
+            <div class="poster">
+
+              <img src="{{review.poster}}" alt="poster image" width="120" height="160">
+              <br/>
+              <div class="info">
+                      By: {{review.username}}
+                      <p>{{review.reviewText}}</p>
+              </div>
+            </div>
         </mat-expansion-panel>
-    </li>
-</ul>
+        <br/>
+      </div>
