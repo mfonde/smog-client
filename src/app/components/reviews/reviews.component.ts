@@ -9,9 +9,11 @@ import { MovieData } from '../../models/MovieData';
   styleUrls: ['./reviews.component.css']
 })
 export class ReviewsComponent implements OnInit {
-
+  currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  public admin = this.currentUser.admin;
   reviews: Review[];
   @Input() displayedMovie: MovieData;
+  @Input() searchName: string;
   
 
   getAllReviews(): void {
@@ -25,12 +27,26 @@ export class ReviewsComponent implements OnInit {
     .subscribe(reviews => this.reviews = reviews)
   }
 
+  getReviewsByUsername() {
+    console.log(this.searchName);
+    this.reviewService.getReviewsByUsername(this.searchName).subscribe(reviews => {
+      console.log(reviews);
+      this.reviews = reviews;
+    })
+  }
+
   constructor(private reviewService: ReviewService) { }
 
   ngOnInit() {
     if(this.displayedMovie){
+      console.log(this.displayedMovie);
       this.getReviewsByImdbID()
-    } else {
+    } 
+    else if (this.searchName) {
+      console.log(this.searchName);
+      this.getReviewsByUsername()
+    }
+    else {
     this.getAllReviews()
     }
   }
