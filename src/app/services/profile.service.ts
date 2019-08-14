@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 const token = JSON.parse(localStorage.getItem('sessionToken'));
 const smallUser = JSON.parse(localStorage.getItem('currentUser'))
-
+const smallId = JSON.parse(localStorage.getItem('currentFav'))
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,8 @@ export class ProfileService {
 
   public reviews: [];
   public bigUser = smallUser.user.username
-  public smallUser = JSON.parse(localStorage.getItem('currentUser'))
+  public smallId = JSON.parse(localStorage.getItem('currentFav'))
+  public bigId = smallId
   
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -41,7 +42,13 @@ export class ProfileService {
     return this.http.get<any>(url,
       {headers: this.headers})
   }
-  
+
+  destroyYourFavorites(id){
+    const url = `http://localhost:3000/favorite/delete/${id}`
+    return this.http.delete<any>(url,
+      {headers:this.headers})
+  }
+
   
  
   }
