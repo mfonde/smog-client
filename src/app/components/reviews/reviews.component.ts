@@ -10,7 +10,7 @@ import { MovieData } from '../../models/MovieData';
 })
 export class ReviewsComponent implements OnInit {
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  public admin = this.currentUser.admin;
+  // public admin = this.currentUser.admin;
   reviews: Review[];
   @Input() displayedMovie: MovieData;
   @Input() searchName: string;
