@@ -1,17 +1,24 @@
-<img src="{{data.movie.poster}}" alt="poster image" width="120" height="160">
 <div class="titleArea">
+    <img src="{{data.movie.poster}}" alt="poster image" width="120" height="160">
     <h1>{{data.movie.title}}</h1>
 </div>
 <div class="dataArea">
+        <div class="test">
+                <ngb-rating [(rate)]="currentRate" max="5">
+                     <ng-template let-fill="fill" let-index="index">
+                         <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                       </ng-template>
+                 </ngb-rating> 
+                 Score: {{currentRate}}
     <form (ngSubmit)="saveReview()" [formGroup]="reviewData">
-            <mat-label>Review Score:</mat-label>
+            <!-- <mat-label>Review Score:</mat-label>
             <mat-select formControlName="reviewValue" value="">
                 <mat-option value="1">1 Star</mat-option>
                 <mat-option value="2">2 Stars</mat-option>
                 <mat-option value="3">3 Stars</mat-option>
                 <mat-option value="4">4 Stars</mat-option>
                 <mat-option value="5">5 Stars</mat-option>
-            </mat-select>
+            </mat-select> -->
             <mat-form-field>
                     <textarea formControlName="reviewText" matInput placeholder="Movie Thoughts"></textarea>
             </mat-form-field>

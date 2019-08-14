@@ -88,6 +88,7 @@ addToFavorites() {
 @Component({
   selector: 'new-review-dialog',
   templateUrl: 'new-review-dialog.html',
+  styleUrls: ['./new-review-dialog.css']
 })
 export class NewReviewDialog {
 
@@ -107,11 +108,13 @@ export class NewReviewDialog {
       })
     }
 
+    currentRate = 1;
+
     saveReview() {
       const movieTitle = this.data.movie.title;
       const poster = this.data.movie.poster;
       const imdbId = this.data.movie.imdbID;
-      const reviewRating = this.reviewData.value.reviewValue;
+      const reviewRating = this.currentRate;
       const reviewText = this.reviewData.value.reviewText;
 
       const newReview = new NewReview(movieTitle, poster, imdbId, reviewRating, reviewText);
