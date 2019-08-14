@@ -32,8 +32,14 @@
       </tbody>
     </table>
     <hr>
-    <button class="editButton" mat-raised-button color="primary" (click)="editUser()">Edit User</button>
+    <button class="editButton" mat-raised-button color="primary" (click)="editUser()">Edit User</button> &nbsp;
+    <button class="deleteButton" mat-raised-button color="primary" (click)="deleteUser()">Delete User</button>
     <hr>
+    <div class="deleteDiv" *ngIf="deleteUserOn">
+      <h4>Are You Sure You Want To Delete This User? This Cannot Be Undone!</h4>
+      <button class="deleteButton" mat-raised-button color="primary" (click)="saveDeleteUser()">Confirm Delete</button>
+
+    </div>
     <div class="formDiv" *ngIf="editUserOn">
       <form>
         <div class="row">
