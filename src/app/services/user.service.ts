@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
 
 const smog = 'http://localhost:3000'
+const bigCurrentUser = JSON.parse(localStorage.getItem('currentUser'));
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,13 @@ export class UserService {
   public currentUser;
   public registeredUser;
   public searchedUser;
+  public searchedUserID;
 
-  bigCurrentUser = JSON.parse(localStorage.getItem('currentUser'));
-  public userId = this.bigCurrentUser.user.id;
+  // public userId = bigCurrentUser.user.id;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    console.log(bigCurrentUser)
+  }
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -40,19 +43,23 @@ export class UserService {
   }
 
   get(searchName) {
-    console.log(searchName);
-    const url = `${smog}/user/username/${searchName}`
+    console.log(searchName.value);
+    const url = `${smog}/user/username/${searchName.value}`
     return this.http.get<any>(url, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': this.token
-    }
+      }
+    }).subscribe(data => {
+      this.searchedUserID = data;
+      console.log(this.searchedUserID)
+
     })
     // .subscribe(data => {
     //   this.searchedUser = data;
     //   console.log(data);
     // })
-    
+
   }
 
   delete() {
@@ -60,9 +67,10 @@ export class UserService {
   }
 
   update(userUpdate) {
-    const id = this.userId;
+    const id = bigCurrentUser.user.id;
     console.log(id);
     const url = `${smog}/user/update/${id}`
+    localStorage.removeItem('currentUser');
     return this.http.put(url, userUpdate, {
       headers: this.authHeaders
     })
