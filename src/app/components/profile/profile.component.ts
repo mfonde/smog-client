@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit {
 
   delete(id) :void {
   this.profileService.destroyYourFavorites(id).subscribe();
-  location.reload();
+  location.reload();  
 }
 
 
