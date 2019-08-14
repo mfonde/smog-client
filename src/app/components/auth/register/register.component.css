@@ -1,0 +1,70 @@
+.container{
+    background-color: antiquewhite;
+    text-align: center;
+    height: 70vh;
+    width: 50vw;
+    border-width: 10px;
+    border-style: double;
+}
+
+.page-info{
+    border-color: rgba(143, 2, 2, 0.712);
+    border-width: 10px;
+    border-style: groove;
+}
+
+.form-control{
+    background-color: antiquewhite;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 20px;
+    border-width: 5px;
+    border-style: solid;
+}
+
+.title{
+
+}
+
+.border{
+    border: 5px groove rgba(143, 2, 2, 0.712);
+    background-color: rgb(236, 22, 22);
+    text-align: center;
+}
+
+.form-container{
+    background-color: rgb(165, 20, 1);
+    width: 100%;
+    height: 530px;
+}
+
+.registerForm{
+    background-color:  rgba(241, 21, 21, 0.356);
+    left: 50%;
+    border: 5px groove rgba(143, 2, 2, 0.712);
+    width: 700px;
+    height: 530px;
+    position: absolute;
+    transform: translate(-50%);
+}
+
+.field{
+    border: 10px groove rgba(143, 2, 2, 0.712);
+    width: 400px;
+}
+
+.label{
+    font-size: 30px;
+    color: rgba(250, 235, 215, 0.808);
+    text-align: center;
+}
+
+.form-control{
+    height: 50px;
+}
+
+.nav-btn{
+    width: 10vw; 
+    background-color: rgb(255, 0, 0);
+    color: antiquewhite;
+}
