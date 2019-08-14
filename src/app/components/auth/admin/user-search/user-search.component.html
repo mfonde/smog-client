@@ -1,4 +1,4 @@
-<div class="body">
+  <div class="body">
     <div class="searchMeDad">
       <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="userSearchForm">
         <mat-form-field>
@@ -39,23 +39,23 @@
         <div class="row">
           <div class="col-sm-3 form-group">
             <label for="username" >Edit Username</label>
-            <input placeholder={{user.username}} type="text" id="username" class="form-control" #usernameInput>
+            <input defaultValue={{user.username}} type="text" id="username" class="form-control" #usernameInput>
           </div>
           <div class="col-sm-3 form-group">
             <label for="email">Edit Email</label>
-            <input placeholder={{user.email}} type="text" id="email" class="form-control" #emailInput>
+            <input defaultValue={{user.email}} type="text" id="email" class="form-control" #emailInput>
           </div>
           <div class="col-sm-3 form-group">
               <label for="password" >Edit Password</label>
-              <input placeholder={{user.password}} type="text" id="password" class="form-control" #passwordInput>
+              <input placeholder='Your Password' type="text" id="password" class="form-control" #passwordInput>
             </div>
             <div class="col-sm-2 form-group">
                 <label for="profilePic" >Edit Profile Pic</label>
-                <input placeholder={{user.profilePic}} type="text" id="profilePic" class="form-control" #profilePicInput>
+                <input defaultValue={{user.profilePic}} type="text" id="profilePic" class="form-control" #profilePicInput>
               </div>
               <div class="col-sm-2 form-group">
                   <label for="admin" >Edit Admin</label>
-                  <input placeholder={{user.admin}} type="text" id="admin" class="form-control" #adminInput>
+                  <input defaultValue={{user.admin}} type="text" id="admin" class="form-control" #adminInput>
                 </div>
         </div>
         <div class="row">

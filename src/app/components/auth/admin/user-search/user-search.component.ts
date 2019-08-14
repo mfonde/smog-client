@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { UserService } from '../../../../services/user.service';
 import { ReviewService } from '../../../../services/review.service';
 import { UserData } from '../../../../models/UserData';
+import { User } from '../../../../models/user';
 
 @Component({
   selector: 'app-user-search',
@@ -24,6 +25,8 @@ export class UserSearchComponent implements OnInit {
   public user = [];
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
   public userId = this.currentUser.user.id;
+  public id;
+
 
   constructor(private form: FormBuilder, private userService: UserService, private reviewService: ReviewService) { this.createForm() }
   editUserOn = false;
@@ -37,13 +40,14 @@ export class UserSearchComponent implements OnInit {
     const email = this.emailInputRef.nativeElement.value;
     const password = this.passwordInputRef.nativeElement.value;
     // const id = this.idInputRef.nativeElement.value;
-    const id = this.userId;
+    const id = this.id;
     const profilePic = this.profilePicInputRef.nativeElement.value;
     const admin = this.adminInputRef.nativeElement.value;
 
-    const userUpdate = new UserData(username, email, password, profilePic, admin);
+    const userUpdate = new UserData(username, email, password, profilePic, id, admin);
     console.log(id);
-    this.userService.update(userUpdate).subscribe(user => console.log(user));
+    console.log(userUpdate);
+    this.userService.update(userUpdate);
   }
 
   ngOnInit() {
@@ -65,7 +69,9 @@ export class UserSearchComponent implements OnInit {
 
     this.userService.get(searchName).subscribe(data =>{
       this.user=data[0]; 
-      console.log(this.user)
+      this.id = data[0].id;
+      console.log(this.user);
+      console.log(this.id);
     } 
     );
     this.reviewService.getReviewsByUsername(searchName).subscribe(data => {
