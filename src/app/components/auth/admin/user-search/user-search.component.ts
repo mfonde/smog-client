@@ -30,9 +30,14 @@ export class UserSearchComponent implements OnInit {
 
   constructor(private form: FormBuilder, private userService: UserService, private reviewService: ReviewService) { this.createForm() }
   editUserOn = false;
+  deleteUserOn = false;
 
   editUser() {
     this.editUserOn = true;
+  }
+
+  deleteUser() {
+    this.deleteUserOn = true;
   }
 
   saveEditUser() {
@@ -48,6 +53,15 @@ export class UserSearchComponent implements OnInit {
     console.log(id);
     console.log(userUpdate);
     this.userService.update(userUpdate);
+  }
+
+  saveDeleteUser() {
+    const id = this.id;
+    console.log(id);
+    this.userService.delete(id);
+    if(this.userId == this.id){
+    localStorage.clear()};
+    location.reload();
   }
 
   ngOnInit() {

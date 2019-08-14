@@ -52,8 +52,16 @@ export class UserService {
     
   }
 
-  delete() {
+  delete(id) {
     // deletes user by the user id sent with the request
+    const url = `${smog}/user/delete/${id}`
+    console.log(url);
+    console.log(id);
+    return this.http.delete<any>(url, {
+      headers: this.authHeaders
+    }).subscribe(data => {
+      console.log(data)
+    })
   }
 
   update(userUpdate) {
