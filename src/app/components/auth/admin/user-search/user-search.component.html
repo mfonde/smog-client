@@ -1,8 +1,9 @@
   <div class="body">
     <div class="searchMeDad">
+      <h4>Search By Username To Update User Info</h4>
       <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="userSearchForm">
         <mat-form-field>
-          <input matInput formControlName="searchName" placeholder="username">
+          <input matInput #searchName formControlName="searchName" placeholder="username">
         </mat-form-field>
         <button mat-raised-button color="primary" (click)="displayUser()" type="submit">Search</button>
       </form>
@@ -32,12 +33,18 @@
       </tbody>
     </table>
     <hr>
-    <button class="editButton" mat-raised-button color="primary" (click)="editUser()">Edit User</button>
+    <button class="editButton" mat-raised-button color="primary" (click)="editUser()">Edit User</button> &nbsp;
+    <button class="deleteButton" mat-raised-button color="primary" (click)="deleteUser()">Delete User</button>
     <hr>
+    <div class="deleteDiv" *ngIf="deleteUserOn">
+      <h4>Are You Sure You Want To Delete This User? This Cannot Be Undone!</h4>
+      <button class="deleteButton" mat-raised-button color="primary" (click)="saveDeleteUser()">Confirm Delete</button>
+
+    </div>
     <div class="formDiv" *ngIf="editUserOn">
       <form>
         <div class="row">
-          <div class="col-sm-3 form-group">
+          <div class="col-sm-2 form-group">
             <label for="username" >Edit Username</label>
             <input defaultValue={{user.username}} type="text" id="username" class="form-control" #usernameInput>
           </div>
@@ -45,9 +52,9 @@
             <label for="email">Edit Email</label>
             <input defaultValue={{user.email}} type="text" id="email" class="form-control" #emailInput>
           </div>
-          <div class="col-sm-3 form-group">
+          <div class="col-sm-2 form-group">
               <label for="password" >Edit Password</label>
-              <input placeholder='Your Password' type="text" id="password" class="form-control" #passwordInput>
+              <input placeholder='Password' type="text" id="password" class="form-control" #passwordInput>
             </div>
             <div class="col-sm-2 form-group">
                 <label for="profilePic" >Edit Profile Pic</label>
@@ -65,6 +72,13 @@
         </div>
       </form>
     </div>
+    <app-reviews 
+    [searchName]="searchName.value"
+    >
+  </app-reviews>
+  <!-- <app-reviews 
+    >
+  </app-reviews> -->
   </div>
   
 </div>

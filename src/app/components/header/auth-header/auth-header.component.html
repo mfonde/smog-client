@@ -7,9 +7,13 @@
             <a href='#' class="navbar-brand">Smog Movie Review</a>
         </div>
         <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="true">
+            <ul *ngIf="admin == true" class="nav navbar-nav navbar-right">
+                <li routerLinkActive="active"><a routerLink="/admin">Admin</a></li>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li routerLinkActive="active"><a routerLink="/home">Home</a></li>
                 <li routerLinkActive="active"><a routerLink="/profile">My Profile</a></li>
+                <li><a href='#' (click)="logOut()">Log Out</a></li>
             </ul>
         </div>
     </div>

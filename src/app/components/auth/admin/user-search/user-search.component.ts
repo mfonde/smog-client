@@ -28,8 +28,9 @@ export class UserSearchComponent implements OnInit {
 
   public user = [];
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  public userId = this.currentUser.user.id;
+  public userId;
   public id;
+
 
 
   constructor(
@@ -42,9 +43,14 @@ export class UserSearchComponent implements OnInit {
   }
 
   editUserOn = false;
+  deleteUserOn = false;
 
   editUser() {
     this.editUserOn = true;
+  }
+
+  deleteUser() {
+    this.deleteUserOn = true;
   }
 
   saveEditUser() {
@@ -60,6 +66,17 @@ export class UserSearchComponent implements OnInit {
     console.log(id);
     console.log(userUpdate);
     this.userService.update(userUpdate);
+  }
+
+  saveDeleteUser() {
+    const id = this.id;
+    const userId = this.currentUser.user.id;
+    console.log(id);
+    this.userService.delete(id);
+    if (this.userId == this.id) {
+      localStorage.clear()
+    };
+    location.reload();
   }
 
   ngOnInit() {
@@ -89,16 +106,13 @@ export class UserSearchComponent implements OnInit {
     const searchName = this.userSearchForm.value.searchName;
     console.log(searchName);
 
-    this.userService.get(searchName)
-    //   .subscribe(data => {
-    //   this.user = data[0];
-    //   this.id = data[0].id;
-    //   console.log(this.user);
-    //   console.log(this.id);
-    // }
-    // );
-    this.reviewService.getReviewsByUsername(searchName).subscribe(data => {
-      console.log(data);
-    })
+    this.userService.get(searchName).subscribe(data => {
+      this.user = data[0];
+      this.id = data[0].id;
+      console.log(this.user);
+      console.log(this.id);
+    }
+    );
+
   }
 }

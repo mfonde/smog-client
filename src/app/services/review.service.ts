@@ -38,6 +38,7 @@ export class ReviewService {
 
   getReviewsByUsername(searchName) {
     const url = `http://localhost:3000/review/username/${searchName}`;
+    console.log(searchName);
     return this.http.get<any>(url, {
       headers: this.authHeaders
     })

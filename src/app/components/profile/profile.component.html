@@ -6,6 +6,9 @@
         {{bigUser}}
     </h2>
 </div>
+<!-- <div class="admin" *ngIf="admin == true">
+    Go To Admin Page
+</div> -->
 <div class="yourReviews">
 <ul class="reviews">
     <li *ngFor="let review of bigReviews" class="panel">
@@ -38,7 +41,7 @@
                 <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title>{{favorite.movieTitle}}</mat-card-title>
                 </mat-card-header>
-                <img mat-card-image src={{favorite.poster}} alt="Owen is Dad" height="200">
+                <img mat-card-image src={{favorite.poster}} alt="Owen is Dad" height="200px" width="125px">
                 <mat-card-content>
                 <p>
                         {{favorite.ranking}}

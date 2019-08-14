@@ -13,7 +13,6 @@ export class UserService {
   public currentUser;
   public registeredUser;
   public searchedUser;
-  public searchedUserID;
 
   constructor(private http: HttpClient) { }
 
@@ -46,10 +45,6 @@ export class UserService {
         'Content-Type': 'application/json',
         'Authorization': this.token
       }
-    }).subscribe(data => {
-      this.searchedUserID = data;
-      console.log(this.searchedUserID)
-
     })
     // .subscribe(data => {
     //   this.searchedUser = data;
@@ -58,8 +53,16 @@ export class UserService {
 
   }
 
-  delete() {
+  delete(id) {
     // deletes user by the user id sent with the request
+    const url = `${smog}/user/delete/${id}`
+    console.log(url);
+    console.log(id);
+    return this.http.delete<any>(url, {
+      headers: this.authHeaders
+    }).subscribe(data => {
+      console.log(data)
+    })
   }
 
   update(userUpdate) {
