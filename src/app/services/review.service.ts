@@ -36,7 +36,14 @@ export class ReviewService {
     })
   }
 
-  postReview(review){
+  getReviewsByUsername(searchName) {
+    const url = `http://localhost:3000/review/username/${searchName}`;
+    console.log(searchName);
+    return this.http.get<any>(url, {
+      headers: this.authHeaders
+    })
+  }
+  postReview(review: NewReview){
     const url = 'http://localhost:3000/review/';
     console.log(review)
     this.http.post(url, review, {
@@ -47,3 +54,6 @@ export class ReviewService {
   }
 
 }
+
+
+

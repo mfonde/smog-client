@@ -1,6 +1,48 @@
-  .searchMeDad{
+ .body{
+   position: absolute;
+   left:50%;
+   transform:translate(-50%);
+   width: 100%;
+ }
+ 
+ .searchMeDad{
     position: absolute;
     left: 50%;
     padding-top: 5%;
     transform: translate(-50%);
     }
+
+    /* .searchMeDad{
+      position: fixed;
+      padding-top: 10%;
+      } */
+
+    .tableDiv{
+      position: relative;
+      left: 50%;
+      transform: translate(-50%);
+      width: 90%;
+      padding-top: 10%;
+    }
+
+    /* .editButton{
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%);
+    } */
+
+    table{
+      table-layout: fixed;
+    }
+
+    td{
+      word-wrap: break-word;
+    }
+
+    /* .formDiv{
+      width: 100%;
+      position: absolute;
+      padding-top: 5%;
+      left: 50%;
+      transform: translate(-50%);
+    } */

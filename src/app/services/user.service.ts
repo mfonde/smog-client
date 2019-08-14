@@ -11,12 +11,17 @@ export class UserService {
 
   public currentUser;
   public registeredUser;
-
+  public searchedUser;
 
   constructor(private http: HttpClient) { }
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
+  })
+  token = JSON.parse(localStorage.getItem('sessionToken'));
+  authHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': this.token
   })
 
   register(user: User) {
@@ -31,11 +36,45 @@ export class UserService {
 
   }
 
-  delete() {
-    // deletes user by the user id sent with the request
+  get(searchName) {
+    console.log(searchName);
+    const url = `${smog}/user/username/${searchName}`
+    return this.http.get<any>(url, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': this.token
+    }
+    })
+    // .subscribe(data => {
+    //   this.searchedUser = data;
+    //   console.log(data);
+    // })
+    
   }
 
-  update() {
+  delete(id) {
+    // deletes user by the user id sent with the request
+    const url = `${smog}/user/delete/${id}`
+    console.log(url);
+    console.log(id);
+    return this.http.delete<any>(url, {
+      headers: this.authHeaders
+    }).subscribe(data => {
+      console.log(data)
+    })
+  }
+
+  update(userUpdate) {
+    // const id = this.userId;
+    // console.log(id);
+    const url = `${smog}/user/update/${userUpdate.id}`
+    console.log(url);
+    console.log(userUpdate);
+    return this.http.put<any>(url, userUpdate, {
+      headers: this.authHeaders
+    }).subscribe(data => {
+      console.log(data)
+    })
     // updates a user from the id sent with the request, or if the user is one of the admins they have access the all user crud
   }
 

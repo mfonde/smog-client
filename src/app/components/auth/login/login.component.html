@@ -1,23 +1,31 @@
-<h1>Login</h1>
-<h4 display-4>Fill out the form below to login to your account</h4>
-<hr>
-
-<div>
-    <div>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<div class="container">
+    <br>
+    <div class="loginWelcome">
+        <h1 class="login">Login</h1>
+        <h4 class="baby">Fill out the form below to login to your account</h4>
+    </div>
+    <hr>
+    <div class="loginContainer">
+        <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <mat-form-field>
-                <label for="username">Username</label>
+                <div class="border">
+                    <label class="username" for="username">Username</label>
+                </div>
                 <input matInput formControlName="username" class="form-control" />
             </mat-form-field>
+            <br>
             <mat-form-field>
-                <label for="password">Password</label>
+                <div class="border">
+                    <label class="password" for="password">Password</label>
+                </div>
                 <input matInput formControlName="password" type="password" class="form-control" />
             </mat-form-field>
             <div>
-                <button mat-raised-button class="nav-btn" color="primary" type="submit">Login</button>
+                <button mat-raised-button class="nav-btn" type="submit">Login</button>
                 <br>
-                <a routerLink="/register">Register as a new user</a>
+                <a class="signup" routerLink="/register">Register as a new user</a>
             </div>
         </form>
     </div>
+    <hr>
 </div>
