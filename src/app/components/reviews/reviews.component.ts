@@ -1,7 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { Review } from '../../models/review-model';
 import { ReviewService } from '../../services/review.service';
 import { MovieData } from '../../models/MovieData';
+import { BestiesService } from '../../services/besties.service';
+
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap'
 
 @Component({
@@ -16,7 +20,8 @@ export class ReviewsComponent implements OnInit {
   reviews: Review[];
   @Input() displayedMovie: MovieData;
   @Input() searchName: string;
-  
+  @ViewChild('username', {static: false}) usernameRef: ElementRef;
+  returnUrl: string;
 
   getAllReviews(): void {
     this.reviewService.getAllReviews()
@@ -29,7 +34,9 @@ export class ReviewsComponent implements OnInit {
     .subscribe(reviews => this.reviews = reviews)
   }
 
-  constructor(private reviewService: ReviewService, config: NgbRatingConfig) { config.max = 5; config.readonly = true }
+  constructor(private reviewService: ReviewService, config: NgbRatingConfig, private route: ActivatedRoute,
+    private router: Router, private bestiesService: BestiesService) { config.max = 5; config.readonly = true }
+
   getReviewsByUsername() {
     console.log(this.searchName);
     this.reviewService.getReviewsByUsername(this.searchName).subscribe(reviews => {
@@ -38,7 +45,15 @@ export class ReviewsComponent implements OnInit {
     })
   }
 
+  showUserProfile() {
+    const username = this.usernameRef.nativeElement.innerHTML;
+    console.log(username);
+    this.bestiesService.bestieSelected.emit(username);
+    this.router.navigate([this.returnUrl]);
+  }
+
   ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/besties';
     if(this.displayedMovie){
       console.log(this.displayedMovie);
       this.getReviewsByImdbID()

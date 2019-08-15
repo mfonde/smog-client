@@ -45,6 +45,8 @@ import { UserSearchComponent } from './components/auth/admin/user-search/user-se
 import { ReviewSearchComponent } from './components/auth/admin/review-search/review-search.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AuthHeaderComponent } from './components/header/auth-header/auth-header.component';
+import { BestiesComponent } from './components/profile/besties/besties.component';
+import { BestiesDetailComponent } from './components/profile/besties/besties-detail/besties-detail.component';
 @NgModule({
   //TODO: DECLARES ALL OF THE COMPONENTS ADDED INTO THE APP MODULE 
   declarations: [
@@ -61,7 +63,9 @@ import { AuthHeaderComponent } from './components/header/auth-header/auth-header
     UserSearchComponent,
     ReviewSearchComponent,
     HeaderComponent,
-    AuthHeaderComponent
+    AuthHeaderComponent,
+    BestiesComponent,
+    BestiesDetailComponent
   ],
 
   entryComponents:[
