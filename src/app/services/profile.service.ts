@@ -49,9 +49,11 @@ export class ProfileService {
       {headers:this.headers})
   }
 
-  updateYourFavorites(id){
+  updateYourFavorites(id, ranking){
     const url =`http://localhost:3000/favorite/update/${id}`
-    return this.http.put<any>(url,
+    console.log(id)
+    console.log(ranking)
+    return this.http.put<any>(url, ranking,
       {headers:this.headers})
   }
   
