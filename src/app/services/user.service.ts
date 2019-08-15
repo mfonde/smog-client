@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
+import { BehaviorSubject } from 'rxjs';
 
-const smog = 'http://localhost:3000'
+const smog = 'http://localhost:3000';
 const bigCurrentUser = JSON.parse(localStorage.getItem('currentUser'));
 
 @Injectable({
@@ -13,6 +14,7 @@ export class UserService {
   public currentUser;
   public registeredUser;
   public searchedUser;
+  public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) { }
 

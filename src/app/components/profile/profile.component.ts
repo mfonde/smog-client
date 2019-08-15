@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProfileService } from '../../services/profile.service'
 import { Review } from '../../models/review-model';
 import { MovieData } from '../../models/MovieData';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 
 const smallUser = JSON.parse(localStorage.getItem('currentUser'))
@@ -22,49 +24,72 @@ export class ProfileComponent implements OnInit {
   public selectRanking: FormGroup;
   public selectRating: FormGroup;
 
+  // isUserLoggedIn: boolean;
+  updateTrue = false;
   bigReviews = [];
   bigFavorites = [];
   smallFavorites = '';
   bigName = this.bigUser;
   @Input() displayedMovie: MovieData;
 
+  constructor(
+    private profileService: ProfileService,
+    // private userService: UserService,
+    private form: FormBuilder,
+    private router: Router
+  ) {
+    // this.userService.isUserLoggedIn.subscribe(value => {
+    //   this.isUserLoggedIn = value;
+    // });
+    this.createForm();
+  }
 
-  constructor(private profileService: ProfileService, private form: FormBuilder) { this.createForm(); }
+  ngOnInit() {
+    this.profileService.getYourReview(this.bigUser).subscribe(data => {
+      this.bigReviews = data, console.log(data);
+    });
+    this.profileService.getYourFavorites(this.bigUser).subscribe(data => {
+      this.bigFavorites = data, console.log(data), localStorage.setItem('currentFav', JSON.stringify(this.bigFavorites));;
+    })
+    console.log(this.profileService.smallId)
+  }
 
-  updateTrue = false;
-
-  createForm() {
+  createForm(): void {
     this.selectRanking = this.form.group(
       { ranking: new FormControl }
     )
-    this.selectRating = this.form.group( 
-      {reviewText: new FormControl })
+    this.selectRating = this.form.group(
+      { reviewText: new FormControl })
   }
 
   delete(id): void {
-    this.profileService.destroyYourFavorites(id).subscribe();
-    location.reload();
+    this.movieBeGone(id);
+    this.router.navigateByUrl('/#', { skipLocationChange: true }).then(() => this.router.navigate(['/profile']));
   }
 
-  deleteReview(id): void{
+  deleteReview(id): void {
     this.profileService.deleteYourReviews(id).subscribe();
-    location.reload();
+    this.router.navigateByUrl('/#', { skipLocationChange: true }).then(() => this.router.navigate(['/profile']));
+
   }
 
-  update(id) {
+  movieBeGone(id): void {
+    this.profileService.destroyYourFavorites(id).subscribe();
+  }
+
+  update(id): void {
+    this.serverUpdate(id);
+    this.router.navigateByUrl('/#', { skipLocationChange: true }).then(() => this.router.navigate(['/profile']));
+  }
+
+  serverUpdate(id): void {
     const ranking = this.selectRanking.value;
     console.log(id)
     console.log(typeof ranking)
-
     this.profileService.updateYourFavorites(id, ranking)
-    // .subscribe(data => {
-    // console.log(data)
-    // });
-    location.reload();
-
   }
 
-  updateReview(id){
+  updateReview(id) {
     const reviewText = this.selectRating.value;
     console.log(this.selectRating.value)
     console.log(typeof reviewText)
@@ -76,19 +101,6 @@ export class ProfileComponent implements OnInit {
     this.updateTrue = true;
   }
 
-
-  ngOnInit() {
-    this.profileService.getYourReview(this.bigUser).subscribe(data => {
-      this.bigReviews = data, console.log(data);
-    });
-
-    this.profileService.getYourFavorites(this.bigUser).subscribe(data => {
-      this.bigFavorites = data, console.log(data), localStorage.setItem('currentFav', JSON.stringify(this.bigFavorites));;
-    })
-    console.log(this.profileService.smallId)
-
-
-  }
 
 }
 
