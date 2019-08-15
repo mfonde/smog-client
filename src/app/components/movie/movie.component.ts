@@ -67,6 +67,7 @@ addToFavorites() {
  const ranking = this.selectRanking.value.ranking;
 
   const newFavorite = new Favorite(movieTitle, poster, imdbId, ranking);
+  
   this.favoriteService.saveFavorite(newFavorite);
   console.log(this.databaseService.movie.title);
   console.log(ranking);
