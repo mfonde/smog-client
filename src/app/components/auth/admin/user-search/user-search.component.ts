@@ -14,22 +14,34 @@ import { User } from '../../../../models/user';
 
 
 export class UserSearchComponent implements OnInit {
+
   public userSearchForm: FormGroup;
+  public userUpdateForm: FormGroup;
+
   userDisplayed = false;
-  @ViewChild('usernameInput', {static:false}) usernameInputRef: ElementRef;
-  @ViewChild('emailInput', {static:false}) emailInputRef: ElementRef;  
-  @ViewChild('passwordInput', {static:false}) passwordInputRef: ElementRef;
-  @ViewChild('profilePicInput', {static:false}) profilePicInputRef: ElementRef;
-  @ViewChild('adminInput', {static:false}) adminInputRef: ElementRef;
+
+  @ViewChild('usernameInput', { static: false }) usernameInputRef: ElementRef;
+  @ViewChild('emailInput', { static: false }) emailInputRef: ElementRef;
+  @ViewChild('passwordInput', { static: false }) passwordInputRef: ElementRef;
+  @ViewChild('profilePicInput', { static: false }) profilePicInputRef: ElementRef;
+  @ViewChild('adminInput', { static: false }) adminInputRef: ElementRef;
 
   public user = [];
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  public userId; 
+  public userId = this.currentUser.user.id;
   public id;
-  
 
 
-  constructor(private form: FormBuilder, private userService: UserService, private reviewService: ReviewService) { this.createForm() }
+
+  constructor(
+    private form: FormBuilder,
+    private userService: UserService,
+    private reviewService: ReviewService
+  ) {
+    this.createForm();
+    this.editForm();
+  }
+
   editUserOn = false;
   deleteUserOn = false;
 
@@ -58,15 +70,25 @@ export class UserSearchComponent implements OnInit {
 
   saveDeleteUser() {
     const id = this.id;
-    const userId = this.currentUser.user.id;
     console.log(id);
     this.userService.delete(id);
-    if(this.userId == this.id){
-    localStorage.clear()};
+    if (this.userId == this.id) {
+      localStorage.clear()
+    };
     location.reload();
   }
 
   ngOnInit() {
+  }
+
+  editForm() {
+    this.userUpdateForm = this.form.group({
+      username: new FormControl,
+      email: new FormControl,
+      password: new FormControl,
+      profilePic: new FormControl,
+      admin: new FormControl
+    })
   }
 
   createForm() {
@@ -83,13 +105,15 @@ export class UserSearchComponent implements OnInit {
     const searchName = this.userSearchForm.value.searchName;
     console.log(searchName);
 
-    this.userService.get(searchName).subscribe(data =>{
-      this.user=data[0]; 
+    this.userService.get(searchName).subscribe(data => {
+      this.user = data[0];
       this.id = data[0].id;
       console.log(this.user);
       console.log(this.id);
-    } 
+    }
     );
-    
+    this.reviewService.getReviewsByUsername(searchName).subscribe(data => {
+      console.log(data);
+    })
   }
 }

@@ -12,7 +12,7 @@ import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap'
 })
 export class ReviewsComponent implements OnInit {
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  public admin = this.currentUser.admin;
+  // public admin = this.currentUser.admin;
   reviews: Review[];
   @Input() displayedMovie: MovieData;
   @Input() searchName: string;

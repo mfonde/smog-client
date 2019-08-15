@@ -15,4 +15,9 @@ export class AuthHeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  logOut() {
+    localStorage.clear();
+    location.reload();
+  }
+
 }
