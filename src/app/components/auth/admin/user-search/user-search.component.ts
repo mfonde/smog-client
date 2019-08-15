@@ -28,7 +28,7 @@ export class UserSearchComponent implements OnInit {
 
   public user = [];
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  public userId;
+  public userId = this.currentUser.user.id;
   public id;
 
 
@@ -70,7 +70,6 @@ export class UserSearchComponent implements OnInit {
 
   saveDeleteUser() {
     const id = this.id;
-    const userId = this.currentUser.user.id;
     console.log(id);
     this.userService.delete(id);
     if (this.userId == this.id) {
@@ -113,6 +112,8 @@ export class UserSearchComponent implements OnInit {
       console.log(this.id);
     }
     );
-
+    this.reviewService.getReviewsByUsername(searchName).subscribe(data => {
+      console.log(data);
+    })
   }
 }
