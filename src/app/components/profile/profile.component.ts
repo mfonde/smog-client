@@ -15,60 +15,63 @@ const smallUser = JSON.parse(localStorage.getItem('currentUser'))
 })
 
 export class ProfileComponent implements OnInit {
-  
+
   // public smallUserBaby = this.profileService.smallUser
 
   public bigUser = smallUser.user.username;
-  public selectRanking : FormGroup;
+  public selectRanking: FormGroup;
 
   bigReviews = [];
   bigFavorites = [];
-  smallFavorites='';
+  smallFavorites = '';
   bigName = this.bigUser;
   @Input() displayedMovie: MovieData;
 
 
-  constructor(private profileService: ProfileService, private form: FormBuilder) { this.createForm();}
+  constructor(private profileService: ProfileService, private form: FormBuilder) { this.createForm(); }
 
-  updateTrue=false;
-  
-  createForm(){
+  updateTrue = false;
+
+  createForm() {
     this.selectRanking = this.form.group(
-      {ranking: new FormControl}
+      { ranking: new FormControl }
     )
   }
 
-  delete(id) :void {
-  this.profileService.destroyYourFavorites(id).subscribe();
-  location.reload();  
-}
+  delete(id): void {
+    this.profileService.destroyYourFavorites(id).subscribe();
+    location.reload();
+  }
 
-update(id) {
-  const ranking = this.selectRanking.value;
-  const r = Number(ranking)
-  this.profileService.updateYourFavorites(id, r).subscribe(data=>{
-    console.log(data)
-  });
-  
-}
+  update(id) {
+    const ranking = this.selectRanking.value;
+    console.log(id)
+    console.log(typeof ranking)
 
-updateOn(){
-  this.updateTrue = true;
-}
+    this.profileService.updateYourFavorites(id, ranking)
+    // .subscribe(data => {
+    // console.log(data)
+    // });
+
+  }
+
+  updateOn() {
+    this.updateTrue = true;
+  }
 
 
   ngOnInit() {
-    this.profileService.getYourReview(this.bigUser).subscribe(data =>{
-        this.bigReviews = data, console.log(data);
-      });
-    
-    this.profileService.getYourFavorites(this.bigUser).subscribe(data =>{
+    this.profileService.getYourReview(this.bigUser).subscribe(data => {
+      this.bigReviews = data, console.log(data);
+    });
+
+    this.profileService.getYourFavorites(this.bigUser).subscribe(data => {
       this.bigFavorites = data, console.log(data), localStorage.setItem('currentFav', JSON.stringify(this.bigFavorites));;
     })
     console.log(this.profileService.smallId)
-    
-    
-    }
-     
+
+
   }
+
+}
 

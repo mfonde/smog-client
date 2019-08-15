@@ -28,7 +28,11 @@ export class UserSearchComponent implements OnInit {
 
   public user = [];
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
+<<<<<<< HEAD
   public userId;
+=======
+  public userId = this.currentUser.user.id;
+>>>>>>> edb70848fa58a4926deaae7f30844c881bf03117
   public id;
 
 
@@ -112,5 +116,11 @@ export class UserSearchComponent implements OnInit {
       console.log(this.id);
     }
     );
+<<<<<<< HEAD
+=======
+    this.reviewService.getReviewsByUsername(searchName).subscribe(data => {
+      console.log(data);
+    })
+>>>>>>> edb70848fa58a4926deaae7f30844c881bf03117
   }
 }
