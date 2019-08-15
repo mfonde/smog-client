@@ -21,10 +21,10 @@
     border-width: 5px;
     border-style: solid;
 }
-
+/* 
 .title{
 
-}
+} */
 
 .border{
     border: 5px groove rgba(143, 2, 2, 0.712);
@@ -59,9 +59,9 @@
     text-align: center;
 }
 
-.form-control{
+/* .form-control{
     /* height: 50px; */
-}
+/* } */
 
 .nav-btn{
     width: 10vw; 

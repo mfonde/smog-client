@@ -52,6 +52,7 @@ export class ProfileComponent implements OnInit {
     // .subscribe(data => {
     // console.log(data)
     // });
+    location.reload();
 
   }
 
