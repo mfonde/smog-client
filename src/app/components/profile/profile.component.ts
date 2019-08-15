@@ -44,8 +44,9 @@ export class ProfileComponent implements OnInit {
 }
 
 update(id) {
-  const ranking = this.selectRanking.value.ranking;
-  this.profileService.updateYourFavorites(id, ranking).subscribe(data=>{
+  const ranking = this.selectRanking.value;
+  const r = Number(ranking)
+  this.profileService.updateYourFavorites(id, r).subscribe(data=>{
     console.log(data)
   });
   

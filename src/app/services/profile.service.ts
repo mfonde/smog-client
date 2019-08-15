@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const token = JSON.parse(localStorage.getItem('sessionToken'));
-const smallUser = JSON.parse(localStorage.getItem('currentUser'))
-const smallId = JSON.parse(localStorage.getItem('currentFav'))
 
 @Injectable({
   providedIn: 'root'
@@ -14,24 +11,30 @@ export class ProfileService {
   
   constructor(private http:HttpClient) { }
   
-
+  
+  token = JSON.parse(localStorage.getItem('sessionToken'));
+  smallUser = JSON.parse(localStorage.getItem('currentUser'))
+  smallId = JSON.parse(localStorage.getItem('currentFav'))
   public reviews: [];
-  public bigUser = smallUser.user.username
-  public smallId = JSON.parse(localStorage.getItem('currentFav'))
-  public bigId = smallId
+  public bigUser = this.smallUser.user.username
+  // public smallId = JSON.parse(localStorage.getItem('currentFav'))
+  public bigId = this.smallId
   
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    "Authorization": `${token}`
+    "Authorization": `${this.token}`
   })
   
   getYourReview(middleUser){
-    const url = `http://localhost:3000/review/username/${middleUser}`
-    console.log(smallUser)
-    console.log(token)
+    const url = `http://localhost:3000/review/username/${middleUser}/`
+    console.log(this.smallUser)
+    console.log(this.token)
     console.log(middleUser, "work")
       return this.http.get<any>(url,
-        {headers: this.headers})
+        {headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          "Authorization": `${this.token}`
+        })})
         // .subscribe(data =>{
         //    this.reviews = data, console.log(data)
         //})
