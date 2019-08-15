@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
 
   public bigUser = smallUser.user.username;
   public selectRanking: FormGroup;
+  public selectRating: FormGroup;
 
   bigReviews = [];
   bigFavorites = [];
@@ -36,10 +37,17 @@ export class ProfileComponent implements OnInit {
     this.selectRanking = this.form.group(
       { ranking: new FormControl }
     )
+    this.selectRating = this.form.group( 
+      {reviewText: new FormControl })
   }
 
   delete(id): void {
     this.profileService.destroyYourFavorites(id).subscribe();
+    location.reload();
+  }
+
+  deleteReview(id): void{
+    this.profileService.deleteYourReviews(id).subscribe();
     location.reload();
   }
 
@@ -54,6 +62,14 @@ export class ProfileComponent implements OnInit {
     // });
     location.reload();
 
+  }
+
+  updateReview(id){
+    const reviewText = this.selectRating.value;
+    console.log(this.selectRating.value)
+    console.log(typeof reviewText)
+    this.profileService.updateYourReviews(id, reviewText)
+    location.reload();
   }
 
   updateOn() {

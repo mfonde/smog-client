@@ -20,6 +20,7 @@ export class ProfileService {
   public smallId = JSON.parse(localStorage.getItem('currentFav'))
   public bigId = smallId
   public favreview;
+  public revreview;
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -61,5 +62,21 @@ export class ProfileService {
       })
   }
 
+  deleteYourReviews(id) {
+    const url = `http://localhost:3000/review/delete/${id}`
+    console.log('your review was deleted')
+    return this.http.delete<any>(url,
+      {headers:this.headers})
+  }
+
+  updateYourReviews(id, reviewText){
+    const url=`http://localhost:3000/review/update/${id}`
+    console.log('Your review was updated')
+    return this.http.put<any>(url, reviewText,
+      {headers: this.headers}).subscribe(updatedRev => {
+        this.revreview = updatedRev;
+        console.log(this.revreview)
+      })
+  }
 
 }
