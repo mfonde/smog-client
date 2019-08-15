@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 body{
     background-image: url("../src/assets/movieSeats.jpeg");
     background-repeat: no-repeat;
@@ -11,3 +11,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+/* .mat-form-field-empty.mat-form-field-label {
+    color: white;
+} */

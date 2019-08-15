@@ -6,6 +6,7 @@ import { Favorite } from '../../models/favorite-model';
 import { NewReview } from '../../models/post-review-model'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 export interface DialogData {
   movie: {
@@ -121,8 +122,6 @@ export class NewReviewDialog {
       this.reviewService.postReview(newReview);
       console.log(newReview)
     }
-  // ngOnInit() {
-  //   this.saveReview()
-  // }
+
   
 }

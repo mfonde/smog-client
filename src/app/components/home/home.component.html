@@ -4,7 +4,7 @@
   </div>
   <div class="searchMeDad">
     <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="searchForm">
-      <mat-form-field>
+      <mat-form-field class="searchBox">
         <input matInput formControlName="searchTitle" placeholder="Search Title">
       </mat-form-field>
       <button mat-raised-button color="primary" type="submit">Search</button>
