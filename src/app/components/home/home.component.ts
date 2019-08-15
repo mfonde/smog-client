@@ -13,6 +13,7 @@ import { ReviewsComponent } from "../reviews/reviews.component";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  title = 'smog-moviereviewcloud-client';
 
   public searchForm: FormGroup;
   mTitle = '';
