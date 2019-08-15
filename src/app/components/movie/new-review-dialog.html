@@ -10,8 +10,8 @@
      </ngb-rating> 
      Score: {{currentRate}}
     <form (ngSubmit)="saveReview()" [formGroup]="reviewData">
-            <mat-form-field>
-                    <textarea formControlName="reviewText" matInput placeholder="Movie Thoughts"></textarea>
+            <mat-form-field class="textBox">
+                    <textarea number formControlName="reviewText" matInput placeholder="Movie Thoughts" matTextareaAutosize matAutosizeMinRows=5 matAutosizeMaxRows=20></textarea>
             </mat-form-field>
     </form>
 </div>

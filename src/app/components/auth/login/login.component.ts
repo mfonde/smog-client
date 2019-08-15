@@ -37,9 +37,6 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    let uName = this.loginForm.value.username;
-    let uPass = this.loginForm.value.password;
-
     let babybaby = this.loginForm.value
 
     this.authService.login(babybaby);

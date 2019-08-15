@@ -6,10 +6,11 @@ import { Favorite } from '../../models/favorite-model';
 import { NewReview } from '../../models/post-review-model'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 export interface DialogData {
   movie: {
-    title:string,
+    title: string,
     poster: string,
     imdbID: string
   };
@@ -29,8 +30,10 @@ export class MovieComponent implements OnInit {
   public movie;
   public selectRanking: FormGroup;
 
-  constructor(private databaseService: DatabaseService, private favoriteService: FavoriteService, private form: FormBuilder, public dialog: MatDialog) {this.getMovie();
-    this.createForm();}
+  constructor(private databaseService: DatabaseService, private favoriteService: FavoriteService, private form: FormBuilder, public dialog: MatDialog) {
+    this.getMovie();
+    this.createForm();
+  }
 
 
   openDialog(): void {
@@ -52,7 +55,7 @@ export class MovieComponent implements OnInit {
     this.movie = this.databaseService.movie;
   }
 
-  onFavoriteSelected(){
+  onFavoriteSelected() {
     this.favoriteSelected = true;
   }
 
@@ -60,30 +63,25 @@ export class MovieComponent implements OnInit {
     this.favoriteSelected = false;
   }
 
-addToFavorites() {
- const movieTitle = this.databaseService.movie.title;
- const imdbId = this.databaseService.movie.imdbID;
- const poster = this.databaseService.movie.poster;
- const ranking = this.selectRanking.value.ranking;
+  addToFavorites() {
+    const movieTitle = this.databaseService.movie.title;
+    const imdbId = this.databaseService.movie.imdbID;
+    const poster = this.databaseService.movie.poster;
+    const ranking = this.selectRanking.value.ranking;
 
-  const newFavorite = new Favorite(movieTitle, poster, imdbId, ranking);
-  
-  this.favoriteService.saveFavorite(newFavorite);
-  console.log(this.databaseService.movie.title);
-  console.log(ranking);
-  console.log(newFavorite);
-  this.favoriteClose();
-  this.favoriteAdded = true;
-
-}
+    const newFavorite = new Favorite(movieTitle, poster, imdbId, ranking);
+    this.favoriteService.saveFavorite(newFavorite);
+    console.log(this.databaseService.movie.title);
+    console.log(ranking);
+    console.log(newFavorite);
+    this.favoriteClose();
+    this.favoriteAdded = true;
+  }
 
   ngOnInit() {
     let x = this.databaseService.movie;
     console.log(x);
-    // console.log(this.databaseService.movie.title);
-
   }
-
 }
 
 @Component({
@@ -95,35 +93,36 @@ export class NewReviewDialog {
 
   public reviewData: FormGroup;
 
-  constructor(public dialogRef: MatDialogRef<NewReviewDialog>, private form: FormBuilder, private reviewService: ReviewService,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {this.reviewForm()}
+  currentRate = 1;
 
-    onNoClick(): void {
-      this.dialogRef.close();
-    }
+  constructor(
+    public dialogRef: MatDialogRef<NewReviewDialog>,
+    private form: FormBuilder,
+    private reviewService: ReviewService,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData
+  ) {
+    this.reviewForm()
+  }
 
-    reviewForm() {
-      this.reviewData = this.form.group({
-        reviewValue: new FormControl,
-        reviewText: new FormControl
-      })
-    }
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
-    currentRate = 1;
+  reviewForm() {
+    this.reviewData = this.form.group({
+      reviewValue: new FormControl,
+      reviewText: new FormControl
+    })
+  }
 
-    saveReview() {
-      const movieTitle = this.data.movie.title;
-      const poster = this.data.movie.poster;
-      const imdbId = this.data.movie.imdbID;
-      const reviewRating = this.currentRate;
-      const reviewText = this.reviewData.value.reviewText;
-
-      const newReview = new NewReview(movieTitle, poster, imdbId, reviewRating, reviewText);
-      this.reviewService.postReview(newReview);
-      console.log(newReview)
-    }
-  // ngOnInit() {
-  //   this.saveReview()
-  // }
-  
+  saveReview() {
+    const movieTitle = this.data.movie.title;
+    const poster = this.data.movie.poster;
+    const imdbId = this.data.movie.imdbID;
+    const reviewRating = this.currentRate;
+    const reviewText = this.reviewData.value.reviewText;
+    const newReview = new NewReview(movieTitle, poster, imdbId, reviewRating, reviewText);
+    this.reviewService.postReview(newReview);
+    console.log(newReview)
+  }
 }
