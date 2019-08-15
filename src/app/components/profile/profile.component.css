@@ -5,6 +5,7 @@
     text-align: center;
     margin-left:40%;
     margin-right:43%;
+    color:white;
     /* padding-left:50px; */
 }
 
@@ -21,7 +22,7 @@
 
 .yourReviews{
     margin-top:30px;
-    position: absolute;
+    position: relative;
 }
 
 .example-card {
@@ -38,4 +39,5 @@
     flex-direction: row-reverse;
     margin-right:20px;
     margin-top:30px;
+    z-index:3;
 }

@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
 
   public bigUser = smallUser.user.username;
   public selectRanking: FormGroup;
+  public selectRating: FormGroup;
 
   // isUserLoggedIn: boolean;
   updateTrue = false;
@@ -57,11 +58,19 @@ export class ProfileComponent implements OnInit {
     this.selectRanking = this.form.group(
       { ranking: new FormControl }
     )
+    this.selectRating = this.form.group(
+      { reviewText: new FormControl })
   }
 
   delete(id): void {
     this.movieBeGone(id);
     this.router.navigateByUrl('/#', { skipLocationChange: true }).then(() => this.router.navigate(['/profile']));
+  }
+
+  deleteReview(id): void {
+    this.profileService.deleteYourReviews(id).subscribe();
+    this.router.navigateByUrl('/#', { skipLocationChange: true }).then(() => this.router.navigate(['/profile']));
+
   }
 
   movieBeGone(id): void {
@@ -80,7 +89,15 @@ export class ProfileComponent implements OnInit {
     this.profileService.updateYourFavorites(id, ranking)
   }
 
-  updateOn(): void {
+  updateReview(id) {
+    const reviewText = this.selectRating.value;
+    console.log(this.selectRating.value)
+    console.log(typeof reviewText)
+    this.profileService.updateYourReviews(id, reviewText)
+    location.reload();
+  }
+
+  updateOn() {
     this.updateTrue = true;
   }
 

@@ -6,9 +6,6 @@
         {{bigUser}}
     </h2>
 </div>
-<!-- <div class="admin" *ngIf="admin == true">
-    Go To Admin Page
-</div> -->
 <div class="yourReviews">
     <ul class="reviews">
         <li *ngFor="let review of bigReviews" class="panel">
@@ -29,8 +26,16 @@
                     {{review.reviewRating}} out of 5
                     By: {{review.username}}
                 </div>
-                <p>{{review.reviewText}}</p>
-            </mat-expansion-panel>
+                <p *ngIf="updateTrue == false">{{review.reviewText}}</p>
+                <div *ngIf="updateTrue == true">
+                    <form [formGroup]= "selectRating">
+                <input type="text" formControlName="reviewText">
+                <button mat-button (click)="updateReview(review.id)" type="submit">UPDATE</button>
+            </form>
+                </div>
+                <button mat-button (click)="deleteReview(review.id)">DELETE</button>
+                <button mat-button (click)="updateOn()" *ngIf="updateTrue == false">UPDATE</button>
+         </mat-expansion-panel>
         </li>
     </ul>
 </div>
@@ -75,4 +80,5 @@
             </mat-card-actions>
         </mat-card>
     </div>
+    
 </div>
