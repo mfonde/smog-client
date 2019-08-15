@@ -47,6 +47,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { AuthHeaderComponent } from './components/header/auth-header/auth-header.component';
 import { BestiesComponent } from './components/profile/besties/besties.component';
 import { BestiesDetailComponent } from './components/profile/besties/besties-detail/besties-detail.component';
+import { ReviewItemComponent } from './components/reviews/review-item/review-item.component';
 @NgModule({
   //TODO: DECLARES ALL OF THE COMPONENTS ADDED INTO THE APP MODULE 
   declarations: [
@@ -65,7 +66,8 @@ import { BestiesDetailComponent } from './components/profile/besties/besties-det
     HeaderComponent,
     AuthHeaderComponent,
     BestiesComponent,
-    BestiesDetailComponent
+    BestiesDetailComponent,
+    ReviewItemComponent
   ],
 
   entryComponents:[

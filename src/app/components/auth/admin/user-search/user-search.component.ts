@@ -112,8 +112,9 @@ export class UserSearchComponent implements OnInit {
       console.log(this.id);
     }
     );
-    this.reviewService.getReviewsByUsername(searchName).subscribe(data => {
-      console.log(data);
-    })
+    this.reviewService.getReviewsByUsername(searchName)
+    // .subscribe(data => {
+    //   console.log(data);
+    // })
   }
 }
