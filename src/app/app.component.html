@@ -1,5 +1,18 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<<<<<<< HEAD
 <app-header *ngIf="!sessionToken"></app-header>
 <app-auth-header *ngIf="sessionToken"></app-auth-header>
 
 <router-outlet></router-outlet>
+=======
+<body>
+  <app-header *ngIf="!sessionToken"></app-header>
+  <app-auth-header *ngIf="sessionToken"></app-auth-header>
+  <div style="text-align:center">
+    <h1>
+      Welcome to {{ title }}!
+    </h1>
+  </div>
+  <router-outlet></router-outlet>
+</body>
+>>>>>>> 2b66311f282ad379b5535ce76732d3adfd71d419
