@@ -1,21 +1,40 @@
-<h1>Register.</h1>
-<h4>Create a new account.</h4>
-<hr>
-<div class="registerForm">
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <mat-form-field>
-            <label for="username">Username</label>
-            <input matInput formControlName="username" class="form-control" />
-        </mat-form-field>
+<div class="container">
+    <br>
+    <div class="page-info">
+        <h1 class="title">Register</h1>
+        <h4 class="description">Create your account to make reviews with and show off your top ten movies!</h4>
+    </div>
+    <!-- <hr> -->
+    <div class="form-container">
+        <form class="registerForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <mat-form-field class="field">
+                <div class="border">
+                    <label class="label" for="username">Username</label>
+                </div>
+                <input matInput formControlName="username" class="form-control" />
+            </mat-form-field>
+            <!-- <hr> -->
+            <br>
+            <mat-form-field class="field">
+                <div class="border">
+                    <label class="label" for="email">Email</label>
 
-        <mat-form-field>
-            <label for="email">Email</label>
-            <input matInput formControlName="email" class="form-control" />
-        </mat-form-field>
-        <mat-form-field>
-            <label for="password">Password</label>
-            <input matInput formControlName="password" type="password" class="form-control" />
-        </mat-form-field>
-        <button mat-raised-button class="nav-btn btn-block" color="primary" type="submit">Register</button>
-    </form>
+                </div>
+                <input matInput formControlName="email" class="form-control" />
+            </mat-form-field>
+            <!-- <hr> -->
+            <br>
+            <mat-form-field class="field">
+                <div class="border">
+                    <label class="label" for="password">Password</label>
+
+                </div>
+                <input matInput formControlName="password" type="password" class="form-control" />
+            </mat-form-field>
+            <!-- <hr> -->
+            <br>
+            <br>
+            <button mat-raised-button class="nav-btn btn-block" color="primary" type="submit">Register</button>
+        </form>
+    </div>
 </div>

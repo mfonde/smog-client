@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
 
 const smog = 'http://localhost:3000'
+const bigCurrentUser = JSON.parse(localStorage.getItem('currentUser'));
 
 @Injectable({
   providedIn: 'root'
@@ -37,19 +38,19 @@ export class UserService {
   }
 
   get(searchName) {
-    console.log(searchName);
-    const url = `${smog}/user/username/${searchName}`
+    console.log(searchName.value);
+    const url = `${smog}/user/username/${searchName.value}`
     return this.http.get<any>(url, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': this.token
-    }
+      }
     })
     // .subscribe(data => {
     //   this.searchedUser = data;
     //   console.log(data);
     // })
-    
+
   }
 
   delete(id) {
