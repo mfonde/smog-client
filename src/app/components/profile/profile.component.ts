@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProfileService } from '../../services/profile.service'
 import { Review } from '../../models/review-model';
-import { MovieData } from '../../models/MovieData'
+import { MovieData } from '../../models/MovieData';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
 
 const smallUser = JSON.parse(localStorage.getItem('currentUser'))
@@ -18,7 +19,7 @@ export class ProfileComponent implements OnInit {
   // public smallUserBaby = this.profileService.smallUser
 
   public bigUser = smallUser.user.username;
-  public admin = smallUser.user.admin;
+  public selectRanking : FormGroup;
 
   bigReviews = [];
   bigFavorites = [];
@@ -27,14 +28,32 @@ export class ProfileComponent implements OnInit {
   @Input() displayedMovie: MovieData;
 
 
-  constructor(private profileService: ProfileService) { }
+  constructor(private profileService: ProfileService, private form: FormBuilder) { this.createForm();}
+
+  updateTrue=false;
+  
+  createForm(){
+    this.selectRanking = this.form.group(
+      {ranking: new FormControl}
+    )
+  }
 
   delete(id) :void {
   this.profileService.destroyYourFavorites(id).subscribe();
-  location.reload();
+  location.reload();  
 }
 
+update(id) {
+  const ranking = this.selectRanking.value.ranking;
+  this.profileService.updateYourFavorites(id, ranking).subscribe(data=>{
+    console.log(data)
+  });
+  
+}
 
+updateOn(){
+  this.updateTrue = true;
+}
 
 
   ngOnInit() {
