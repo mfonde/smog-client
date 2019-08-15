@@ -1,4 +1,4 @@
-   <!-- <div class="reviews" *ngFor="let review of reviews">
+<div class="reviews">
         <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
@@ -22,7 +22,7 @@
                       By: 
                        
                       
-                            <a (click)="showUserProfile()" style="cursor: pointer"><span>{{review.username}}</span></a>
+                            <a (click)="showUserProfile()" style="cursor: pointer"><span #username>{{review.username}}</span></a>
                          
                        
                       <hr>
@@ -31,5 +31,4 @@
             </div>
         </mat-expansion-panel>
         <br/>
-      </div> -->
-      <app-review-item *ngFor="let review of reviews" [review]="review"></app-review-item>
+      </div>

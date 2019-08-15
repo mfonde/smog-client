@@ -38,8 +38,8 @@ export class UserService {
   }
 
   get(searchName) {
-    console.log(searchName.value);
-    const url = `${smog}/user/username/${searchName.value}`
+    console.log(searchName);
+    const url = `${smog}/user/username/${searchName}`
     return this.http.get<any>(url, {
       headers: {
         'Content-Type': 'application/json',
