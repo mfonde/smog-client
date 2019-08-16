@@ -70,6 +70,14 @@ export class ReviewService {
     })
   }
 
+  deleteReview(id) {
+    const url = `http://localhost:3000/review/delete/${id}`;
+    console.log(url);
+    return this.http.delete<any>(url, {
+      headers: this.authHeaders
+    })
+  }
+
 }
 
 

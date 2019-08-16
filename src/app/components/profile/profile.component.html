@@ -59,6 +59,7 @@
                 <button mat-button (click)="updateOn()">UPDATE</button>
                 <div *ngIf="updateTrue == true">
                     <form [formGroup]="selectRanking">
+                        <p>Please select a ranking for this favorite.</p>
                         <mat-select formControlName="ranking" value=''>
                             <mat-option value=1>1</mat-option>
                             <mat-option value=2>2</mat-option>
@@ -71,8 +72,7 @@
                             <mat-option value=9>9</mat-option>
                             <mat-option value=10>10</mat-option>
                         </mat-select>
-                        <button mat-raised-button type="submit" (click)="update(favorite.id)" color="danger">Add To
-                            Favorites</button>
+                        <button mat-raised-button type="submit" (click)="update(favorite.id)" color="danger">Update Favorite</button>
                     </form>
 
                 </div>

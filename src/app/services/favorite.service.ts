@@ -26,4 +26,13 @@ export class FavoriteService {
     })
     console.log(favorite);
   }
+
+  getFavoritesByUsername(searchName) {
+    const url = `http://localhost:3000/favorite/username/${searchName}`;
+    console.log(searchName);
+    return this.http.get<any>(url, {
+      headers: this.headers
+    })
+  }
+
 }
