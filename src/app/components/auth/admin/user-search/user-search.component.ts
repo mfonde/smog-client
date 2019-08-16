@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { UserService } from '../../../../services/user.service';
 import { ReviewService } from '../../../../services/review.service';
@@ -19,6 +19,7 @@ export class UserSearchComponent implements OnInit {
   public userUpdateForm: FormGroup;
 
   userDisplayed = false;
+  @Input() adminOn
 
   @ViewChild('usernameInput', { static: false }) usernameInputRef: ElementRef;
   @ViewChild('emailInput', { static: false }) emailInputRef: ElementRef;
@@ -112,8 +113,9 @@ export class UserSearchComponent implements OnInit {
       console.log(this.id);
     }
     );
-    this.reviewService.getReviewsByUsername(searchName).subscribe(data => {
-      console.log(data);
-    })
+    this.reviewService.getReviewsByUsername(searchName)
+    // .subscribe(data => {
+    //   console.log(data);
+    // })
   }
 }

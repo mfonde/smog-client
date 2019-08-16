@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BestiesService } from '../../../services/besties.service';
+import { ReviewService } from '../../../services/review.service';
+import { Review } from '../../../models/review-model';
 
 @Component({
   selector: 'app-besties',
@@ -8,19 +10,18 @@ import { BestiesService } from '../../../services/besties.service';
   providers: [BestiesService]
 })
 export class BestiesComponent implements OnInit {
-  bestie;
+  reviews: Review[];
+  username
 
   constructor(
-    private bestiesService: BestiesService
-  ) { }
+    private bestiesService: BestiesService, private reviewService: ReviewService
+  ) {}
 
   ngOnInit() {
-    this.bestiesService.bestieSelected.subscribe(
-      (bestie) => {
-        this.bestie = bestie;
-        console.log(bestie);
-      }
-    )
+    this.reviews = (this.reviewService.reviews);
+    this.username = this.reviews[0].username;
+    console.log(this.reviews);
+    console.log(this.username);
   }
 
 }

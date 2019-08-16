@@ -22,7 +22,7 @@
       left: 50%;
       transform: translate(-50%);
       width: 90%;
-      padding-top: 10%;
+      padding-top: 20%;
     }
 
     /* .editButton{
@@ -33,6 +33,7 @@
 
     table{
       table-layout: fixed;
+      color: black;
     }
 
     td{
@@ -46,3 +47,43 @@
       left: 50%;
       transform: translate(-50%);
     } */
+
+    h2{
+      text-align: center;
+      color: white;
+    }
+
+    .searchBox{
+      width: 450px;
+      height: 50px;
+      margin-right: 5px;
+      /* background-color: white;
+      border-radius: 10px; */
+  
+    }
+
+    .userSearchName{
+      color: white;
+    }
+
+    .input{
+      color: black;
+    }
+  
+    ::ng-deep.mat-form-field-underline {
+      background-color: white !important;
+    } 
+  
+    ::ng-deep.mat-form-field-ripple {
+      background-color: white !important;
+     }
+  
+     ::ng-deep .mat-focused .mat-form-field-label {
+      color: white !important;
+     }
+  
+     ::ng-deep .mat-form-field-empty.mat-form-field-label {
+       color: white !important;
+     }
+  
+    

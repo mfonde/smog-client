@@ -1,4 +1,4 @@
-   <!-- <div class="reviews" *ngFor="let review of reviews">
+<div class="reviews">
         <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
@@ -22,14 +22,16 @@
                       By: 
                        
                       
-                            <a (click)="showUserProfile()" style="cursor: pointer"><span>{{review.username}}</span></a>
+                            <a (click)="showUserProfile()" style="cursor: pointer"><span #username>{{review.username}}</span></a>
                          
                        
                       <hr>
                       <p>{{review.reviewText}}</p>
               </div>
             </div>
+            <br>
+            <button (click)="onDelete(review.id)" *ngIf="adminOn">DELETE</button>
+
         </mat-expansion-panel>
         <br/>
-      </div> -->
-      <app-review-item *ngFor="let review of reviews" [review]="review" [adminOn]="adminOn"></app-review-item>
+      </div>

@@ -1,9 +1,9 @@
   <div class="body">
     <div class="searchMeDad">
-      <h4>Search By Username To Update User Info</h4>
+      <h2>Search By Username To Update User Info</h2>
       <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="userSearchForm">
-        <mat-form-field>
-          <input matInput #searchName formControlName="searchName" placeholder="username">
+        <mat-form-field class="searchBox">
+          <input matInput class="userSearchName" #searchName formControlName="searchName" placeholder="username">
         </mat-form-field>
         <button mat-raised-button color="primary" (click)="displayUser()" type="submit">Search</button>
       </form>
@@ -73,7 +73,7 @@
       </form>
     </div>
     <app-reviews 
-    [searchName]="searchName.value"
+    [searchName]="searchName.value" [adminOn]="adminOn"
     >
   </app-reviews>
   <!-- <app-reviews 

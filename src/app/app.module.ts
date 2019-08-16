@@ -42,11 +42,12 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { CreateReviewComponent } from './components/reviews/create-review/create-review.component';
 import { AdminComponent } from './components/auth/admin/admin.component';
 import { UserSearchComponent } from './components/auth/admin/user-search/user-search.component';
-import { ReviewSearchComponent } from './components/auth/admin/review-search/review-search.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AuthHeaderComponent } from './components/header/auth-header/auth-header.component';
 import { BestiesComponent } from './components/profile/besties/besties.component';
-import { BestiesDetailComponent } from './components/profile/besties/besties-detail/besties-detail.component';
+import { ReviewItemComponent } from './components/reviews/review-item/review-item.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
+import { FavoriteItemComponent } from './components/favorites/favorite-item/favorite-item.component';
 @NgModule({
   //TODO: DECLARES ALL OF THE COMPONENTS ADDED INTO THE APP MODULE 
   declarations: [
@@ -61,18 +62,18 @@ import { BestiesDetailComponent } from './components/profile/besties/besties-det
     NewReviewDialog,
     AdminComponent,
     UserSearchComponent,
-    ReviewSearchComponent,
     HeaderComponent,
     AuthHeaderComponent,
     BestiesComponent,
-    BestiesDetailComponent
+    ReviewItemComponent,
+    FavoritesComponent,
+    FavoriteItemComponent
   ],
 
   entryComponents:[
     NewReviewDialog,
     AdminComponent,
     UserSearchComponent,
-    ReviewSearchComponent,
     HeaderComponent,
     AuthHeaderComponent
   ],
