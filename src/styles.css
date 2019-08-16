@@ -2,7 +2,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @font-face{
     font-family:"Theatre-font";
-    src: url("/src/assets/Riemann\ Theatre.otf") format("opentype");
+    src: url("/assets/Riemann\ Theatre.otf") format("opentype");
 }
 
 /* Global Styling */
