@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProfileService } from '../../services/profile.service'
+import { ProfileService } from '../../services/profile.service';
 import { Review } from '../../models/review-model';
 import { MovieData } from '../../models/MovieData';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';

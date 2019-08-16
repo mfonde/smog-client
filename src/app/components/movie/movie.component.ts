@@ -16,8 +16,6 @@ export interface DialogData {
   };
 }
 
-
-
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
