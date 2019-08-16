@@ -22,6 +22,7 @@ export class ReviewsComponent implements OnInit {
   @Input() searchName: string;
   @ViewChild('username', {static: false}) usernameRef: ElementRef;
   returnUrl: string;
+  @Input() review: Review;
 
   getAllReviews(): void {
     this.reviewService.getAllReviews()
@@ -39,17 +40,20 @@ export class ReviewsComponent implements OnInit {
 
   getReviewsByUsername() {
     console.log(this.searchName);
-    this.reviewService.getReviewsByUsername(this.searchName).subscribe(reviews => {
+    this.reviewService.getReviewsByUsername(this.searchName)
+    .subscribe(reviews => {
       console.log(reviews);
       this.reviews = reviews;
     })
   }
 
   showUserProfile() {
-    const username = this.usernameRef.nativeElement.innerHTML;
-    console.log(username);
-    this.bestiesService.bestieSelected.emit(username);
-    this.router.navigate([this.returnUrl]);
+    // const username = this.usernameRef.nativeElement.innerHTML;
+    // console.log(username);
+    // this.bestiesService.bestieSelected(username, () => {
+    // this.router.navigate([this.returnUrl]);
+    // })
+    console.log(this.review)
   }
 
   ngOnInit() {
