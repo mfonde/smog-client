@@ -29,6 +29,9 @@
                       <p>{{review.reviewText}}</p>
               </div>
             </div>
+            <br>
+            <button (click)="onDelete(review.id)" *ngIf="adminOn">DELETE</button>
+
         </mat-expansion-panel>
         <br/>
       </div>

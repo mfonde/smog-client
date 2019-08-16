@@ -1,0 +1,27 @@
+.user{
+    display: flex;
+    flex-direction: row;
+    border: 3px black solid;
+    text-align: center;
+    margin-left:40%;
+    margin-right:43%;
+    color:white;
+    /* padding-left:50px; */
+}
+
+.favorites{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right:20px;
+    margin-top:30px;
+    z-index:3;
+}
+
+.example-card {
+    max-width: 250px;
+    margin-right: 20px;
+  }
+
+  .example-header-image {
+    background-size: cover;
+  }

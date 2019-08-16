@@ -7,6 +7,7 @@ import { MovieData } from '../../models/MovieData';
 import { BestiesService } from '../../services/besties.service';
 
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap'
+import { AdminComponent } from '../auth/admin/admin.component';
 
 @Component({
   selector: 'app-reviews',
@@ -23,6 +24,7 @@ export class ReviewsComponent implements OnInit {
   @ViewChild('username', {static: false}) usernameRef: ElementRef;
   returnUrl: string;
   @Input() review: Review;
+  @Input() adminOn;
 
   getAllReviews(): void {
     this.reviewService.getAllReviews()
