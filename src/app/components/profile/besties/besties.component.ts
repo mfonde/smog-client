@@ -10,12 +10,13 @@ import { Review } from '../../../models/review-model';
   providers: [BestiesService]
 })
 export class BestiesComponent implements OnInit {
-  reviews: Review[];
-  username
+  public reviews: Review[];
+  public username;
 
   constructor(
-    private bestiesService: BestiesService, private reviewService: ReviewService
-  ) {}
+    private bestiesService: BestiesService,
+    private reviewService: ReviewService
+  ) { }
 
   ngOnInit() {
     this.reviews = (this.reviewService.reviews);

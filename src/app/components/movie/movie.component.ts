@@ -7,7 +7,6 @@ import { NewReview } from '../../models/post-review-model'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 export interface DialogData {
   movie: {
@@ -40,7 +39,6 @@ export class MovieComponent implements OnInit {
     this.createForm();
   }
 
-
   openDialog(): void {
     const dialogRef = this.dialog.open(NewReviewDialog, {
       width: '600px',
@@ -50,6 +48,7 @@ export class MovieComponent implements OnInit {
       // console.log('The dialog was closed');
     });
   }
+
   createForm() {
     this.selectRanking = this.form.group({
       ranking: new FormControl
@@ -145,7 +144,5 @@ export class NewReviewDialog {
     // console.log(newReview)
     this.dialogRef.close();
     this.refresh();
-
-
   }
 }
