@@ -8,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class AdminComponent implements OnInit {
   userSearch = false;
   reviewSearch = false;
+  adminOn = false;
 
   constructor() { }
 
   ngOnInit() {
+    this.adminOn = true;
   }
 
   onUserSearch() {

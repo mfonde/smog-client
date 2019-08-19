@@ -4,8 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ReviewService } from '../../../services/review.service';
 import { BestiesService } from '../../../services/besties.service';
 
-// import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
-
 @Component({
   selector: 'app-review-item',
   templateUrl: './review-item.component.html',
@@ -13,6 +11,7 @@ import { BestiesService } from '../../../services/besties.service';
 })
 export class ReviewItemComponent implements OnInit {
   @Input() review: Review;
+  @Input() adminOn;
   @ViewChild('username', {static:false}) usernameRef: ElementRef;
   returnUrl: string;
 
@@ -26,6 +25,11 @@ export class ReviewItemComponent implements OnInit {
     this.reviewService.getReviewsByUsernameCallback(username, () => {
       this.router.navigate([this.returnUrl])
     });
+  }
+
+  onDelete(id) {
+    this.reviewService.deleteReview(id).subscribe();
+    this.router.navigateByUrl('/#', { skipLocationChange: true });
   }
 
   ngOnInit() {
