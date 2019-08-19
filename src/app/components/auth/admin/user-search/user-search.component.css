@@ -12,10 +12,27 @@
     transform: translate(-50%);
     }
 
-    /* .searchMeDad{
-      position: fixed;
-      padding-top: 10%;
-      } */
+    .textBox{
+      background-color: rgba(0, 0, 0, 0.3);
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-bottom: 0.3em;
+      border-radius: 25px;
+    }
+
+    h2{
+      text-align: center;
+      color: white;
+      font-family: "Movie-title";
+      text-shadow: 2px 2px 3px black;
+      font-size: 4em;
+      letter-spacing: 0.1em;
+      font-weight: bold;
+    }
+
+    .button{
+      color: black !important;
+    }
 
     .tableDiv{
       position: relative;
@@ -24,12 +41,6 @@
       width: 90%;
       padding-top: 20%;
     }
-
-    /* .editButton{
-      position: absolute;
-      left: 50%;
-      transform: translate(-50%);
-    } */
 
     table{
       table-layout: fixed;
@@ -40,30 +51,18 @@
       word-wrap: break-word;
     }
 
-    /* .formDiv{
-      width: 100%;
-      position: absolute;
-      padding-top: 5%;
-      left: 50%;
-      transform: translate(-50%);
-    } */
-
-    h2{
-      text-align: center;
-      color: white;
-    }
-
     .searchBox{
-      width: 450px;
-      height: 50px;
-      margin-right: 5px;
-      /* background-color: white;
-      border-radius: 10px; */
-  
+      width: 75%;
+      height: 10%;
+      margin-right: 5%;
     }
 
     .userSearchName{
       color: white;
+      font-size: 2.5em;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      font-family: "Movie-title";
     }
 
     .input{

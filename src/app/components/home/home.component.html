@@ -1,15 +1,17 @@
 <div class="body">
   <div class="logo">
-    <img src="../../../assets/newlogo5.png" alt="logo" width="1000px" height="300px">
+    <img src="../../../assets/newlogo5.png" alt="logo" width="85%" height="20%">
   </div>
+  <div class="textBox">
   <div class="searchMeDad">
     <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="searchForm">
       <mat-form-field class="searchBox">
-        <input matInput formControlName="searchTitle" placeholder="Search Title">
+        <input matInput class="searchName" formControlName="searchTitle" placeholder="Search For A Movie">
       </mat-form-field>
-      <button mat-raised-button color="primary" type="submit">Search</button>
+      <button mat-raised-button class="button" type="submit">Search</button>
     </form>
   </div>
-</div>
 <h2>Newest Reviews</h2>
+</div>
+</div>
 <app-reviews></app-reviews>
