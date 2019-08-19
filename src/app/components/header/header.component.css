@@ -1,7 +1,23 @@
-.navbar-brand{
-    color: black;
+.titleText{
+    color: white;
+    font-family: "Movie-title";
+    font-size: 2.7em;
+    font-weight: bolder;
+    letter-spacing: 0.1em;
 }
 
-li{
+.text{
+    color: white;
+    font-family: "Movie-title";
+    font-size: 2.5em;
+    font-weight: bolder;
+    letter-spacing: 0.1em;
+    text-decoration: none !important;
+}
+
+.text:hover {
+    color: black;
+}
+.text:focus {
     color: black;
 }
