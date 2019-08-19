@@ -3,7 +3,7 @@
     <hr class="lines" width="50%">
     <div class="topArea">
         <div class="poster">
-            <img *ngIf="movie.poster !== 'N/A'" src={{movie.poster}} alt="poster" height="500px">
+            <img *ngIf="movie.poster !== 'N/A'" src={{movie.poster}} alt="poster" height= "80%" >
         </div>
         <div class="movieInfo">
             <h3><b>Rating:</b> {{movie.rated}}</h3>
@@ -18,8 +18,8 @@
 </div>
 <br />
 <div class="buttons">
-    <button mat-raised-button (click)="openDialog()">New Review</button>
-    <button mat-raised-button (click)="onFavoriteSelected()" color="danger">Add To Favorites</button>
+    <button mat-raised-button (click)="openDialog()" class="button">New Review</button>
+    <button mat-raised-button (click)="onFavoriteSelected()" class="button">Add To Favorites</button>
 </div>
 <br />
 <div class="favDrop" *ngIf="favoriteSelected">

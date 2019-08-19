@@ -1,12 +1,17 @@
   <div class="body">
     <div class="searchMeDad">
-      <h2>Search By Username To Update User Info</h2>
+      <div class="textBox">
+      <h2>Search By Username To Update Info</h2>
+     
       <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="userSearchForm">
         <mat-form-field class="searchBox">
           <input matInput class="userSearchName" #searchName formControlName="searchName" placeholder="username">
         </mat-form-field>
-        <button mat-raised-button color="primary" (click)="displayUser()" type="submit">Search</button>
+        <button mat-raised-button color="white" class="button" (click)="displayUser()" type="submit">Search</button>
       </form>
+
+    </div>
+
     </div>
     <hr>
     <div class="tableDiv" *ngIf="userDisplayed">
@@ -33,12 +38,12 @@
       </tbody>
     </table>
     <hr>
-    <button class="editButton" mat-raised-button color="primary" (click)="editUser()">Edit User</button> &nbsp;
-    <button class="deleteButton" mat-raised-button color="primary" (click)="deleteUser()">Delete User</button>
+    <button class="editButton button" mat-raised-button color="white" (click)="editUser()">Edit User</button> &nbsp;
+    <button class="deleteButton button" mat-raised-button color="white" (click)="deleteUser()">Delete User</button>
     <hr>
     <div class="deleteDiv" *ngIf="deleteUserOn">
       <h4>Are You Sure You Want To Delete This User? This Cannot Be Undone!</h4>
-      <button class="deleteButton" mat-raised-button color="primary" (click)="saveDeleteUser()">Confirm Delete</button>
+      <button class="deleteButton button" mat-raised-button color="white" (click)="saveDeleteUser()">Confirm Delete</button>
 
     </div>
     <div class="formDiv" *ngIf="editUserOn">
@@ -67,7 +72,7 @@
         </div>
         <div class="row">
           <div class="col-xs-12">
-              <button class="editButton" mat-raised-button color="primary" (click)="saveEditUser()">Save Edits</button>
+              <button class="editButton button" mat-raised-button color="white" (click)="saveEditUser()">Save Edits</button>
           </div>
         </div>
       </form>
