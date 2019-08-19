@@ -12,7 +12,7 @@
 .profPic{
     width: 2px;
     height: 2px;
-    align-self: center; 
+    margin-left:45%;
 }
 
 .admin{
@@ -20,10 +20,8 @@
     padding-top: 3%;
 }
 
-.yourReviews{
+.reviews{
     margin-top:30px;
-    /* grid-area: 1  6; */
-    display:flex;
     
 }
 
@@ -42,6 +40,7 @@
     margin-right:20px;
     margin-top:30px;
     z-index:3;
+    justify-content: space-between;
 }
 
 .star {
@@ -61,17 +60,6 @@
     flex-grow: 1;
 }
 
-/* .reviews{
-    width: 50%;
-    left: 50%;
-    position: relative;
-    transform: translate(-50%)
-
-} */
-
-    /* justify-content: space-between;
-    flex:1 auto;
-} */
 
 .headerBackground{
     background-color: #ffffff;
@@ -84,6 +72,8 @@
     margin-bottom: 5%;
     margin-top: 3%;
     padding-top: 3%;
+    display:flex;
+    flex-direction: column;
 }
 
 .headContainer{
@@ -94,7 +84,7 @@
 h1{
     text-align: center;
     color: black;
-    /* padding-top: 7%; */
+     padding-top: 7%;
     font-family: "Theatre-font";
     text-shadow: 3px 2px 3px gold;
     letter-spacing: 0.1em;
@@ -120,7 +110,7 @@ h2{
     font-weight: bolder;
   }
 
-.reviews{
-    margin-top: 3%;
-  }
-
+.work{
+    display: flex;
+    flex-direction: column;
+}
