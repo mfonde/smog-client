@@ -16,14 +16,14 @@
         </div>
     </div>
 </div>
-<br/>
+<br />
 <div class="buttons">
     <button mat-raised-button (click)="openDialog()" class="button">New Review</button>
     <button mat-raised-button (click)="onFavoriteSelected()" class="button">Add To Favorites</button>
 </div>
-<br/>
+<br />
 <div class="favDrop" *ngIf="favoriteSelected">
-    Where does {{movie.title}} belong among your top 10 favorites? 
+    Where does {{movie.title}} belong among your top 10 favorites?
     <div [formGroup]="selectRanking">
         <mat-select formControlName="ranking" value=''>
             <mat-option value='1'>1</mat-option>
@@ -39,9 +39,10 @@
         </mat-select>
     </div>
     <button mat-raised-button (click)="addToFavorites()" color="danger">Add To Favorites</button>
-    
+
 </div>
 <h3 *ngIf="favoriteAdded">Favorite Added!</h3>
+
 <app-reviews 
 *ngIf="movie.imdbID" 
 [displayedMovie]="movie"

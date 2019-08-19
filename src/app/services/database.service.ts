@@ -17,6 +17,7 @@ export class DatabaseService {
     return this.http.get(url).subscribe(data => {
       this.movie = new MovieData(data);
       console.log(this.movie);
+      localStorage.setItem('movie', JSON.stringify(this.movie))
       cb();
     })
   }

@@ -21,10 +21,22 @@ export class ReviewsComponent implements OnInit {
   reviews: Review[];
   @Input() displayedMovie: MovieData;
   @Input() searchName: string;
-  @ViewChild('username', {static: false}) usernameRef: ElementRef;
+  @ViewChild('username', { static: false }) usernameRef: ElementRef;
   returnUrl: string;
   @Input() review: Review;
   @Input() adminOn;
+
+
+  constructor(
+    private reviewService: ReviewService,
+    private config: NgbRatingConfig,
+    private route: ActivatedRoute,
+    private router: Router,
+    private bestiesService: BestiesService
+  ) {
+    config.max = 5;
+    config.readonly = true;
+  }
 
   getAllReviews(): void {
     this.reviewService.getAllReviews()
@@ -34,19 +46,16 @@ export class ReviewsComponent implements OnInit {
   getReviewsByImdbID() {
     console.log(this.displayedMovie.imdbID)
     this.reviewService.getReviewsByImdbID(this.displayedMovie.imdbID)
-    .subscribe(reviews => this.reviews = reviews)
+      .subscribe(reviews => this.reviews = reviews)
   }
-
-  constructor(private reviewService: ReviewService, config: NgbRatingConfig, private route: ActivatedRoute,
-    private router: Router, private bestiesService: BestiesService) { config.max = 5; config.readonly = true }
 
   getReviewsByUsername() {
     console.log(this.searchName);
     this.reviewService.getReviewsByUsername(this.searchName)
-    .subscribe(reviews => {
-      console.log(reviews);
-      this.reviews = reviews;
-    })
+      .subscribe(reviews => {
+        console.log(reviews);
+        this.reviews = reviews;
+      })
   }
 
   showUserProfile() {
@@ -60,16 +69,14 @@ export class ReviewsComponent implements OnInit {
 
   ngOnInit() {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/besties';
-    if(this.displayedMovie){
-      console.log(this.displayedMovie);
+    if (this.displayedMovie) {
+      // console.log(this.displayedMovie);
       this.getReviewsByImdbID()
-    } 
-    else if (this.searchName) {
+    } else if (this.searchName) {
       console.log(this.searchName);
       this.getReviewsByUsername()
-    }
-    else {
-    this.getAllReviews()
+    } else {
+      this.getAllReviews()
     }
   }
 
