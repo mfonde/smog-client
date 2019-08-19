@@ -5,6 +5,7 @@ import { Review } from '../../models/review-model';
 import { MovieData } from '../../models/MovieData';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap'
 
 
 const smallUser = JSON.parse(localStorage.getItem('currentUser'))
@@ -37,12 +38,14 @@ export class ProfileComponent implements OnInit {
     private profileService: ProfileService,
     // private userService: UserService,
     private form: FormBuilder,
-    private router: Router
+    private router: Router,
+    config: NgbRatingConfig
   ) {
     // this.userService.isUserLoggedIn.subscribe(value => {
     //   this.isUserLoggedIn = value;
     // });
     this.createForm();
+    config.max = 5; config.readonly = true
   }
 
   ngOnInit() {
