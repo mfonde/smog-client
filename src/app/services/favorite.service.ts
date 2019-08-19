@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Favorite } from '../models/favorite-model';
+// import {  APIURL } from '../helpers/environment';
+
+const smog = `http://localhost:3000`
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +21,7 @@ export class FavoriteService {
   })
 
   saveFavorite(favorite: Favorite) {
-    const url = `http://localhost:3000/favorite/`;
+    const url = `${smog}/favorite/`;
     this.http.post<any>(url, favorite, {
       headers: this.headers
     }).subscribe(data => {
@@ -28,7 +31,7 @@ export class FavoriteService {
   }
 
   getFavoritesByUsername(searchName) {
-    const url = `http://localhost:3000/favorite/username/${searchName}`;
+    const url = `${smog}/favorite/username/${searchName}`;
     console.log(searchName);
     return this.http.get<any>(url, {
       headers: this.headers

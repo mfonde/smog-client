@@ -11,7 +11,11 @@
 
   .logo{
   display: flex;
+  /* position: relative; */
+  /* transform: translate(-30%); */
   justify-content: center;
+  /* left: 50%; */
+  padding-bottom: 2em;
   }
 
   .searchMeDad{
@@ -31,6 +35,9 @@
   h2{
     text-align: center;
     color: white;
+    text-shadow: 2px 2px 3px black;
+    font-size: 3em;
+    margin-bottom: 3%;
   }
 
   input{

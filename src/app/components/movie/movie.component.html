@@ -22,7 +22,7 @@
     <button mat-raised-button (click)="onFavoriteSelected()" color="danger">Add To Favorites</button>
 </div>
 <br />
-<div *ngIf="favoriteSelected">
+<div class="favDrop" *ngIf="favoriteSelected">
     Where does {{movie.title}} belong among your top 10 favorites?
     <div [formGroup]="selectRanking">
         <mat-select formControlName="ranking" value=''>
