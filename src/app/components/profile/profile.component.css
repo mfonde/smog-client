@@ -28,11 +28,11 @@
 .example-card {
     max-width: 250px;
     margin-right: 20px;
-  }
+}
   
-  .example-header-image {
+.example-header-image {
     background-size: cover;
-  }
+}
 
 .favorites{
     display: flex;
@@ -40,7 +40,7 @@
     margin-right:20px;
     margin-top:30px;
     z-index:3;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
 .star {
@@ -72,8 +72,8 @@
     margin-bottom: 5%;
     margin-top: 3%;
     padding-top: 3%;
-    display:flex;
-    flex-direction: column;
+    /* display:flex;
+    flex-direction: column; */
 }
 
 .headContainer{
