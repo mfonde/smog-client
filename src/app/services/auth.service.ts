@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { User } from '../models/user'
+// import {  APIURL } from '../helpers/environment';
 
-const smog = 'http://localhost:3000'
+const smog = `http://localhost:3000`
 
 @Injectable({
   providedIn: 'root'
