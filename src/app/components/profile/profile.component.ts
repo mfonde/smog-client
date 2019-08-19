@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
   // public smallUserBaby = this.profileService.smallUser
 
   public bigUser = smallUser.user.username;
+  public bigData = smallUser.user.profilePic;
   public selectRanking: FormGroup;
   public selectRating: FormGroup;
   public selectStars: FormGroup;
@@ -59,6 +60,15 @@ export class ProfileComponent implements OnInit {
         localStorage.setItem('currentFav', JSON.stringify(this.bigFavorites));;
     })
     // console.log(this.profileService.smallId)
+  }
+
+  profilePic(){
+    if(this.bigData === 0){
+      return "../../../assets/photo1.jpeg"
+    }else if(this.bigData === 0){
+      return "../../../"
+    }
+
   }
 
   createForm(): void {
