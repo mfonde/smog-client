@@ -3,6 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { NewReview } from '../models/post-review-model'
 import { Review } from '../models/review-model';
+// import {  APIURL } from '../helpers/environment';
+
+const smog = `http://localhost:3000`
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +15,7 @@ export class ReviewService {
 
   constructor(private http:HttpClient) { }
 
-  // getInfo(url) {
-  //   return this.http.get<any>(url)
-  // }
-  token = JSON.parse(localStorage.getItem('sessionToken'));
+   token = JSON.parse(localStorage.getItem('sessionToken'));
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
   })
@@ -25,7 +25,7 @@ export class ReviewService {
   })
 
   getAllReviews() {
-    const url = "http://localhost:3000/review/getall";
+    const url = `${smog}/review/getall`;
     return this.http.get<any>(url, 
       {headers:this.headers
     })
@@ -33,14 +33,14 @@ export class ReviewService {
   }
 
   getReviewsByImdbID(imdbID) {
-    const url = `http://localhost:3000/review/imdbid/${imdbID}`;
+    const url = `${smog}/review/imdbid/${imdbID}`;
     return this.http.get<any>(url,
       {headers: this.headers
     })
   }
 
   getReviewsByUsername(searchName) {
-    const url = `http://localhost:3000/review/username/${searchName}`;
+    const url = `${smog}/review/username/${searchName}`;
     console.log(searchName);
     return this.http.get<any>(url, {
       headers: this.authHeaders
@@ -48,7 +48,7 @@ export class ReviewService {
   }
 
   getReviewsByUsernameCallback(searchName, cb: Function) {
-    const url = `http://localhost:3000/review/username/${searchName}`;
+    const url = `${smog}/review/username/${searchName}`;
     console.log(searchName);
     return this.http.get<any>(url, {
       headers: this.authHeaders
@@ -60,7 +60,7 @@ export class ReviewService {
   }
 
   postReview(review: NewReview){
-    const url = 'http://localhost:3000/review/';
+    const url = `${smog}/review/`;
     console.log(review)
     this.http.post(url, review, {
       headers: this.authHeaders
@@ -71,7 +71,7 @@ export class ReviewService {
   }
 
   deleteReview(id) {
-    const url = `http://localhost:3000/review/delete/${id}`;
+    const url = `${smog}/review/delete/${id}`;
     console.log(url);
     return this.http.delete<any>(url, {
       headers: this.authHeaders

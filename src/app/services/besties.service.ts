@@ -1,10 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../models/user';
-
-
-const smog = 'http://localhost:3000'
-
 
 @Injectable({
   providedIn: 'root'
