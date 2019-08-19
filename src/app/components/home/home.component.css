@@ -31,6 +31,9 @@
   h2{
     text-align: center;
     color: white;
+    text-shadow: 2px 2px 3px black;
+    font-size: 3em;
+    margin-bottom: 3%;
   }
 
   input{

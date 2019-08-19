@@ -1,8 +1,16 @@
 <div class="body">
-    <h1>Move Thoughts By {{username}}</h1>
+    <div class="headerBackground">
+    <h1 id="movieThoughts">Movie Thoughts By</h1>
+        <h1 id="username">{{username}}</h1>
     <br>
     <br>
-<app-reviews [searchName]="username"></app-reviews>
+</div>
+    <h2 class="topTen">Top Ten</h2>
+<div>
 <app-favorites [searchName]="username"></app-favorites>
+</div>
+<div class="reviews">
+<app-reviews [searchName]="username"></app-reviews>
+</div>
 <router-outlet></router-outlet>
 </div>

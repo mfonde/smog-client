@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
 import { BehaviorSubject } from 'rxjs';
+// import {  APIURL } from '../helpers/environment';
 
-const smog = 'http://localhost:3000';
+const smog = `http://localhost:3000`
+
 const bigCurrentUser = JSON.parse(localStorage.getItem('currentUser'));
 
 @Injectable({
