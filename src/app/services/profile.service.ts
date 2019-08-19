@@ -82,4 +82,14 @@ export class ProfileService {
       })
   }
 
+  updateYourRatings(id, reviewRatings){
+    const url=`http://localhost:3000/review/update/${id}`
+    console.log('Your review was updated')
+    return this.http.put<any>(url, reviewRatings,
+      {headers: this.headers}).subscribe(updatedRev => {
+        this.revreview = updatedRev;
+        console.log(this.revreview)
+      })
+  }
+
 }

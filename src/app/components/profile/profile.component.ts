@@ -5,6 +5,7 @@ import { Review } from '../../models/review-model';
 import { MovieData } from '../../models/MovieData';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap'
 
 const smallUser = JSON.parse(localStorage.getItem('currentUser'))
 // const smallId = JSON.parse(localStorage.getItem('currentFav'))
@@ -22,6 +23,7 @@ export class ProfileComponent implements OnInit {
   public bigUser = smallUser.user.username;
   public selectRanking: FormGroup;
   public selectRating: FormGroup;
+  public selectStars: FormGroup;
 
   // isUserLoggedIn: boolean;
   updateTrue = false;
@@ -35,12 +37,14 @@ export class ProfileComponent implements OnInit {
     private profileService: ProfileService,
     // private userService: UserService,
     private form: FormBuilder,
-    private router: Router
+    private router: Router,
+    config: NgbRatingConfig
   ) {
     // this.userService.isUserLoggedIn.subscribe(value => {
     //   this.isUserLoggedIn = value;
     // });
     this.createForm();
+    config.max = 5; config.readonly = true
   }
 
   ngOnInit() {
@@ -58,7 +62,10 @@ export class ProfileComponent implements OnInit {
       { ranking: new FormControl }
     )
     this.selectRating = this.form.group(
-      { reviewText: new FormControl })
+      { reviewText: new FormControl }
+    )
+    this.selectStars = this.form.group(
+      { reviewRating: new FormControl })
   }
 
   delete(id): void {
@@ -99,4 +106,14 @@ export class ProfileComponent implements OnInit {
   updateOn() {
     this.updateTrue = true;
   }
+
+  updateRating(id) {
+    const reviewRating = this.selectStars.value;
+    console.log(this.selectRating.value)
+    console.log(typeof reviewRating)
+    this.profileService.updateYourReviews(id, reviewRating)
+    location.reload();
+  }
+
+
 }

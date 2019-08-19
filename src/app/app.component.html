@@ -2,6 +2,7 @@
 <body>
   <app-header *ngIf="!sessionToken"></app-header>
   <app-auth-header *ngIf="sessionToken"></app-auth-header>
+  <h1 class="title">Welcome</h1>
   <div style="text-align:center">
   </div>
   <router-outlet></router-outlet>
