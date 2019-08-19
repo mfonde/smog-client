@@ -11,7 +11,6 @@
             <h3><b>Release Date:</b> {{movie.released}}</h3>
             <h3><b>Genre:</b> {{movie.genre}}</h3>
             <h3><b>Actors:</b> {{movie.actors}}</h3>
-            <!-- <h3>{{movie.director}}</h3> -->
             <h3>{{movie.plot}}</h3>
         </div>
     </div>
@@ -22,29 +21,8 @@
     <button mat-raised-button (click)="onFavoriteSelected()" class="button">Add To Favorites</button>
 </div>
 <br />
-<div class="favDrop" *ngIf="favoriteSelected">
-    Where does {{movie.title}} belong among your top 10 favorites?
-    <div [formGroup]="selectRanking">
-        <mat-select formControlName="ranking" value=''>
-            <mat-option value='1'>1</mat-option>
-            <mat-option value='2'>2</mat-option>
-            <mat-option value='3'>3</mat-option>
-            <mat-option value='4'>4</mat-option>
-            <mat-option value='5'>5</mat-option>
-            <mat-option value='6'>6</mat-option>
-            <mat-option value='7'>7</mat-option>
-            <mat-option value='8'>8</mat-option>
-            <mat-option value='9'>9</mat-option>
-            <mat-option value='10'>10</mat-option>
-        </mat-select>
-    </div>
-    <button mat-raised-button (click)="addToFavorites()" color="danger">Add To Favorites</button>
-
-</div>
 <h3 *ngIf="favoriteAdded">Favorite Added!</h3>
 
 <app-reviews *ngIf="movie.imdbID" [displayedMovie]="movie">
     <br />
 </app-reviews>
-
-<!-- <button mat-raised-button routerLink='/home' color="danger">Back to Home</button> -->
