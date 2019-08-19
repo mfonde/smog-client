@@ -12,10 +12,11 @@ const smog = `http://localhost:3000`
 })
 export class ReviewService {
   public reviews: Review[];
+  public movieReviews: object[];
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-   token = JSON.parse(localStorage.getItem('sessionToken'));
+  token = JSON.parse(localStorage.getItem('sessionToken'));
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
   })
@@ -26,17 +27,16 @@ export class ReviewService {
 
   getAllReviews() {
     const url = `${smog}/review/getall`;
-    return this.http.get<any>(url, 
-      {headers:this.headers
-    })
-
+    return this.http.get<any>(url,
+      { headers: this.headers })
   }
 
   getReviewsByImdbID(imdbID) {
     const url = `${smog}/review/imdbid/${imdbID}`;
     return this.http.get<any>(url,
-      {headers: this.headers
-    })
+      {
+        headers: this.headers
+      })
   }
 
   getReviewsByUsername(searchName) {
@@ -59,13 +59,12 @@ export class ReviewService {
     })
   }
 
-  postReview(review: NewReview){
+  postReview(review: NewReview) {
     const url = `${smog}/review/`;
     console.log(review)
     this.http.post(url, review, {
       headers: this.authHeaders
     }).subscribe(data => {
-
       console.log(data);
     })
   }

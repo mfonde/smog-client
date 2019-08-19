@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.searchForm.valueChanges.subscribe(console.log);
+    // this.searchForm.valueChanges.subscribe(console.log);
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/movie';
   }
 

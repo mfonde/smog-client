@@ -3,7 +3,7 @@
     <hr class="lines" width="50%">
     <div class="topArea">
         <div class="poster">
-            <img *ngIf="movie.poster !== 'N/A'" src={{movie.poster}} alt="poster" height= "500px" >
+            <img *ngIf="movie.poster !== 'N/A'" src={{movie.poster}} alt="poster" height="500px">
         </div>
         <div class="movieInfo">
             <h3><b>Rating:</b> {{movie.rated}}</h3>
@@ -16,14 +16,14 @@
         </div>
     </div>
 </div>
-<br/>
+<br />
 <div class="buttons">
     <button mat-raised-button (click)="openDialog()">New Review</button>
     <button mat-raised-button (click)="onFavoriteSelected()" color="danger">Add To Favorites</button>
 </div>
-<br/>
+<br />
 <div class="favDrop" *ngIf="favoriteSelected">
-    Where does {{movie.title}} belong among your top 10 favorites? 
+    Where does {{movie.title}} belong among your top 10 favorites?
     <div [formGroup]="selectRanking">
         <mat-select formControlName="ranking" value=''>
             <mat-option value='1'>1</mat-option>
@@ -39,9 +39,10 @@
         </mat-select>
     </div>
     <button mat-raised-button (click)="addToFavorites()" color="danger">Add To Favorites</button>
-    
+
 </div>
 <h3 *ngIf="favoriteAdded">Favorite Added!</h3>
+
 <app-reviews 
 *ngIf="movie.imdbID" 
 [displayedMovie]="movie"
