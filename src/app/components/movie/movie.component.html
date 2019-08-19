@@ -3,7 +3,7 @@
     <hr class="lines" width="50%">
     <div class="topArea">
         <div class="poster">
-            <img *ngIf="movie.poster !== 'N/A'" src={{movie.poster}} alt="poster" height= "80%" >
+            <img *ngIf="movie.poster !== 'N/A'" src={{movie.poster}} alt="poster" height="80%">
         </div>
         <div class="movieInfo">
             <h3><b>Rating:</b> {{movie.rated}}</h3>
@@ -43,11 +43,8 @@
 </div>
 <h3 *ngIf="favoriteAdded">Favorite Added!</h3>
 
-<app-reviews 
-*ngIf="movie.imdbID" 
-[displayedMovie]="movie"
->
-<br/>
+<app-reviews *ngIf="movie.imdbID" [displayedMovie]="movie">
+    <br />
 </app-reviews>
 
 <!-- <button mat-raised-button routerLink='/home' color="danger">Back to Home</button> -->
