@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+// import {  APIURL } from '../helpers/environment';
+
+const smog = `http://localhost:3000`
 
 const token = JSON.parse(localStorage.getItem('sessionToken'));
 const smallUser = JSON.parse(localStorage.getItem('currentUser'))
@@ -28,7 +31,7 @@ export class ProfileService {
   })
 
   getYourReview(middleUser) {
-    const url = `http://localhost:3000/review/username/${middleUser}`
+    const url = `${smog}/review/username/${middleUser}`
     console.log(smallUser)
     console.log(token)
     console.log(middleUser, "work")
@@ -40,19 +43,19 @@ export class ProfileService {
   }
 
   getYourFavorites(middleUser) {
-    const url = `http://localhost:3000/favorite/username/${middleUser}`
+    const url = `${smog}/favorite/username/${middleUser}`
     return this.http.get<any>(url,
       { headers: this.headers })
   }
 
   destroyYourFavorites(id) {
-    const url = `http://localhost:3000/favorite/delete/${id}`
+    const url = `${smog}/favorite/delete/${id}`
     return this.http.delete<any>(url,
       { headers: this.headers })
   }
 
   updateYourFavorites(id, ranking) {
-    const url = `http://localhost:3000/favorite/update/${id}`
+    const url = `${smog}/favorite/update/${id}`
     console.log(id)
     console.log(ranking)
     return this.http.put<any>(url, ranking,
@@ -63,14 +66,14 @@ export class ProfileService {
   }
 
   deleteYourReviews(id) {
-    const url = `http://localhost:3000/review/delete/${id}`
+    const url = `${smog}/review/delete/${id}`
     console.log('your review was deleted')
     return this.http.delete<any>(url,
       {headers:this.headers})
   }
 
   updateYourReviews(id, reviewText){
-    const url=`http://localhost:3000/review/update/${id}`
+    const url=`${smog}/review/update/${id}`
     console.log('Your review was updated')
     return this.http.put<any>(url, reviewText,
       {headers: this.headers}).subscribe(updatedRev => {

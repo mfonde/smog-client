@@ -12,7 +12,7 @@
 .profPic{
     width: 2px;
     height: 2px;
-    margin-right:110px;
+    align-self: center; 
 }
 
 .admin{
@@ -23,6 +23,8 @@
 .yourReviews{
     margin-top:30px;
     /* grid-area: 1  6; */
+    display:flex;
+    
 }
 
 .example-card {
@@ -36,8 +38,61 @@
 
 .favorites{
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     margin-right:20px;
     margin-top:30px;
     z-index:3;
+    justify-content: space-between;
+    flex:1 auto;
 }
+
+.headerBackground{
+    background-color: #ffffff;
+    background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
+    width: 50%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 30px;
+    margin-bottom: 5%;
+    margin-top: 3%;
+    padding-top: 3%;
+}
+
+.headContainer{
+    display:flex;
+    flex-direction: column;
+}
+
+h1{
+    text-align: center;
+    color: black;
+    /* padding-top: 7%; */
+    font-family: "Theatre-font";
+    text-shadow: 3px 2px 3px gold;
+    letter-spacing: 0.1em;
+}
+
+#username{
+    font-size: 3em;
+}
+
+.body{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+h2{
+    text-align: center;
+    color: white;
+    text-shadow: 3em 3em 3em black;
+    font-size: 3em;
+    margin-bottom: 3%;
+    font-family: "Movie-title";
+    font-size: 5.5em;
+    letter-spacing: 0.2em;
+    font-weight: bolder;
+  }
+
+.reviews{
+    margin-top: 3%;
+  }

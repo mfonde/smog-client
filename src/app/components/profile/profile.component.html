@@ -1,12 +1,18 @@
-<div class="user">
-    <div class="profPic">
-        <img src="https://www.scip.ch/en/labs/images/facebook_profile_male_default.png" height="65" width="75">
+<div class="headContainer">
+    <div class="headerBackground">
+        <div class="profPic">
+            <img src="https://www.scip.ch/en/labs/images/facebook_profile_male_default.png" height="65" width="75">
+        </div>
+        <div>
+            <h1 id="username">
+              {{bigUser}}
+            </h1>
+        </div>
+        <br>
+        <br>
     </div>
-    <h2>
-        {{bigUser}}
-    </h2>
 </div>
-
+           
 <!-- favorites -->
 <div class="favorites">
     <div *ngFor="let favorite of bigFavorites">
