@@ -50,18 +50,12 @@ export class UserService {
         'Authorization': this.token
       }
     })
-    // .subscribe(data => {
-    //   this.searchedUser = data;
-    //   console.log(data);
-    // })
-
   }
 
   delete(id) {
     // deletes user by the user id sent with the request
     const url = `${smog}/user/delete/${id}`
-    // console.log(url);
-    // console.log(id);
+
     return this.http.delete<any>(url, {
       headers: this.authHeaders
     }).subscribe(data => {
