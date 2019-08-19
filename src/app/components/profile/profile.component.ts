@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
   public bigUser = smallUser.user.username;
   public selectRanking: FormGroup;
   public selectRating: FormGroup;
+  public selectStars: FormGroup;
 
   // isUserLoggedIn: boolean;
   updateTrue = false;
@@ -62,7 +63,10 @@ export class ProfileComponent implements OnInit {
       { ranking: new FormControl }
     )
     this.selectRating = this.form.group(
-      { reviewText: new FormControl })
+      { reviewText: new FormControl }
+    )
+    this.selectStars = this.form.group(
+      { reviewRating: new FormControl})
   }
 
   delete(id): void {
@@ -102,6 +106,14 @@ export class ProfileComponent implements OnInit {
 
   updateOn() {
     this.updateTrue = true;
+  }
+
+  updateRating(id) {
+    const reviewRating = this.selectStars.value;
+    console.log(this.selectRating.value)
+    console.log(typeof reviewRating)
+    this.profileService.updateYourReviews(id, reviewRating)
+    location.reload();
   }
 
 
