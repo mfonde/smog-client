@@ -15,7 +15,13 @@
                         {{review.movieTitle}}
                     </mat-panel-title>
                     <mat-panel-description>
-                        By:{{review.username}} Rating: {{review.reviewRating}} out of 5
+                            <div class="test">
+                                    <ngb-rating [rate]="review.reviewRating">
+                                         <ng-template let-fill="fill" let-index="index">
+                                             <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                                           </ng-template>
+                                     </ngb-rating> 
+                                   </div>
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 <div class="poster">
@@ -23,14 +29,21 @@
                 </div>
                 <div class="info">
                     {{review.movieTitle}}
-                    {{review.reviewRating}} out of 5
+                    <div class="test">
+                            <ngb-rating [rate]="review.reviewRating">
+                                 <ng-template let-fill="fill" let-index="index">
+                                     <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                                   </ng-template>
+                             </ngb-rating> 
+                           </div>
                     By: {{review.username}}
                 </div>
                 <p *ngIf="updateTrue == false">{{review.reviewText}}</p>
                 <div *ngIf="updateTrue == true">
                     <form [formGroup]= "selectRating">
+                <input type="number" formControlName="reviewRating">
                 <input type="text" formControlName="reviewText">
-                <button mat-button (click)="updateReview(review.id)" type="submit">UPDATE</button>
+                <button mat-button (click)="updateReview(review.id)" (click)="updateRating(review.id)" type="submit">UPDATE</button>
             </form>
                 </div>
                 <button mat-button (click)="deleteReview(review.id)">DELETE</button>
