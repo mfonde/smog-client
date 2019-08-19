@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
-import { NewReviewDialog } from '../app/components/movie/movie.component'
 //? SERVICES 
 import { DatabaseService } from './services/database.service';
 import { UserService } from './services/user.service';
@@ -48,6 +47,9 @@ import { BestiesComponent } from './components/profile/besties/besties.component
 import { ReviewItemComponent } from './components/reviews/review-item/review-item.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { FavoriteItemComponent } from './components/favorites/favorite-item/favorite-item.component';
+import { NewReviewDialog } from '../app/components/movie/movie.component';
+import { FavoriteDialog } from '../app/components/movie/movie.component';
+
 @NgModule({
   //TODO: DECLARES ALL OF THE COMPONENTS ADDED INTO THE APP MODULE 
   declarations: [
@@ -67,7 +69,8 @@ import { FavoriteItemComponent } from './components/favorites/favorite-item/favo
     BestiesComponent,
     ReviewItemComponent,
     FavoritesComponent,
-    FavoriteItemComponent
+    FavoriteItemComponent,
+    FavoriteDialog
   ],
 
   entryComponents:[
@@ -75,7 +78,8 @@ import { FavoriteItemComponent } from './components/favorites/favorite-item/favo
     AdminComponent,
     UserSearchComponent,
     HeaderComponent,
-    AuthHeaderComponent
+    AuthHeaderComponent,
+    FavoriteDialog
   ],
   //TODO: HOLDS ALL OF THE IMPORTS ADDED TO THE ANGULAR APP FOR OTHER FILES TO USE 
   imports: [
