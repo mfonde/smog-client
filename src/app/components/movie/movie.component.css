@@ -51,3 +51,10 @@ h1{
 .lines{
     border-color: black;
 }
+
+.favDrop{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    flex-direction: column;
+}
