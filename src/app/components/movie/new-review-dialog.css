@@ -35,4 +35,5 @@
 
 .textBox{
     width: 500px;
+    border: inset black 2px;
 }

@@ -11,7 +11,11 @@
 
   .logo{
   display: flex;
+  /* position: relative; */
+  /* transform: translate(-30%); */
   justify-content: center;
+  /* left: 50%; */
+  padding-bottom: 2em;
   }
 
   .searchMeDad{
