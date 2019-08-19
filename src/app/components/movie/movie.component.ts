@@ -123,6 +123,7 @@ export class NewReviewDialog {
     const reviewText = this.reviewData.value.reviewText;
     const newReview = new NewReview(movieTitle, poster, imdbId, reviewRating, reviewText);
     this.reviewService.postReview(newReview);
-    console.log(newReview)
+    console.log(newReview);
+
   }
 }

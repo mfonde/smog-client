@@ -14,15 +14,21 @@
   .ranking{
     font-family:"Movie-title";
     font-weight: bolder;
-    font-size: 1.3em;
+    font-size: 2em;
+    color: rgb(134, 21, 28);
   }
 
   .title{
     font-family: "Movie-title";
-    font-size: 1.5em;
+    font-size: 2em;
     letter-spacing: 0.1em;
+    float: right;
+    color: rgb(134, 21, 28);
+
   }
 
   .image {
-max-width: 100%;  }
+max-width: 100%;  
+border: 1px solid gold;
+}
 
