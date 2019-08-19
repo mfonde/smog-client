@@ -42,6 +42,12 @@
 
 </div>
 <h3 *ngIf="favoriteAdded">Favorite Added!</h3>
-<app-reviews *ngIf="movie.imdbID" [displayedMovie]="movie">
-    <br />
+
+<app-reviews 
+*ngIf="movie.imdbID" 
+[displayedMovie]="movie"
+>
+<br/>
 </app-reviews>
+
+<!-- <button mat-raised-button routerLink='/home' color="danger">Back to Home</button> -->

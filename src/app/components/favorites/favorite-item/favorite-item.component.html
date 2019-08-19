@@ -3,12 +3,14 @@
         <div>
             <mat-card class="example-card">
                 <mat-card-header>
+                    <mat-card-title class="ranking">{{favorite.ranking}}</mat-card-title>
+                    <mat-card-subtitle class="title">{{favorite.movieTitle}}</mat-card-subtitle>
                     
-                    <mat-card-title class="card-container" layout="row" layout-align="start space-between">
-                        <span flex="none">{{favorite.ranking}}</span>
-                    
-                        <span flex="none">{{favorite.movieTitle}}</span>
-                    </mat-card-title>
+                    <!-- <mat-card-title class="card-container" layout="row" layout-align="start start">
+                        <span class="ranking" flex="0">{{favorite.ranking}}</span>
+                        &nbsp;
+                        <span class="title" flex="0">{{favorite.movieTitle}}</span>
+                    </mat-card-title> -->
                     
                 </mat-card-header>
                 
