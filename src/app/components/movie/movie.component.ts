@@ -6,6 +6,7 @@ import { Favorite } from '../../models/favorite-model';
 import { NewReview } from '../../models/post-review-model'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 export interface DialogData {
@@ -28,7 +29,13 @@ export class MovieComponent implements OnInit {
   public movie;
   public selectRanking: FormGroup;
 
-  constructor(private databaseService: DatabaseService, private favoriteService: FavoriteService, private form: FormBuilder, public dialog: MatDialog) {
+  constructor(
+    private databaseService: DatabaseService,
+    private favoriteService: FavoriteService,
+    private form: FormBuilder,
+    public dialog: MatDialog,
+    private router: Router
+  ) {
     this.getMovie();
     this.createForm();
   }
@@ -50,7 +57,14 @@ export class MovieComponent implements OnInit {
   }
 
   getMovie() {
-    this.movie = this.databaseService.movie;
+    // check to see if local storage is set with the current searched 
+    if (localStorage.getItem('movie') === null) {
+      this.movie = this.databaseService.movie;
+      console.log(this.movie)
+    } else {
+      this.movie = JSON.parse(localStorage.getItem('movie'));
+    }
+
   }
 
   onFavoriteSelected() {
@@ -74,6 +88,7 @@ export class MovieComponent implements OnInit {
     console.log(newFavorite);
     this.favoriteClose();
     this.favoriteAdded = true;
+    this.router.navigateByUrl('/#', { skipLocationChange: true }).then(() => this.router.navigate(['/movie']));
   }
 
   ngOnInit() {
@@ -97,6 +112,7 @@ export class NewReviewDialog {
     public dialogRef: MatDialogRef<NewReviewDialog>,
     private form: FormBuilder,
     private reviewService: ReviewService,
+    private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
     this.reviewForm()
@@ -122,5 +138,7 @@ export class NewReviewDialog {
     const newReview = new NewReview(movieTitle, poster, imdbId, reviewRating, reviewText);
     this.reviewService.postReview(newReview);
     console.log(newReview)
+    this.dialogRef.close();
+    this.router.navigateByUrl('/#', { skipLocationChange: true }).then(() => this.router.navigate(['/movie']));
   }
 }

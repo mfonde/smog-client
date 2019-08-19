@@ -6,7 +6,6 @@ import { MovieData } from '../../models/MovieData';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 
-
 const smallUser = JSON.parse(localStorage.getItem('currentUser'))
 // const smallId = JSON.parse(localStorage.getItem('currentFav'))
 
@@ -70,7 +69,6 @@ export class ProfileComponent implements OnInit {
   deleteReview(id): void {
     this.profileService.deleteYourReviews(id).subscribe();
     this.router.navigateByUrl('/#', { skipLocationChange: true }).then(() => this.router.navigate(['/profile']));
-
   }
 
   movieBeGone(id): void {
@@ -79,6 +77,7 @@ export class ProfileComponent implements OnInit {
 
   update(id): void {
     this.serverUpdate(id);
+    console.log('updated');
     this.router.navigateByUrl('/#', { skipLocationChange: true }).then(() => this.router.navigate(['/profile']));
   }
 
@@ -100,7 +99,4 @@ export class ProfileComponent implements OnInit {
   updateOn() {
     this.updateTrue = true;
   }
-
-
 }
-
