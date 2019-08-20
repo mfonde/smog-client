@@ -31,6 +31,10 @@ export class UserSearchComponent implements OnInit {
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
   public userId = this.currentUser.user.id;
   public id;
+  public email;
+  public profilePic;
+  public admin;
+  public username;
 
 
 
@@ -109,6 +113,10 @@ export class UserSearchComponent implements OnInit {
     this.userService.get(searchName).subscribe(data => {
       this.user = data[0];
       this.id = data[0].id;
+      this.email = data[0].email;
+      this.profilePic = data[0].profilePic;
+      this.admin = data[0].admin;
+      this.username = data[0].username;
       console.log(this.user);
       console.log(this.id);
     }

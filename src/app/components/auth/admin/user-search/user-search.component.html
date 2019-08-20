@@ -28,12 +28,12 @@
       </thead>
       <tbody>
         <tr>
-          <td>{{user.username}}</td>
-          <td>{{user.email}}</td>
+          <td>{{username}}</td>
+          <td>{{email}}</td>
           <td>{{id}}</td>
-          <td>{{user.profilePic}}</td>
-          <td>{{user.password}}</td>
-          <td>{{user.admin}}</td>
+          <td>{{profilePic}}</td>
+          <td>{{password}}</td>
+          <td>{{admin}}</td>
         </tr>
       </tbody>
     </table>
@@ -52,11 +52,11 @@
         <div class="row">
           <div class="col-sm-2 form-group">
             <label for="username">Edit Username</label>
-            <input defaultValue={{user.username}} type="text" id="username" class="form-control" #usernameInput>
+            <input defaultValue={{username}} type="text" id="username" class="form-control" #usernameInput>
           </div>
           <div class="col-sm-3 form-group">
             <label for="email">Edit Email</label>
-            <input defaultValue={{user.email}} type="text" id="email" class="form-control" #emailInput>
+            <input defaultValue={{email}} type="text" id="email" class="form-control" #emailInput>
           </div>
           <div class="col-sm-2 form-group">
             <label for="password">Edit Password</label>
@@ -64,11 +64,11 @@
           </div>
           <div class="col-sm-2 form-group">
             <label for="profilePic">Edit Profile Pic</label>
-            <input defaultValue={{user.profilePic}} type="text" id="profilePic" class="form-control" #profilePicInput>
+            <input defaultValue={{profilePic}} type="text" id="profilePic" class="form-control" #profilePicInput>
           </div>
           <div class="col-sm-2 form-group">
             <label for="admin">Edit Admin</label>
-            <input defaultValue={{user.admin}} type="text" id="admin" class="form-control" #adminInput>
+            <input defaultValue={{admin}} type="text" id="admin" class="form-control" #adminInput>
           </div>
         </div>
         <div class="row">
