@@ -15,6 +15,13 @@
     margin-left:45%;
 }
 
+.favorites{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* margin: auto; */
+}
+
 .admin{
     text-align: center;
     padding-top: 3%;
@@ -27,11 +34,67 @@
 
 .example-card {
     max-width: 250px;
+    height: 550px;
     margin-right: 20px;
+    background-color: #dd1d1da2;
+    background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
+    color: antiquewhite;
+}
+
+.title{
+  font-family: "Movie-title";
+  font-size: 2em;
+  letter-spacing: 0.1em;
+  float: right;
+  color: antiquewhite;
+  text-align: center;
+}
+
+.image {
+  max-width: 100%;  
+  height: 300px;
+  border: 10px dotted gold;
+}
+
+.updating{
+margin-right: 299px;
+}
+
+.form{
+    width: 230px;
+    border-bottom: 5px solid rgba(0, 0, 0, 0.555);
+    border-left: 5px double rgba(247, 58, 58, 0.767);
+    border-right: 5px double rgba(247, 58, 58, 0.767);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #dd1d1da2;
+    background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
+    color: antiquewhite;
+}
+
+.formSelect{
+    text-align: center;
+}
+
+.header{
+    color: antiquewhite;
+    text-align: center;
+    height: 30%;
+    background-color: rgba(250, 171, 171, 0.226);
+    
+    /* margin: 5px; */
 }
   
 .example-header-image {
     background-size: cover;
+}
+
+.ranking{
+  font-family:"Movie-title";
+  font-weight: bolder;
+  font-size: 2em;
+  color: antiquewhite;
 }
 
 .favorites{
@@ -79,6 +142,7 @@
 .headContainer{
     display:flex;
     flex-direction: column;
+    text-align: center;
 }
 
 h1{
@@ -113,4 +177,5 @@ h2{
 .work{
     display: flex;
     flex-direction: column;
+
 }

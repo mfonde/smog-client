@@ -6,6 +6,7 @@ import { MovieData } from '../../models/MovieData';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap'
+import { Favorite } from 'src/app/models/favorite-model';
 
 const smallUser = JSON.parse(localStorage.getItem('currentUser'))
 // const smallId = JSON.parse(localStorage.getItem('currentFav'))
@@ -34,6 +35,10 @@ export class ProfileComponent implements OnInit {
   bigName = this.bigUser;
   @Input() displayedMovie: MovieData;
 
+  firstfive: Favorite[] = [];
+  secondfive: Favorite[] = [];
+
+
   constructor(
     private profileService: ProfileService,
     // private userService: UserService,
@@ -54,18 +59,23 @@ export class ProfileComponent implements OnInit {
       // console.log(data);
     });
     this.profileService.getYourFavorites(this.bigUser).subscribe(data => {
-      this.bigFavorites =
-        data,
-        // console.log(data),
-        localStorage.setItem('currentFav', JSON.stringify(this.bigFavorites));;
+      this.bigFavorites = data;
+      console.log(data);
+      this.firstfive = this.bigFavorites.slice(0, 5);
+      this.secondfive = this.bigFavorites.slice(5, 10);
+      // console.log(this.firstfive);
+      // console.log(this.secondfive);
+
+      localStorage.setItem('currentFav', JSON.stringify(this.bigFavorites));
+
     })
     // console.log(this.profileService.smallId)
   }
 
-  profilePic(){
-    if(this.bigData === 0){
+  profilePic() {
+    if (this.bigData === 0) {
       return "../../../assets/photo1.jpeg"
-    }else if(this.bigData === 0){
+    } else if (this.bigData === 0) {
       return "../../../"
     }
 
