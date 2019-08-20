@@ -154,37 +154,3 @@ h2{
 
 }
 
-.example-card {
-    margin-right: 5%;
-    background-color: #ffffff;
-    background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
-   
-  }
-
-  .card-container{
-    color: red;
-    font-size: 2em;
-    font-family: "Movie-title";
-  }
-
-  .ranking{
-    font-family:"Movie-title";
-    font-weight: bolder;
-    font-size: 2em;
-    color: rgb(134, 21, 28);
-  }
-
-  .title{
-    font-family: "Movie-title";
-    font-size: 2em;
-    letter-spacing: 0.1em;
-    float: right;
-    color: rgb(134, 21, 28);
-
-  }
-
-  .image {
-max-width: 100%;  
-border: 1px solid gold;
-}
-
