@@ -26,7 +26,6 @@
 }
 .example-card {
     max-width: 250px;
-    height: 550px;
     margin-right: 20px;
     background-color: #dd1d1da2;
     background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
@@ -114,7 +113,6 @@
 .headContainer{
     display:flex;
     flex-direction: column;
-    text-align: center;
 }
 h1{
     text-align: center;
@@ -144,7 +142,6 @@ h2{
 .work{
     display: flex;
     flex-direction: column;
-
 }
 
 .fTitle{

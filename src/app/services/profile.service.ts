@@ -12,6 +12,7 @@ const smallId = JSON.parse(localStorage.getItem('currentFav'))
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProfileService {
 
 
