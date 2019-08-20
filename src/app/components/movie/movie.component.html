@@ -3,7 +3,7 @@
     <hr class="lines" width="50%">
     <div class="topArea">
         <div class="poster">
-            <img *ngIf="movie.poster !== 'N/A'" src={{movie.poster}} alt="poster" height= "80%" >
+            <img *ngIf="movie.poster !== 'N/A'" src={{movie.poster}} alt="poster" height="80%">
         </div>
         <div class="movieInfo">
             <h3><b>Rating:</b> {{movie.rated}}</h3>
@@ -11,7 +11,6 @@
             <h3><b>Release Date:</b> {{movie.released}}</h3>
             <h3><b>Genre:</b> {{movie.genre}}</h3>
             <h3><b>Actors:</b> {{movie.actors}}</h3>
-            <!-- <h3>{{movie.director}}</h3> -->
             <h3>{{movie.plot}}</h3>
         </div>
     </div>
@@ -21,12 +20,9 @@
     <button mat-raised-button (click)="openDialog()" class="button">New Review</button>
     <button mat-raised-button (click)="onFavoriteSelected()" class="button">Add To Favorites</button>
 </div>
-<br/>
+<br />
 <h3 *ngIf="favoriteAdded">Favorite Added!</h3>
 
-<app-reviews 
-*ngIf="movie.imdbID" 
-[displayedMovie]="movie"
->
-<br/>
+<app-reviews *ngIf="movie.imdbID" [displayedMovie]="movie">
+    <br />
 </app-reviews>
