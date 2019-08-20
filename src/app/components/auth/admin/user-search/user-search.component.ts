@@ -3,7 +3,7 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { UserService } from '../../../../services/user.service';
 import { ReviewService } from '../../../../services/review.service';
 import { UserData } from '../../../../models/UserData';
-import { User } from '../../../../models/user';
+// import { User } from '../../../../models/user';
 
 @Component({
   selector: 'app-user-search',
@@ -27,7 +27,7 @@ export class UserSearchComponent implements OnInit {
   @ViewChild('profilePicInput', { static: false }) profilePicInputRef: ElementRef;
   @ViewChild('adminInput', { static: false }) adminInputRef: ElementRef;
 
-  public user : User[];
+  public user : UserData[];
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
   public userId = this.currentUser.user.id;
   public id;
