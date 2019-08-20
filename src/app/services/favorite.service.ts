@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Favorite } from '../models/favorite-model';
-// import {  APIURL } from '../helpers/environment';
+import {  APIURL } from '../../environments/environment.prod';
 
-const smog = `http://localhost:3000`
+const smog = `${APIURL}`;
 
 @Injectable({
   providedIn: 'root'

@@ -3,9 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { NewReview } from '../models/post-review-model'
 import { Review } from '../models/review-model';
-// import {  APIURL } from '../helpers/environment';
+import {  APIURL } from '../../environments/environment.prod';
 
-const smog = `http://localhost:3000`
+const smog = `${APIURL}`;
 
 @Injectable({
   providedIn: 'root'
