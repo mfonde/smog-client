@@ -22,17 +22,3 @@ export class BestiesService {
     
   }
 
-  // get(name) {
-  //   console.log(name);
-  //   const url = `${smog}/user/username/${name}`
-  //   return this.http.get<any>(url, {
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Authorization': this.token
-  //     }
-  //   }).subscribe(data => {
-  //     this.user = new User(data);
-  //     console.log(this.user);
-  //   })
-  // }
-// }

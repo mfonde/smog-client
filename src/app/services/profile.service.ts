@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-// import {  APIURL } from '../helpers/environment';
+import {  APIURL } from '../../environments/environment.prod';
 
-const smog = `http://localhost:3000`
+const smog = `${APIURL}`;
 
 const token = JSON.parse(localStorage.getItem('sessionToken'));
 const smallUser = JSON.parse(localStorage.getItem('currentUser'))
@@ -84,7 +84,7 @@ export class ProfileService {
   }
 
   updateYourRatings(id, reviewRatings){
-    const url=`http://localhost:3000/review/update/${id}`
+    const url=`${smog}/review/update/${id}`
     console.log('Your review was updated')
     return this.http.put<any>(url, reviewRatings,
       {headers: this.headers}).subscribe(updatedRev => {
