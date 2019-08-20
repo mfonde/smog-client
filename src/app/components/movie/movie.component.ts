@@ -17,12 +17,18 @@ export interface DialogData {
   };
 }
 
+// const smallUser = JSON.parse(localStorage.getItem('currentUser'))
+
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.css']
 })
 export class MovieComponent implements OnInit {
+  currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+
+
 
   favoriteSelected = false;
   favoriteAdded = false;
@@ -105,6 +111,7 @@ export class MovieComponent implements OnInit {
 export class NewReviewDialog {
 
   public reviewData: FormGroup;
+
 
   currentRate = 1;
 

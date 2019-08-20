@@ -17,7 +17,7 @@
     </div>
 </div>
 <br />
-<div class="buttons">
+<div class="buttons" *ngIf="currentUser">
     <button mat-raised-button (click)="openDialog()" class="button">New Review</button>
     <button mat-raised-button (click)="onFavoriteSelected()" class="button">Add To Favorites</button>
 </div>
