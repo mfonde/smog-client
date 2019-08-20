@@ -19,12 +19,15 @@ export class ReviewsComponent implements OnInit {
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
   // public admin = this.currentUser.admin;
   reviews: Review[];
+
   @Input() displayedMovie: MovieData;
   @Input() searchName: string;
   @ViewChild('username', { static: false }) usernameRef: ElementRef;
   returnUrl: string;
   @Input() review: Review;
   @Input() adminOn;
+
+
 
 
   constructor(
@@ -54,7 +57,7 @@ export class ReviewsComponent implements OnInit {
     this.reviewService.getReviewsByUsername(this.searchName)
       .subscribe(reviews => {
         console.log(reviews);
-        this.reviews = reviews;
+        this.reviews = reviews.slice(0, 20);
       })
   }
 

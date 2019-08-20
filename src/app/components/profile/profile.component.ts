@@ -56,16 +56,12 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.profileService.getYourReview(this.bigUser).subscribe(data => {
       this.bigReviews = data
-      // console.log(data);
     });
     this.profileService.getYourFavorites(this.bigUser).subscribe(data => {
       this.bigFavorites = data;
       console.log(data);
       this.firstfive = this.bigFavorites.slice(0, 5);
       this.secondfive = this.bigFavorites.slice(5, 10);
-      // console.log(this.firstfive);
-      // console.log(this.secondfive);
-
       localStorage.setItem('currentFav', JSON.stringify(this.bigFavorites));
 
     })
