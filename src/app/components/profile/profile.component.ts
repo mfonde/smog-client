@@ -14,8 +14,6 @@ export interface DialogueData {
   ranking: number;
 }
 
-
-
 const smallUser = JSON.parse(localStorage.getItem('currentUser'))
 // const smallId = JSON.parse(localStorage.getItem('currentFav'))
 
@@ -65,8 +63,6 @@ export class ProfileComponent implements OnInit {
       data: {favorite: id}
     });
   }
-  
-
 
   ngOnInit() {
     this.profileService.getYourReview(this.bigUser).subscribe(data => {
@@ -81,8 +77,6 @@ export class ProfileComponent implements OnInit {
 
     })
   }
-
-  
 
   profilePic() {
     if (this.bigData === 0) {
