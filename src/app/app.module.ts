@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 //? SERVICES 
 import { DatabaseService } from './services/database.service';
 import { UserService } from './services/user.service';
@@ -17,19 +17,11 @@ import {
   MatExpansionModule,
   MatSelectModule,
   MatFormFieldModule,
-  MatTableModule,
   MatCardModule
-
 } from '@angular/material';
-
-import {
-  MatDialogModule
-} from '@angular/material/dialog';
-
+import { MatDialogModule } from '@angular/material/dialog';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
-
-
 //? COMPONENTS OF THE ANGULAR APP 
 import { AppComponent } from './app.component';
 import { HomeComponent } from '../app/components/home/home.component';
@@ -72,8 +64,7 @@ import { FavoriteDialog } from '../app/components/movie/movie.component';
     FavoriteItemComponent,
     FavoriteDialog
   ],
-
-  entryComponents:[
+  entryComponents: [
     NewReviewDialog,
     AdminComponent,
     UserSearchComponent,
@@ -99,10 +90,9 @@ import { FavoriteDialog } from '../app/components/movie/movie.component';
     MatCardModule,
     NgbModule,
     MatCardModule
-
   ],
   //TODO: PROVIDERS HOLD THE SERVICES USED BY THE APP, AND ANY ERROR INTERCEPTORS REQUIRED 
-  providers: [DatabaseService, UserService, AuthService, HttpClient, NgbRatingConfig ],
+  providers: [DatabaseService, UserService, AuthService, HttpClient, NgbRatingConfig],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

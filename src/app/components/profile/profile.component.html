@@ -133,7 +133,8 @@
                 <div *ngIf="updateTrue == true">
                     <form [formGroup]="selectRating">
                         <input type="text" formControlName="reviewText">
-                        <button mat-button (click)="updateReview(review.id)" type="submit">UPDATE</button>
+                        <button mat-button (click)="updateReview(review.id, review.reviewRating, review.reviewText)"
+                            type="submit">UPDATE</button>
                     </form>
                 </div>
                 <button mat-button (click)="deleteReview(review.id)">DELETE</button>

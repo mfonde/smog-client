@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { UserService } from '../../../services/user.service';
-import { User } from '../../../models/user';
 
 @Component({
   selector: 'app-register',
@@ -21,11 +20,7 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private userService: UserService
-  ) {
-    // if (this.authService.currentUserValue) {
-    //   this.router.navigate(['/login']);
-    // }
-  }
+  ) { }
 
   ngOnInit() {
     this.createForm();
@@ -42,12 +37,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.currentUser = new User(this.registerForm.value);
-    // console.log(this.currentUser)
-    // if (this.registerForm.invalid) {
-    //   console.log('Failed')
-    //   return;
-    // }
     this.userService.register(this.registerForm.value);
     this.router.navigate(['/login'])
   }
