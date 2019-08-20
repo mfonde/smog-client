@@ -1,18 +1,17 @@
 <div class="body">
     <div class="headerBackground">
-    <h1 id="movieThoughts">Movie Thoughts By</h1>
+        <h1 id="movieThoughts">Movie Thoughts By</h1>
         <h1 id="username">{{username}}</h1>
-    <br>
-    <br>
-</div>
+        <br>
+        <br>
+    </div>
     <h2 class="topTen">Top Ten</h2>
-<div>
-<app-favorites [searchName]="username"></app-favorites>
-</div>
-<div class="reviews">
+    <div>
+        <app-favorites [searchName]="username"></app-favorites>
+    </div>
+    <div class="reviews">
         <h2 class="topTen">Reviews</h2>
-
-<app-reviews [searchName]="username"></app-reviews>
-</div>
-<router-outlet></router-outlet>
+        <app-reviews [searchName]="username"></app-reviews>
+    </div>
+    <router-outlet></router-outlet>
 </div>

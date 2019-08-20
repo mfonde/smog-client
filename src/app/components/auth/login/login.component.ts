@@ -11,7 +11,6 @@ import { AuthService } from '../../../services/auth.service';
 export class LoginComponent implements OnInit {
 
   returnUrl: string;
-
   public loginForm: FormGroup;
 
   constructor(
@@ -22,13 +21,10 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('Big Brain Time');
-
     this.loginForm = this.form.group({
       username: new FormControl,
       password: new FormControl
     });
-
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
@@ -36,15 +32,8 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
     let babybaby = this.loginForm.value
-
     this.authService.login(babybaby);
-    console.log(localStorage.getItem('currentUser'));
     this.router.navigate([this.returnUrl]);
-    // pipe is used in here to map over user in the service, but in the ts file it refers to first() in the pipe as it is map(user)
-
-
   }
-
 }

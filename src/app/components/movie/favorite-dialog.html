@@ -1,26 +1,26 @@
 <div class="titleArea">
-        <img src="{{favoriteData.movie.poster}}" alt="poster image" width="120" height="160">
-        <h1>{{favoriteData.movie.title}}</h1>
-    </div>
-    <div class="dataArea">
-         <br/>
-         <div class="text">Select A Ranking For This Favorite</div>
-        <form (ngSubmit)="addToFavorites()" [formGroup]="selectRanking">
-                <mat-select class="select" formControlName="ranking" value=''>
-                        <mat-option value='1'>1</mat-option>
-                        <mat-option value='2'>2</mat-option>
-                        <mat-option value='3'>3</mat-option>
-                        <mat-option value='4'>4</mat-option>
-                        <mat-option value='5'>5</mat-option>
-                        <mat-option value='6'>6</mat-option>
-                        <mat-option value='7'>7</mat-option>
-                        <mat-option value='8'>8</mat-option>
-                        <mat-option value='9'>9</mat-option>
-                        <mat-option value='10'>10</mat-option>
-                    </mat-select>
-        </form>
-    </div>
-    <div class="buttons" mat-dialog-actions>
-        <button mat-raised-button class="button" (click)="addToFavorites()">Add Favorite</button>      
-        <button mat-stroked-button color="warn" (click)="onNoClick()">Exit</button>
-    </div>
+    <img src="{{favoriteData.movie.poster}}" alt="poster image" width="120" height="160">
+    <h1>{{favoriteData.movie.title}}</h1>
+</div>
+<div class="dataArea">
+    <br />
+    <div class="text">Select A Ranking For This Favorite</div>
+    <form (ngSubmit)="addToFavorites()" [formGroup]="selectRanking">
+        <mat-select class="select" formControlName="ranking" value=''>
+            <mat-option value='1'>1</mat-option>
+            <mat-option value='2'>2</mat-option>
+            <mat-option value='3'>3</mat-option>
+            <mat-option value='4'>4</mat-option>
+            <mat-option value='5'>5</mat-option>
+            <mat-option value='6'>6</mat-option>
+            <mat-option value='7'>7</mat-option>
+            <mat-option value='8'>8</mat-option>
+            <mat-option value='9'>9</mat-option>
+            <mat-option value='10'>10</mat-option>
+        </mat-select>
+    </form>
+</div>
+<div class="buttons" mat-dialog-actions>
+    <button mat-raised-button class="button" (click)="addToFavorites()">Add Favorite</button>
+    <button mat-stroked-button color="warn" (click)="onNoClick()">Exit</button>
+</div>
