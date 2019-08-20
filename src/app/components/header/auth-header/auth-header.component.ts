@@ -9,8 +9,12 @@ const smallUser = JSON.parse(localStorage.getItem('currentUser'));
 })
 export class AuthHeaderComponent implements OnInit {
   public admin = smallUser.user.admin;
-
+  collapsed: Boolean;
   constructor() { }
+
+  isCollapsed() {
+    this.collapsed = !this.collapsed
+  }
 
   ngOnInit() {
   }
