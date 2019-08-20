@@ -65,12 +65,8 @@ export class ProfileService {
       { headers: this.headers })
   }
 
-  updateYourReviews(id, reviewRating, reviewText) {
+  updateYourReviews(id, updatedReview) {
     const url = `${smog}/review/update/${id}`
-    const updatedReview = {
-      "reviewText": reviewText,
-      "reviewRating": reviewRating
-    }
     console.log('Your review was updated')
     return this.http.put<any>(url, updatedReview, { headers: this.headers }).subscribe(updatedRev => {
       this.revreview = updatedRev;

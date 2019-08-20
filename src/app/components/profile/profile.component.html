@@ -3,7 +3,7 @@
         <div class="profPic">
             <img src={{profilePic(bigUser.profilePic)}} height="80" width="75">
         </div>
-        <div>
+        <div>  
             <h1 id="username">
                 {{bigUser}}
             </h1>
@@ -46,9 +46,9 @@
                 <br>
                 <br>
                
-    <!-- reviews -->
-    <!-- <div class="yourReviews"> -->
-    <!-- <ul class="reviews"> -->
+    <!-- reviews
+    <div class="yourReviews">
+    <ul class="reviews"> -->
     <div class="work">
         <div class="reviews" *ngFor="let review of bigReviews">
             <mat-expansion-panel class="bleh">
@@ -84,7 +84,8 @@
                 <div *ngIf="updateTrue == true">
                     <form [formGroup]="selectRating">
                         <input type="text" formControlName="reviewText">
-                        <button mat-button (click)="updateReview(review.id, review.reviewRating, review.reviewText)"
+                        <input  formControlName="reviewRating">
+                        <button mat-button (click)="updateReview(review.id, selectRating.value)"
                             type="submit">UPDATE</button>
                     </form>
                 </div>
