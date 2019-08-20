@@ -68,7 +68,7 @@ export class ProfileComponent implements OnInit {
     // console.log(this.profileService.smallId)
   }
 
-  profilePic() {
+  profilePic(e) {
     if (this.bigData === 0) {
       return "../../../assets/photo1.jpeg"
     } else if (this.bigData === 0) {

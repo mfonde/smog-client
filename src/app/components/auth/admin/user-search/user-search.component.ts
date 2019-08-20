@@ -27,7 +27,7 @@ export class UserSearchComponent implements OnInit {
   @ViewChild('profilePicInput', { static: false }) profilePicInputRef: ElementRef;
   @ViewChild('adminInput', { static: false }) adminInputRef: ElementRef;
 
-  public user = [];
+  public user : User[];
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
   public userId = this.currentUser.user.id;
   public id;
