@@ -14,6 +14,14 @@ export interface DialogueData {
   ranking: number;
 }
 
+export interface ReviewData {
+  id: number;
+  reviewText: string;
+  reviewRating: number;
+}
+
+
+
 const smallUser = JSON.parse(localStorage.getItem('currentUser'))
 // const smallId = JSON.parse(localStorage.getItem('currentFav'))
 
@@ -64,6 +72,13 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  openRDialog(id): void {
+    const dialogRef = this.dialog.open(UpdateReviewModal, {
+      width: '550px',
+      data: {review: id}
+    });
+  }
+
   ngOnInit() {
     this.profileService.getYourReview(this.bigUser).subscribe(data => {
       this.bigReviews = data
@@ -80,21 +95,18 @@ export class ProfileComponent implements OnInit {
 
   profilePic() {
     if (this.bigData === 0) {
-      return "../../../assets/photo1.jpeg"
-    } else if (this.bigData === 1) {
-      return "../../../assets/"
+      return "../../../assets/OwenProfilePic.png"
     }
-
   }
 
   createForm(): void {
     this.selectRanking = this.form.group(
       { ranking: new FormControl }
-    )
-    this.selectRating = this.form.group(
-      { reviewText: new FormControl },
-      { reviewRating: new FormControl}
-    )
+    );
+    this.selectRating = this.form.group({
+       reviewText: new FormControl,
+       reviewRating: new FormControl
+    });
   }
 
   delete(id): void {
@@ -124,20 +136,22 @@ export class ProfileComponent implements OnInit {
     this.profileService.updateYourFavorites(id, ranking)
   }
 
-  updateReview(id, updatedRev) {
-    updatedRev = this.selectRating.value;
+  updateReview(id) {
+    const updatedRev = this.selectRating.value;
+    console.log(updatedRev);
+    console.log(id)
     // console.log(this.selectRating.value)
     // console.log(typeof updatedRev)
     this.profileService.updateYourReviews(id, updatedRev)
-    location.reload();
+    // location.reload();
   }
 
-  updateOn(id) {
+  updateOn() {
     this.updateTrue = true;
   }
 
   updateRating(id) {
-    const reviewRating = this.selectStars.value;
+    const reviewRating = this.selectRating.value;
     // console.log(this.selectRating.value)
     // console.log(typeof reviewRating)
     this.profileService.updateYourReviews(id, reviewRating)
@@ -187,4 +201,52 @@ export class UpdateDialog {
       // console.log(typeof ranking)
       this.profileService.updateYourFavorites(id, ranking)
     }
+}
+
+// reviews update modal
+@Component({
+  selector: 'update-review-modal',
+  templateUrl: 'update-rmodal.html',
+  styleUrls: ['./update-rmodal.css']
+})
+export class UpdateReviewModal {
+
+  constructor(
+    private profileService: ProfileService,
+    public dialogRef: MatDialogRef<UpdateReviewModal>,
+    private router: Router,
+    private form: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data: ReviewData) {
+      this.createForm()
+    }
+
+    public selectRating: FormGroup;
+  
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  createForm(): void {
+    this.selectRating = this.form.group({
+      reviewText: new FormControl,
+      reviewRating: new FormControl
+   })};
+
+   updateReview(id) {
+    const updatedRev = this.selectRating.value;
+    console.log(updatedRev);
+    console.log(id)
+    // console.log(this.selectRating.value)
+    // console.log(typeof updatedRev)
+    this.profileService.updateYourReviews(id, updatedRev)
+    // location.reload();
+    this.onNoClick()
+  }
+
+  updateMe(id): void {
+    this.updateReview(id);
+    console.log('updated');
+    this.router.navigateByUrl('/#', { skipLocationChange: true }).then(() => this.router.navigate(['/profile']));
+  }
+    
 }

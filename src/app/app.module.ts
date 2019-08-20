@@ -29,7 +29,7 @@ import { MovieComponent } from '../app/components/movie/movie.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileComponent, UpdateReviewModal } from './components/profile/profile.component';
 import { CreateReviewComponent } from './components/reviews/create-review/create-review.component';
 import { AdminComponent } from './components/auth/admin/admin.component';
 import { UserSearchComponent } from './components/auth/admin/user-search/user-search.component';
@@ -64,7 +64,8 @@ import { UpdateDialog } from '../app/components/profile/profile.component';
     FavoritesComponent,
     FavoriteItemComponent,
     FavoriteDialog,
-    UpdateDialog
+    UpdateDialog,
+    UpdateReviewModal
   ],
   entryComponents: [
     NewReviewDialog,
@@ -73,7 +74,8 @@ import { UpdateDialog } from '../app/components/profile/profile.component';
     HeaderComponent,
     AuthHeaderComponent,
     FavoriteDialog,
-    UpdateDialog
+    UpdateDialog,
+    UpdateReviewModal
   ],
   //TODO: HOLDS ALL OF THE IMPORTS ADDED TO THE ANGULAR APP FOR OTHER FILES TO USE 
   imports: [
