@@ -31,11 +31,11 @@ export class UserService {
 
   register(user: User) {
     this.currentUser = new User(user)
-    console.log(this.currentUser)
-    console.log(user)
+    // console.log(this.currentUser)
+    // console.log(user)
     return this.http.post(`${smog}/user/create/`, this.currentUser, { headers: this.headers }).subscribe(data => {
       this.registeredUser = data;
-      console.log(this.registeredUser)
+      // console.log(this.registeredUser)
     })
     //! Need to have a subscribe if ever sending information.
 
@@ -50,18 +50,12 @@ export class UserService {
         'Authorization': this.token
       }
     })
-    // .subscribe(data => {
-    //   this.searchedUser = data;
-    //   console.log(data);
-    // })
-
   }
 
   delete(id) {
     // deletes user by the user id sent with the request
     const url = `${smog}/user/delete/${id}`
-    console.log(url);
-    console.log(id);
+
     return this.http.delete<any>(url, {
       headers: this.authHeaders
     }).subscribe(data => {
@@ -73,8 +67,8 @@ export class UserService {
     // const id = this.userId;
     // console.log(id);
     const url = `${smog}/user/update/${userUpdate.id}`
-    console.log(url);
-    console.log(userUpdate);
+    // console.log(url);
+    // console.log(userUpdate);
     return this.http.put<any>(url, userUpdate, {
       headers: this.authHeaders
     }).subscribe(data => {

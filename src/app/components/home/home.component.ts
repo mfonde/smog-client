@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.searchForm.value.searchTitle);
+    // console.log(this.searchForm.value.searchTitle);
 
     this.databaseService.getMovieInfo(this.searchForm.value.searchTitle, () => {
       this.router.navigate([this.returnUrl]);

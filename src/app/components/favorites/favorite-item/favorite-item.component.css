@@ -24,10 +24,9 @@
     letter-spacing: 0.1em;
     float: right;
     color: rgb(134, 21, 28);
-
   }
 
-  .image {
+.image {
 max-width: 100%;  
 border: 1px solid gold;
 }
