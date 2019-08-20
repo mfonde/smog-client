@@ -30,6 +30,7 @@ export interface FavoriteData {
   styleUrls: ['./movie.component.css']
 })
 export class MovieComponent implements OnInit {
+  currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
   // favoriteSelected = false;
   favoriteAdded = false;
