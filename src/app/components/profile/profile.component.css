@@ -27,6 +27,8 @@
 .example-card {
     max-width: 250px;
     margin-right: 20px;
+    height: 600px;
+    text-align: center;
     background-color: #dd1d1da2;
     background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
     color: antiquewhite;
