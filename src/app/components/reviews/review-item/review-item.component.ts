@@ -3,6 +3,7 @@ import { Review } from 'src/app/models/review-model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReviewService } from '../../../services/review.service';
 import { BestiesService } from '../../../services/besties.service';
+import { ReviewData } from '../../../models/ReviewData'
 
 @Component({
   selector: 'app-review-item',
@@ -10,7 +11,7 @@ import { BestiesService } from '../../../services/besties.service';
   styleUrls: ['./review-item.component.css']
 })
 export class ReviewItemComponent implements OnInit {
-  @Input() review: Review;
+  @Input() review: ReviewData;
   @Input() adminOn;
   @ViewChild('username', {static:false}) usernameRef: ElementRef;
   returnUrl: string;

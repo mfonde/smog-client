@@ -35,6 +35,7 @@ export class UserSearchComponent implements OnInit {
   public profilePic;
   public admin;
   public username;
+  public password;
 
 
 
@@ -117,6 +118,7 @@ export class UserSearchComponent implements OnInit {
       this.profilePic = data[0].profilePic;
       this.admin = data[0].admin;
       this.username = data[0].username;
+      this.password = data[0].password;
       console.log(this.user);
       console.log(this.id);
     }
