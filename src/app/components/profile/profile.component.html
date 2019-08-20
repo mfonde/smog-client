@@ -14,7 +14,9 @@
 
 <!-- favorites -->
 <div class="favorites">
-        <div *ngFor="let favorite of bigFavorites">
+    <div class="fTitle" >FAVORITES
+    <br />
+    <div *ngFor="let favorite of bigFavorites">
             <mat-card class="example-card">
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
@@ -52,13 +54,14 @@
                     </div>
                     <!-- <h3 *ngIf="">Favorite Added!</h3> -->
                 </mat-card-actions>
-            </mat-card>
+            </mat-card></div>
         </div>
     
         <!-- reviews -->
 <!-- <div class="yourReviews"> -->
     <!-- <ul class="reviews"> -->
         <div class="work">
+            <div class="fTitle">REVIEWS
         <div class="reviews" *ngFor="let review of bigReviews">
                 <mat-expansion-panel class="bleh">
                         <mat-expansion-panel-header >
@@ -98,6 +101,6 @@
                 <button mat-button (click)="deleteReview(review.id)">DELETE</button>
                 <button mat-button (click)="updateOn()" *ngIf="updateTrue == false">UPDATE</button>
          </mat-expansion-panel>
-</div>
+</div></div>
 </div>
            
