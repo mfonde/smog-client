@@ -62,10 +62,10 @@ export class ProfileComponent implements OnInit {
     config.max = 5; config.readonly = true
   }
 
-  openDialog(): void {
+  openDialog(id): void {
     const dialogRef = this.dialog.open(UpdateDialog, {
       width: '250px',
-      data: {favorite: this.bigFavorites}
+      data: {favorite: id}
     });
   }
   
@@ -157,6 +157,7 @@ export class ProfileComponent implements OnInit {
 
 }
 
+// favorites update modal
 @Component({
   selector: 'update-dialog',
   templateUrl: 'update-modal.html',
@@ -164,11 +165,36 @@ export class ProfileComponent implements OnInit {
 export class UpdateDialog {
 
   constructor(
+    private profileService: ProfileService,
+    private router: Router,
     public dialogRef: MatDialogRef<UpdateDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogueData) {}
+    private form: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data: DialogueData) {
+      this.createForm()
+    }
 
+    public selectRanking: FormGroup;
+  
   onNoClick(): void {
     this.dialogRef.close();
   }
 
+  createForm(): void {
+    this.selectRanking = this.form.group(
+      { ranking: new FormControl }
+    )}
+
+    update(id): void {
+      this.serverUpdate(id);
+      console.log('updated');
+      this.router.navigateByUrl('/#', { skipLocationChange: true }).then(() => this.router.navigate(['/profile']));
+      this.dialogRef.close();
+    }
+    
+    serverUpdate(id): void {
+      const ranking = this.selectRanking.value;
+      // console.log(id)
+      // console.log(typeof ranking)
+      this.profileService.updateYourFavorites(id, ranking)
+    }
 }

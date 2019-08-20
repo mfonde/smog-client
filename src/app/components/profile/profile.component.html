@@ -27,10 +27,7 @@
                 </div>
                 <mat-card-actions>
                     <button class="delete" mat-button (click)="delete(favorite.id)">DELETE</button>
-                    <button mat-button class="update" (click)="openDialog()">UPDATE</button>
-                    <!-- <button class="update" mat-button (click)="updateOn(favorite.id)">UPDATE</button> -->
-                    <!-- <div class="updating" *ngIf="updateTrue == true"> -->
-                    <!-- </div> -->
+                    <button mat-button class="update" (click)="openDialog(favorite.id)">UPDATE</button>
                 </mat-card-actions>
             </mat-card>
         </div>

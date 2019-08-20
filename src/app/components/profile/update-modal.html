@@ -1,4 +1,3 @@
-<h1 mat-dialog-title>Hi</h1>
 <div mat-dialog-content>
         <form class="form" [formGroup]="selectRanking">
                 <p>Please select a ranking for this favorite.</p>
@@ -14,7 +13,7 @@
                     <mat-option value=9>9</mat-option>
                     <mat-option value=10>10</mat-option>
                 </mat-select>
-                <button mat-raised-button type="submit" (click)="update(data.favorite.id)" color="danger">Update
+                <button mat-raised-button type="submit" (click)="update(data.favorite)" color="danger">Update
                     Favorite</button>
             </form>
 </div>
