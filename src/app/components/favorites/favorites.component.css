@@ -1,0 +1,12 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    flex: none;
+}
+
+.item{
+    max-width: 21%;
+    margin-right: 4%;
+}

@@ -13,6 +13,7 @@ import { ReviewsComponent } from "../reviews/reviews.component";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  title = 'smog-moviereviewcloud-client';
 
   public searchForm: FormGroup;
   mTitle = '';
@@ -29,7 +30,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.searchForm.valueChanges.subscribe(console.log);
+    // this.searchForm.valueChanges.subscribe(console.log);
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/movie';
   }
 
@@ -40,7 +41,7 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.searchForm.value.searchTitle);
+    // console.log(this.searchForm.value.searchTitle);
 
     this.databaseService.getMovieInfo(this.searchForm.value.searchTitle, () => {
       this.router.navigate([this.returnUrl]);

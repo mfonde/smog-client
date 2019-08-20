@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MovieData } from '../models/MovieData';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -18,6 +17,7 @@ export class DatabaseService {
     return this.http.get(url).subscribe(data => {
       this.movie = new MovieData(data);
       console.log(this.movie);
+      localStorage.setItem('movie', JSON.stringify(this.movie))
       cb();
     })
   }

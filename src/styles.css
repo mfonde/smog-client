@@ -1,2 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@font-face{
+    font-family:"Theatre-font";
+    src: url("/assets/Riemann\ Theatre.otf") format("opentype");
+}
+
+@font-face{
+    font-family: "Movie-title";
+    src: url("/assets/Movie\ Title_AH.ttf") format("opentype");
+}
+
+/* Global Styling */
+body{
+    background-image: url("../src/assets/movieSeats.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    height:100vh;
+    /* parallax */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+/* .mat-form-field-empty.mat-form-field-label {
+    color: white;
+} */

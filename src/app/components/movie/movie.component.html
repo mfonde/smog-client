@@ -1,14 +1,28 @@
-<div class="poster">
-<img src={{movie.poster}} alt="poster" >
+<div class="movieCard">
+    <h1>{{movie.title}}</h1>
+    <hr class="lines" width="50%">
+    <div class="topArea">
+        <div class="poster">
+            <img *ngIf="movie.poster !== 'N/A'" src={{movie.poster}} alt="poster" height="80%">
+        </div>
+        <div class="movieInfo">
+            <h3><b>Rating:</b> {{movie.rated}}</h3>
+            <h3><b>Runtime:</b> {{movie.runtime}}</h3>
+            <h3><b>Release Date:</b> {{movie.released}}</h3>
+            <h3><b>Genre:</b> {{movie.genre}}</h3>
+            <h3><b>Actors:</b> {{movie.actors}}</h3>
+            <h3>{{movie.plot}}</h3>
+        </div>
+    </div>
 </div>
+<br />
+<div class="buttons">
+    <button mat-raised-button (click)="openDialog()" class="button">New Review</button>
+    <button mat-raised-button (click)="onFavoriteSelected()" class="button">Add To Favorites</button>
+</div>
+<br />
+<h3 *ngIf="favoriteAdded">Favorite Added!</h3>
 
-<h1>{{movie.title}}</h1>
-<h2>{{movie.genre}}</h2>
-<h2>{{movie.imdbID}}</h2>
-<h2>{{movie.director}}</h2>
-<h3>{{movie.plot}}</h3>
-<h3>{{movie.rated}}</h3>
-<h3>{{movie.released}}</h3>
-<h3>{{movie.runtime}}</h3>
-<h3>{{movie.actors}}</h3>
-<button mat-raised-button routerLink='/home' color="danger">Back to Home</button>
+<app-reviews *ngIf="movie.imdbID" [displayedMovie]="movie">
+    <br />
+</app-reviews>

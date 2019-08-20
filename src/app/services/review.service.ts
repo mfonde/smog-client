@@ -1,26 +1,83 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { NewReview } from '../models/post-review-model'
+import { Review } from '../models/review-model';
+// import {  APIURL } from '../helpers/environment';
+
+const smog = `http://localhost:3000`
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReviewService {
+  public reviews: Review[];
+  public movieReviews: object[];
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  // getInfo(url) {
-  //   return this.http.get<any>(url)
-  // }
-   headers = new HttpHeaders({
+  token = JSON.parse(localStorage.getItem('sessionToken'));
+  headers = new HttpHeaders({
     'Content-Type': 'application/json',
+  })
+  authHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': this.token
   })
 
   getAllReviews() {
-    const url = "http://localhost:3000/review/getall";
-    return this.http.get<any>(url, 
-      {headers:this.headers
+    const url = `${smog}/review/getall`;
+    return this.http.get<any>(url,
+      { headers: this.headers })
+  }
+
+  getReviewsByImdbID(imdbID) {
+    const url = `${smog}/review/imdbid/${imdbID}`;
+    return this.http.get<any>(url,
+      {
+        headers: this.headers
+      })
+  }
+
+  getReviewsByUsername(searchName) {
+    const url = `${smog}/review/username/${searchName}`;
+    console.log(searchName);
+    return this.http.get<any>(url, {
+      headers: this.authHeaders
+    })
+  }
+
+  getReviewsByUsernameCallback(searchName, cb: Function) {
+    const url = `${smog}/review/username/${searchName}`;
+    console.log(searchName);
+    return this.http.get<any>(url, {
+      headers: this.authHeaders
+    }).subscribe(reviews => {
+      this.reviews = reviews;
+      console.log(reviews);
+      cb();
+    })
+  }
+
+  postReview(review: NewReview) {
+    const url = `${smog}/review/`;
+    console.log(review)
+    this.http.post(url, review, {
+      headers: this.authHeaders
+    }).subscribe(data => {
+      console.log(data);
+    })
+  }
+
+  deleteReview(id) {
+    const url = `${smog}/review/delete/${id}`;
+    console.log(url);
+    return this.http.delete<any>(url, {
+      headers: this.authHeaders
     })
   }
 
 }
+
+
+

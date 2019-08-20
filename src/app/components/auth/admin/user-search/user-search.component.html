@@ -1,0 +1,89 @@
+<div class="body">
+  <div class="searchMeDad">
+    <div class="textBox">
+      <h2>Search By Username To Update Info</h2>
+
+      <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="userSearchForm">
+        <mat-form-field class="searchBox">
+          <input matInput class="userSearchName" #searchName formControlName="searchName" placeholder="username">
+        </mat-form-field>
+        <button mat-raised-button color="white" class="button" (click)="displayUser()" type="submit">Search</button>
+      </form>
+
+    </div>
+
+  </div>
+  <hr>
+  <div class="tableDiv" *ngIf="userDisplayed">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Username</th>
+          <th scope="col">Email</th>
+          <th scope="col">Id</th>
+          <th scope="col">Profile Pic</th>
+          <th scope="col">Password</th>
+          <th scope="col">Admin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{user.username}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.id}}</td>
+          <td>{{user.profilePic}}</td>
+          <td>{{user.password}}</td>
+          <td>{{user.admin}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+    <button class="editButton button" mat-raised-button color="white" (click)="editUser()">Edit User</button> &nbsp;
+    <button class="deleteButton button" mat-raised-button color="white" (click)="deleteUser()">Delete User</button>
+    <hr>
+    <div class="deleteDiv" *ngIf="deleteUserOn">
+      <h4>Are You Sure You Want To Delete This User? This Cannot Be Undone!</h4>
+      <button class="deleteButton button" mat-raised-button color="white" (click)="saveDeleteUser()">Confirm
+        Delete</button>
+
+    </div>
+    <div class="formDiv" *ngIf="editUserOn">
+      <form>
+        <div class="row">
+          <div class="col-sm-2 form-group">
+            <label for="username">Edit Username</label>
+            <input defaultValue={{user.username}} type="text" id="username" class="form-control" #usernameInput>
+          </div>
+          <div class="col-sm-3 form-group">
+            <label for="email">Edit Email</label>
+            <input defaultValue={{user.email}} type="text" id="email" class="form-control" #emailInput>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label for="password">Edit Password</label>
+            <input placeholder='Password' type="text" id="password" class="form-control" #passwordInput>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label for="profilePic">Edit Profile Pic</label>
+            <input defaultValue={{user.profilePic}} type="text" id="profilePic" class="form-control" #profilePicInput>
+          </div>
+          <div class="col-sm-2 form-group">
+            <label for="admin">Edit Admin</label>
+            <input defaultValue={{user.admin}} type="text" id="admin" class="form-control" #adminInput>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <button class="editButton button" mat-raised-button color="white" (click)="saveEditUser()">Save
+              Edits</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <app-reviews [searchName]="searchName.value" [adminOn]="adminOn">
+    </app-reviews>
+    <!-- <app-reviews 
+    >
+  </app-reviews> -->
+  </div>
+
+</div>

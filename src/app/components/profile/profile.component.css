@@ -1,0 +1,156 @@
+.user{
+    display: flex;
+    flex-direction: row;
+    border: 3px black solid;
+    text-align: center;
+    margin-left:40%;
+    margin-right:43%;
+    color:white;
+}
+.profPic{
+    width: 5px;
+    height: 5px;
+    margin-left:45%;
+}
+.favorites{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.admin{
+    text-align: center;
+    padding-top: 3%;
+}
+.reviews{
+    margin-top:30px;
+}
+.example-card {
+    max-width: 250px;
+    height: 550px;
+    margin-right: 20px;
+    background-color: #dd1d1da2;
+    background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
+    color: antiquewhite;
+}
+.title{
+    font-family: "Movie-title";
+    font-size: 2em;
+    letter-spacing: 0.1em;
+    float: right;
+    color: antiquewhite;
+    text-align: center;
+}
+.image {
+    max-width: 100%;  
+    height: 300px;
+    border: 10px dotted gold;
+}
+.updating{
+    margin-right: 299px;
+}
+.form{
+    width: 230px;
+    border-bottom: 5px solid rgba(0, 0, 0, 0.555);
+    border-left: 5px double rgba(247, 58, 58, 0.767);
+    border-right: 5px double rgba(247, 58, 58, 0.767);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #dd1d1da2;
+    background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
+    color: antiquewhite;
+}
+.formSelect{
+    text-align: center;
+}
+.header{
+    color: antiquewhite;
+    text-align: center;
+    height: 30%;
+    background-color: rgba(250, 171, 171, 0.226);
+}
+.example-header-image {
+    background-size: cover;
+}
+.ranking{
+    font-family:"Movie-title";
+    font-weight: bolder;
+    font-size: 2em;
+    color: antiquewhite;
+}
+.favorites{
+    display: flex;
+    flex-direction: row;
+    margin-right:20px;
+    margin-top:30px;
+    z-index:3;
+}
+.star {
+    font-size: 2em;
+    color: grey;
+    text-shadow: black 1.5px 1px;
+}
+.filled {
+    color: yellow ;
+}
+.test{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+.headerBackground{
+    background-color: #ffffff;
+    background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
+    width: 50%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 30px;
+    margin-bottom: 5%;
+    margin-top: 3%;
+    padding-top: 3%;
+}
+.headContainer{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+}
+h1{
+    text-align: center;
+    color: black;
+    padding-top: 7%;
+    font-family: "Theatre-font";
+    text-shadow: 3px 2px 3px gold;
+    letter-spacing: 0.1em;
+}
+#username{
+    font-size: 3em;
+}
+.body{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+h2{
+    text-align: center;
+    color: white;
+    text-shadow: 3em 3em 3em black;
+    font-size: 3em;
+    margin-bottom: 3%;
+    font-family: "Movie-title";
+    font-size: 5.5em;
+    letter-spacing: 0.2em;
+    font-weight: bolder;
+}
+.work{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.fTitle{
+    font-family: "Movie-title";
+    color: white;
+    font-size: 100px;
+
+}
+

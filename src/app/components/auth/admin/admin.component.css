@@ -1,0 +1,8 @@
+.wrapper{
+    color: white;
+}
+
+.logo{
+    display: flex;
+    justify-content: center;
+    }

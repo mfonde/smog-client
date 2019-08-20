@@ -1,0 +1,88 @@
+ .body{
+   position: absolute;
+   left:50%;
+   transform:translate(-50%);
+   width: 100%;
+ }
+ 
+ .searchMeDad{
+    position: absolute;
+    left: 50%;
+    padding-top: 5%;
+    transform: translate(-50%);
+    }
+
+    .textBox{
+      background-color: rgba(0, 0, 0, 0.3);
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-bottom: 0.3em;
+      border-radius: 25px;
+    }
+
+    h2{
+      text-align: center;
+      color: white;
+      font-family: "Movie-title";
+      text-shadow: 2px 2px 3px black;
+      font-size: 4em;
+      letter-spacing: 0.1em;
+      font-weight: bold;
+    }
+
+    .button{
+      color: black !important;
+    }
+
+    .tableDiv{
+      position: relative;
+      left: 50%;
+      transform: translate(-50%);
+      width: 90%;
+      padding-top: 20%;
+    }
+
+    table{
+      table-layout: fixed;
+      color: black;
+    }
+
+    td{
+      word-wrap: break-word;
+    }
+
+    .searchBox{
+      width: 75%;
+      height: 10%;
+      margin-right: 5%;
+    }
+
+    .userSearchName{
+      color: white;
+      font-size: 2.5em;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      font-family: "Movie-title";
+    }
+
+    .input{
+      color: black;
+    }
+  
+    ::ng-deep.mat-form-field-underline {
+      background-color: white !important;
+    } 
+  
+    ::ng-deep.mat-form-field-ripple {
+      background-color: white !important;
+     }
+  
+     ::ng-deep .mat-focused .mat-form-field-label {
+      color: white !important;
+     }
+  
+     ::ng-deep .mat-form-field-empty.mat-form-field-label {
+       color: white !important;
+     }
+  
+    
