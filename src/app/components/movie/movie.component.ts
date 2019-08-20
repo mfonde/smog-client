@@ -7,7 +7,6 @@ import { NewReview } from '../../models/post-review-model'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 export interface DialogData {
   movie: {
@@ -17,6 +16,14 @@ export interface DialogData {
   };
 }
 
+export interface FavoriteData {
+  movie: {
+    title: string,
+    poster: string,
+    imdbID: string
+  }
+}
+
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
@@ -24,7 +31,7 @@ export interface DialogData {
 })
 export class MovieComponent implements OnInit {
 
-  favoriteSelected = false;
+  // favoriteSelected = false;
   favoriteAdded = false;
   public movie;
   public selectRanking: FormGroup;
@@ -40,7 +47,6 @@ export class MovieComponent implements OnInit {
     this.createForm();
   }
 
-
   openDialog(): void {
     const dialogRef = this.dialog.open(NewReviewDialog, {
       width: '600px',
@@ -50,6 +56,7 @@ export class MovieComponent implements OnInit {
       // console.log('The dialog was closed');
     });
   }
+
   createForm() {
     this.selectRanking = this.form.group({
       ranking: new FormControl
@@ -67,13 +74,17 @@ export class MovieComponent implements OnInit {
 
   }
 
-  onFavoriteSelected() {
-    this.favoriteSelected = true;
+  onFavoriteSelected(): void {
+    const dialogRef = this.dialog.open(FavoriteDialog, {
+      width: '600px',
+      data: {movie: this.movie}
+    });
+    dialogRef.afterClosed().subscribe(result => {console.log('The dialog was closed')})
   }
 
-  favoriteClose() {
-    this.favoriteSelected = false;
-  }
+  // favoriteClose() {
+  //   this.favoriteSelected = false;
+  // }
 
   addToFavorites() {
     const movieTitle = this.databaseService.movie.title;
@@ -86,7 +97,7 @@ export class MovieComponent implements OnInit {
     // console.log(this.databaseService.movie.title);
     // console.log(ranking);
     // console.log(newFavorite);
-    this.favoriteClose();
+    // this.favoriteClose();
     this.favoriteAdded = true;
     this.router.navigateByUrl('/#', { skipLocationChange: true }).then(() => this.router.navigate(['/movie']));
   }
@@ -145,7 +156,52 @@ export class NewReviewDialog {
     // console.log(newReview)
     this.dialogRef.close();
     this.refresh();
-
-
   }
+}
+
+@Component({
+  selector: 'favorite-dialog',
+  templateUrl: 'favorite-dialog.html',
+  styleUrls: ['./favorite-dialog.css']
+})
+export class FavoriteDialog {
+
+  public selectRanking: FormGroup;
+
+  constructor(
+    public dialogRef: MatDialogRef<FavoriteDialog>,
+    private form: FormBuilder,
+    private favoriteService: FavoriteService,
+    private router: Router,
+    @Inject(MAT_DIALOG_DATA) public favoriteData: FavoriteData
+  ){
+    this.favoriteForm()
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  favoriteForm() {
+    this.selectRanking = this.form.group({
+      ranking: new FormControl
+    })
+  }
+
+  refresh() {
+    this.router.navigateByUrl('#', { skipLocationChange: true }).then(() => this.router.navigate(['/movie']));
+  }
+
+  addToFavorites() {
+    const movieTitle = this.favoriteData.movie.title;
+    const poster = this.favoriteData.movie.poster;
+    const imdbId = this.favoriteData.movie.imdbID;
+    const ranking = this.selectRanking.value.ranking;
+
+    const newFavorite = new Favorite(movieTitle, poster, imdbId, ranking);
+    this.favoriteService.saveFavorite(newFavorite);
+    this.dialogRef.close();
+    this.refresh();
+  }
+
 }
