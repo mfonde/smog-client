@@ -41,6 +41,7 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
 import { FavoriteItemComponent } from './components/favorites/favorite-item/favorite-item.component';
 import { NewReviewDialog } from '../app/components/movie/movie.component';
 import { FavoriteDialog } from '../app/components/movie/movie.component';
+import { UpdateDialog } from '../app/components/profile/profile.component';
 
 @NgModule({
   //TODO: DECLARES ALL OF THE COMPONENTS ADDED INTO THE APP MODULE 
@@ -62,7 +63,8 @@ import { FavoriteDialog } from '../app/components/movie/movie.component';
     ReviewItemComponent,
     FavoritesComponent,
     FavoriteItemComponent,
-    FavoriteDialog
+    FavoriteDialog,
+    UpdateDialog
   ],
   entryComponents: [
     NewReviewDialog,
@@ -70,7 +72,8 @@ import { FavoriteDialog } from '../app/components/movie/movie.component';
     UserSearchComponent,
     HeaderComponent,
     AuthHeaderComponent,
-    FavoriteDialog
+    FavoriteDialog,
+    UpdateDialog
   ],
   //TODO: HOLDS ALL OF THE IMPORTS ADDED TO THE ANGULAR APP FOR OTHER FILES TO USE 
   imports: [

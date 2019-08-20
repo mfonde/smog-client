@@ -11,7 +11,7 @@
         <br>
         <br>
     </div>
-
+    
     <!-- favorites -->
     <div class="favorites">
         <div *ngFor="let favorite of firstfive">
@@ -27,26 +27,7 @@
                 </div>
                 <mat-card-actions>
                     <button class="delete" mat-button (click)="delete(favorite.id)">DELETE</button>
-                    <button class="update" mat-button (click)="updateOn()">UPDATE</button>
-                    <div class="updating" *ngIf="updateTrue == true">
-                        <form class="form" [formGroup]="selectRanking">
-                            <p>Please select a ranking for this favorite.</p>
-                            <mat-select class="formSelect" formControlName="ranking" value=''>
-                                <mat-option value=1>1</mat-option>
-                                <mat-option value=2>2</mat-option>
-                                <mat-option value=3>3</mat-option>
-                                <mat-option value=4>4</mat-option>
-                                <mat-option value=5>5</mat-option>
-                                <mat-option value=6>6</mat-option>
-                                <mat-option value=7>7</mat-option>
-                                <mat-option value=8>8</mat-option>
-                                <mat-option value=9>9</mat-option>
-                                <mat-option value=10>10</mat-option>
-                            </mat-select>
-                            <button mat-raised-button type="submit" (click)="update(favorite.id)" color="danger">Update
-                                Favorite</button>
-                        </form>
-                    </div>
+                    <button mat-button class="update" (click)="openDialog(favorite.id)">UPDATE</button>
                 </mat-card-actions>
             </mat-card>
         </div>
@@ -64,37 +45,7 @@
                 </mat-card-header>
                 <br>
                 <br>
-                <div class="col-xs-12">
-                    <img class="image" mat-card-image src={{favorite.poster}} alt="Owen is Dad">
-                </div>
-                <mat-card-actions>
-                    <button class="delete" mat-button (click)="delete(favorite.id)">DELETE</button>
-                    <button class="update" mat-button (click)="updateOn()">UPDATE</button>
-                    <div class="updating" *ngIf="updateTrue == true">
-                        <form class="form" [formGroup]="selectRanking">
-                            <p>Please select a ranking for this favorite.</p>
-                            <mat-select formControlName="ranking" value=''>
-                                <mat-option value=1>1</mat-option>
-                                <mat-option value=2>2</mat-option>
-                                <mat-option value=3>3</mat-option>
-                                <mat-option value=4>4</mat-option>
-                                <mat-option value=5>5</mat-option>
-                                <mat-option value=6>6</mat-option>
-                                <mat-option value=7>7</mat-option>
-                                <mat-option value=8>8</mat-option>
-                                <mat-option value=9>9</mat-option>
-                                <mat-option value=10>10</mat-option>
-                            </mat-select>
-                            <button mat-raised-button type="submit" (click)="update(favorite.id)" color="danger">Update
-                                Favorite</button>
-                        </form>
-                    </div>
-                </mat-card-actions>
-            </mat-card>
-        </div>
-    </div>
-    <br>
-    <br>
+               
     <!-- reviews -->
     <!-- <div class="yourReviews"> -->
     <!-- <ul class="reviews"> -->
@@ -141,5 +92,4 @@
                 <button mat-button (click)="updateOn()" *ngIf="updateTrue == false">UPDATE</button>
             </mat-expansion-panel>
         </div>
-    </div>
 </div>
