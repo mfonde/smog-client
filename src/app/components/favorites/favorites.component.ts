@@ -9,21 +9,18 @@ import { Favorite } from '../../models/favorite-model';
 })
 export class FavoritesComponent implements OnInit {
 
-  constructor(private favoriteService: FavoriteService) { }
-  @Input() searchName: string;
   favorites: Favorite[];
+  @Input() searchName: string;
+
+  constructor(private favoriteService: FavoriteService) { }
 
   getFavoritesByUsername() {
     this.favoriteService.getFavoritesByUsername(this.searchName).subscribe(favorites => {
-      console.log(favorites);
       this.favorites = favorites;
-      console.log(this.favorites);
     })
   }
 
   ngOnInit() {
-    // console.log(this.searchName);
     this.getFavoritesByUsername();
   }
-
 }

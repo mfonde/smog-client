@@ -13,7 +13,7 @@ import { ReviewData } from '../../../models/ReviewData'
 export class ReviewItemComponent implements OnInit {
   @Input() review: ReviewData;
   @Input() adminOn;
-  @ViewChild('username', {static:false}) usernameRef: ElementRef;
+  @ViewChild('username', { static: false }) usernameRef: ElementRef;
   returnUrl: string;
 
   constructor(private route: ActivatedRoute,
@@ -21,8 +21,6 @@ export class ReviewItemComponent implements OnInit {
 
   showUserProfile() {
     const username = this.usernameRef.nativeElement.innerHTML;
-    console.log(username);
-    
     this.reviewService.getReviewsByUsernameCallback(username, () => {
       this.router.navigate([this.returnUrl])
     });

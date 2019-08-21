@@ -9,21 +9,16 @@ export class AdminComponent implements OnInit {
   userSearch = false;
   reviewSearch = false;
   adminOn = false;
-
   constructor() { }
-
   ngOnInit() {
     this.adminOn = true;
   }
-
   onUserSearch() {
     this.userSearch = true;
     this.reviewSearch = false;
   }
-
   onReviewSearch() {
     this.reviewSearch = true;
     this.userSearch = false;
   }
-
 }

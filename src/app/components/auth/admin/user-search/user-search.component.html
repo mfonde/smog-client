@@ -2,16 +2,13 @@
   <div class="searchMeDad">
     <div class="textBox">
       <h2>Search By Username To Update Info</h2>
-
       <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="userSearchForm">
         <mat-form-field class="searchBox">
           <input matInput class="userSearchName" #searchName formControlName="searchName" placeholder="username">
         </mat-form-field>
         <button mat-raised-button color="white" class="button" (click)="displayUser()" type="submit">Search</button>
       </form>
-
     </div>
-
   </div>
   <hr>
   <div class="tableDiv" *ngIf="userDisplayed">
@@ -45,7 +42,6 @@
       <h4>Are You Sure You Want To Delete This User? This Cannot Be Undone!</h4>
       <button class="deleteButton button" mat-raised-button color="white" (click)="saveDeleteUser()">Confirm
         Delete</button>
-
     </div>
     <div class="formDiv" *ngIf="editUserOn">
       <form>
@@ -81,9 +77,5 @@
     </div>
     <app-reviews [searchName]="searchName.value" [adminOn]="adminOn">
     </app-reviews>
-    <!-- <app-reviews 
-    >
-  </app-reviews> -->
   </div>
-
 </div>

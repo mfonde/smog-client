@@ -31,11 +31,10 @@ export class UserService {
 
   register(user: User) {
     this.currentUser = new User(user)
-    // console.log(this.currentUser)
-    // console.log(user)
+   
     return this.http.post(`${smog}/user/create/`, this.currentUser, { headers: this.headers }).subscribe(data => {
       this.registeredUser = data;
-      // console.log(this.registeredUser)
+      
     })
     //! Need to have a subscribe if ever sending information.
 
@@ -64,11 +63,8 @@ export class UserService {
   }
 
   update(userUpdate) {
-    // const id = this.userId;
-    // console.log(id);
     const url = `${smog}/user/update/${userUpdate.id}`
-    // console.log(url);
-    // console.log(userUpdate);
+
     return this.http.put<any>(url, userUpdate, {
       headers: this.authHeaders
     }).subscribe(data => {

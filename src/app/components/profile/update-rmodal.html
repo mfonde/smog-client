@@ -1,0 +1,17 @@
+<!-- <form [formGroup]="selectRating" (ngSubmit)="updateReview(review.id)"> -->
+        <!-- <input type="text" formControlName="reviewText"> -->
+        <!-- <input type="number" formControlName="reviewRating"> -->
+        <!-- <button mat-button type="submit">UPDATE</button> -->
+
+        <form [formGroup]="selectRating" (ngSubmit)="updateMe(data.review)">
+            <div class="dataArea">
+                 <input type="number" formControlName="reviewRating" placeholder="Rating Score">
+                <br />
+                Your Thoughts
+                    <mat-form-field class="textBox">
+                        <textarea number formControlName="reviewText" matInput placeholder="Movie Thoughts" matTextareaAutosize
+                            matAutosizeMinRows=5 matAutosizeMaxRows=20></textarea>
+                    </mat-form-field>
+                </div>
+                <button mat-raised-button type="submit">UPDATE</button>
+            </form>

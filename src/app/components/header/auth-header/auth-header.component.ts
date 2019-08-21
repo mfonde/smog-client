@@ -23,5 +23,4 @@ export class AuthHeaderComponent implements OnInit {
     localStorage.clear();
     location.reload();
   }
-
 }

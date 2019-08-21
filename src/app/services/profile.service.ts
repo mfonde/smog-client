@@ -12,11 +12,10 @@ const smallId = JSON.parse(localStorage.getItem('currentFav'))
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProfileService {
 
-
   constructor(private http: HttpClient) { }
-
 
   public reviews: [];
   public bigUser = smallUser.user.username
@@ -31,27 +30,21 @@ export class ProfileService {
   })
 
   getYourReview(middleUser) {
-    const url = `${smog}/review/username/${middleUser}`
-    console.log(smallUser)
-    console.log(token)
-    console.log(middleUser, "work")
+    const url = `${smog}/review/username/${middleUser}`;
     return this.http.get<any>(url,
-      { headers: this.headers })
-    // .subscribe(data =>{
-    //    this.reviews = data, console.log(data)
-    //})
+      { headers: this.headers });
   }
 
   getYourFavorites(middleUser) {
-    const url = `${smog}/favorite/username/${middleUser}`
+    const url = `${smog}/favorite/username/${middleUser}`;
     return this.http.get<any>(url,
-      { headers: this.headers })
+      { headers: this.headers });
   }
 
   destroyYourFavorites(id) {
-    const url = `${smog}/favorite/delete/${id}`
+    const url = `${smog}/favorite/delete/${id}`;
     return this.http.delete<any>(url,
-      { headers: this.headers })
+      { headers: this.headers });
   }
 
   updateYourFavorites(id, ranking) {
@@ -69,24 +62,23 @@ export class ProfileService {
     const url = `${smog}/review/delete/${id}`
     console.log('your review was deleted')
     return this.http.delete<any>(url,
-      {headers:this.headers})
+      { headers: this.headers })
   }
 
-  updateYourReviews(id, reviewText){
-    const url=`${smog}/review/update/${id}`
+  updateYourReviews(id, updatedReview) {
+    const url = `${smog}/review/update/${id}`
     console.log('Your review was updated')
-    return this.http.put<any>(url, reviewText,
-      {headers: this.headers}).subscribe(updatedRev => {
-        this.revreview = updatedRev;
-        console.log(this.revreview)
-      })
+    return this.http.put<any>(url, updatedReview, { headers: this.headers }).subscribe(updatedRev => {
+      this.revreview = updatedRev;
+      console.log(this.revreview)
+    })
   }
 
   updateYourRatings(id, reviewRatings){
     const url=`${smog}/review/update/${id}`
     console.log('Your review was updated')
     return this.http.put<any>(url, reviewRatings,
-      {headers: this.headers}).subscribe(updatedRev => {
+      { headers: this.headers }).subscribe(updatedRev => {
         this.revreview = updatedRev;
         console.log(this.revreview)
       })
