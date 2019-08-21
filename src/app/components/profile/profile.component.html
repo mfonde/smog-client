@@ -3,7 +3,7 @@
         <div class="profPic">
             <img src={{profilePic(bigUser.profilePic)}} height="80" width="75">
         </div>
-        <div>  
+        <div>
             <h1 id="username">
                 {{bigUser}}
             </h1>
@@ -15,28 +15,28 @@
 
 <!-- favorites -->
 <div class="favorites">
-        <div *ngFor="let favorite of firstfive">
-            <mat-card class="example-card">
-                <mat-card-header class="header">
-                    <mat-card-title class="ranking">{{favorite.ranking}}</mat-card-title>
-                    <mat-card-subtitle class="title">{{favorite.movieTitle}}</mat-card-subtitle>
-                </mat-card-header>
-                <br>
-                <br>
-                <div class="col-xs-12">
-                    <img class="image" mat-card-image src={{favorite.poster}} alt="Owen is Dad">
-                </div>
-                <mat-card-actions>
-                    <button class="delete" mat-button (click)="delete(favorite.id)">DELETE</button>
-                    <button mat-button class="update" (click)="openDialog(favorite.id)">UPDATE</button>
-                </mat-card-actions>
-            </mat-card>
-        </div>
+    <div *ngFor="let favorite of firstfive">
+        <mat-card class="example-card">
+            <mat-card-header class="header">
+                <mat-card-title class="ranking">{{favorite.ranking}}</mat-card-title>
+                <mat-card-subtitle class="title">{{favorite.movieTitle}}</mat-card-subtitle>
+            </mat-card-header>
+            <br>
+            <br>
+            <div class="col-xs-12">
+                <img class="image" mat-card-image src={{favorite.poster}} alt="Owen is Dad">
+            </div>
+            <mat-card-actions>
+                <button class="delete" mat-button (click)="delete(favorite.id)">DELETE</button>
+                <button mat-button class="update" (click)="openDialog(favorite.id)">UPDATE</button>
+            </mat-card-actions>
+        </mat-card>
     </div>
-    <br>
-    <hr>
-    <br>
-    <br>
+</div>
+<br>
+<hr>
+<br>
+<br>
 <!-- reviews -->
 <!-- <div class="yourReviews"> -->
 <!-- <ul class="reviews"> -->
