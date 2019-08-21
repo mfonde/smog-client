@@ -1,0 +1,47 @@
+.titleArea{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.star {
+    font-size: 2em;
+    color: grey;
+    text-shadow: black 1.5px 1px;
+}
+
+.filled {
+    color: yellow ;
+}
+
+.dataArea {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+h1{
+    padding-left: 5%;
+    font-family: "Movie-title";
+    font-size: 5em;
+}
+
+.buttons{
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.button{
+    background-color: black;
+    color: gold;
+    border: 1px solid gold;
+}
+
+.textBox{
+    width: 500px;
+    border: inset black 2px;
+}

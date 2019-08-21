@@ -2,7 +2,6 @@ import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Review } from 'src/app/models/review-model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReviewService } from '../../../services/review.service';
-import { BestiesService } from '../../../services/besties.service';
 
 @Component({
   selector: 'app-review-item',
@@ -12,7 +11,7 @@ import { BestiesService } from '../../../services/besties.service';
 export class ReviewItemComponent implements OnInit {
   @Input() review: Review;
   @Input() adminOn;
-  @ViewChild('username', {static:false}) usernameRef: ElementRef;
+  @ViewChild('username', { static: false }) usernameRef: ElementRef;
   returnUrl: string;
 
   constructor(private route: ActivatedRoute,
@@ -20,8 +19,6 @@ export class ReviewItemComponent implements OnInit {
 
   showUserProfile() {
     const username = this.usernameRef.nativeElement.innerHTML;
-    console.log(username);
-    
     this.reviewService.getReviewsByUsernameCallback(username, () => {
       this.router.navigate([this.returnUrl])
     });

@@ -21,7 +21,7 @@ export interface FavoriteData {
     title: string,
     poster: string,
     imdbID: string
-  }
+  };
 }
 
 @Component({
@@ -31,8 +31,8 @@ export interface FavoriteData {
 })
 export class MovieComponent implements OnInit {
 
-  // favoriteSelected = false;
   favoriteAdded = false;
+
   public movie;
   public selectRanking: FormGroup;
 
@@ -53,7 +53,6 @@ export class MovieComponent implements OnInit {
       data: { movie: this.movie }
     });
     dialogRef.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed');
     });
   }
 
@@ -64,10 +63,8 @@ export class MovieComponent implements OnInit {
   }
 
   getMovie() {
-    // check to see if local storage is set with the current searched 
     if (localStorage.getItem('movie') === null) {
       this.movie = this.databaseService.movie;
-      // console.log(this.movie)
     } else {
       this.movie = JSON.parse(localStorage.getItem('movie'));
     }
@@ -77,34 +74,24 @@ export class MovieComponent implements OnInit {
   onFavoriteSelected(): void {
     const dialogRef = this.dialog.open(FavoriteDialog, {
       width: '600px',
-      data: {movie: this.movie}
+      data: { movie: this.movie }
     });
-    dialogRef.afterClosed().subscribe(result => {console.log('The dialog was closed')})
+    dialogRef.afterClosed().subscribe(result => { console.log('The dialog was closed') })
   }
-
-  // favoriteClose() {
-  //   this.favoriteSelected = false;
-  // }
 
   addToFavorites() {
     const movieTitle = this.databaseService.movie.title;
     const imdbId = this.databaseService.movie.imdbID;
     const poster = this.databaseService.movie.poster;
     const ranking = this.selectRanking.value.ranking;
-
     const newFavorite = new Favorite(movieTitle, poster, imdbId, ranking);
     this.favoriteService.saveFavorite(newFavorite);
-    // console.log(this.databaseService.movie.title);
-    // console.log(ranking);
-    // console.log(newFavorite);
-    // this.favoriteClose();
     this.favoriteAdded = true;
     this.router.navigateByUrl('/#', { skipLocationChange: true }).then(() => this.router.navigate(['/movie']));
   }
 
   ngOnInit() {
     let x = this.databaseService.movie;
-    // console.log(x);
   }
 }
 
@@ -141,7 +128,6 @@ export class NewReviewDialog {
   }
 
   refresh() {
-    // console.log('refreshing');
     this.router.navigateByUrl('/#', { skipLocationChange: true }).then(() => this.router.navigate(['/movie']));
   }
 
@@ -153,7 +139,6 @@ export class NewReviewDialog {
     const reviewText = this.reviewData.value.reviewText;
     const newReview = new NewReview(movieTitle, poster, imdbId, reviewRating, reviewText);
     this.reviewService.postReview(newReview);
-    // console.log(newReview)
     this.dialogRef.close();
     this.refresh();
   }
@@ -174,7 +159,7 @@ export class FavoriteDialog {
     private favoriteService: FavoriteService,
     private router: Router,
     @Inject(MAT_DIALOG_DATA) public favoriteData: FavoriteData
-  ){
+  ) {
     this.favoriteForm()
   }
 
@@ -197,11 +182,9 @@ export class FavoriteDialog {
     const poster = this.favoriteData.movie.poster;
     const imdbId = this.favoriteData.movie.imdbID;
     const ranking = this.selectRanking.value.ranking;
-
     const newFavorite = new Favorite(movieTitle, poster, imdbId, ranking);
     this.favoriteService.saveFavorite(newFavorite);
     this.dialogRef.close();
     this.refresh();
   }
-
 }

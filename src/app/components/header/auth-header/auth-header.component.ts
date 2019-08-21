@@ -12,12 +12,10 @@ export class AuthHeaderComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   logOut() {
     localStorage.clear();
     location.reload();
   }
-
 }
