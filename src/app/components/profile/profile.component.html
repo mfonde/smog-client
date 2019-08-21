@@ -34,9 +34,28 @@
     </div>
 </div>
 <br>
-<hr>
 <br>
 <br>
+<div class="favorites">
+    <div *ngFor="let favorite of secondfive">
+        <mat-card class="example-card">
+            <mat-card-header class="header">
+                <mat-card-title class="ranking">{{favorite.ranking}}</mat-card-title>
+                <mat-card-subtitle class="title">{{favorite.movieTitle}}</mat-card-subtitle>
+            </mat-card-header>
+            <br>
+            <br>
+            <div class="col-xs-12">
+                <img class="image" mat-card-image src={{favorite.poster}} alt="Owen is Dad">
+            </div>
+            <mat-card-actions>
+                <button class="delete" mat-button (click)="delete(favorite.id)">DELETE</button>
+                <button mat-button class="update" (click)="openDialog(favorite.id)">UPDATE</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
+
 <!-- reviews -->
 <!-- <div class="yourReviews"> -->
 <!-- <ul class="reviews"> -->
